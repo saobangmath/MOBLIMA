@@ -10,11 +10,11 @@ public class SerializedDB{
         Scanner sc = new Scanner(System.in);
         boolean stop = false;
         while (!stop){
-            System.out.println("Who are you? \n" +
-                    "Enter 1 for Admin Mode \n" +
-                    "Enter 2 for viewer Mode \n" +
-                    "Enter any other keys for exiting \n");
             try{
+                System.out.println("Welcome to our application! \n"+
+                                   "Enter 1 for Admin Mode \n"+
+                                   "Enter 2 for viewer Mode \n");
+                System.out.println("Enter your choice: ");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case 1:
@@ -29,21 +29,46 @@ public class SerializedDB{
                             ArrayList<Admin> admins = (ArrayList<Admin>) (in.readObject());
                             boolean authentication = false;
                             // loop to check whether the authentication info in flat file
-                            for (int i = 0; i < admins.size(); i++) {
+                            int i = 0;
+                            for (i = 0; i < admins.size(); i++) {
                                 Admin ad = admins.get(i);
-                                if (ad.getName().equals(admin_name) &&
+                                if (ad.getUsername().equals(admin_name) &&
                                         ad.getPassword().equals(admin_password)) {
                                     authentication = true;
                                     break;
                                 }
                             }
                             if (authentication) {
-                                System.out.println("Authentication \n");
                                 // TODO - forward to the next page of amending database}
+                                Admin ad = admins.get(i);
+                                System.out.println("Welcome " + ad.getName() + ":)");
+                                boolean AdminStop = false;
+                                System.out.println("Enter 1 for Create/Update/Remove movie listing! \n" +
+                                        "Enter 2 for Create/Update/Remove cinema showtimes and movie to be show! \n" +
+                                        "Enter 3 for Configure the system settings! \n" +
+                                        "Enter any others key for logging out! \n");
+                                while (!AdminStop){
+                                    System.out.println("Enter your choice:");
+                                    int AdminChoice = sc.nextInt();
+                                    switch (AdminChoice){
+                                        case 1:
+                                            ad.MovieListing();
+                                            break;
+                                        case 2:
+                                            ad.CinemaShowTime();
+                                            break;
+                                        case 3:
+                                            ad.SystemConfiguration();
+                                            break;
+                                        default:
+                                            AdminStop = true;
+                                            System.out.println("Exit!\n");
+                                            break;
+                                    }
+                                }
                             }
                             else {
-                                System.out.println("NOT AN ADMIN YET! \n");
-                                // TODO - back to the main}
+                                System.out.println("Not an ADMIN yet! \n");
                             }
                         }
 
@@ -55,9 +80,12 @@ public class SerializedDB{
                             e.printStackTrace();
                         }
                         break;
-
+                    case 2:
+                        //TODO need MovieGoer class
+                        System.out.println("Movie goer!"); //for debugging only
+                        break;
                     default:
-                        stop = true;
+                        System.out.println("Please re-enter suitable option!");
                         break;
                 }
             }
@@ -66,14 +94,15 @@ public class SerializedDB{
                 sc.nextLine(); // flush the nextline character!
             }
         }
+        sc.close();
     }
     // database set up
     private static void Initialization() {
         ArrayList<Admin>admins = new ArrayList<>();
-        admins.add(new Admin("Tai", "tai123"));
-        admins.add(new Admin("Khanh", "khanh123"));
-        admins.add(new Admin("Rich", "rich123"));
-        admins.add(new Admin("Ryan", "ryan123"));
+        admins.add(new Admin("Tran Anh Tai", "tai123", "Tai"));
+        admins.add(new Admin("Phung Minh Khanh", "khanh123", "Khanh"));
+        admins.add(new Admin("Rich", "rich123", "Rich"));
+        admins.add(new Admin("Ryan", "ryan123", "Ryan"));
         try{
             FileOutputStream fileout = new FileOutputStream("admin.dat");
             ObjectOutputStream out = new ObjectOutputStream(fileout);
