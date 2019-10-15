@@ -2,9 +2,21 @@ package Models;
 
 import java.io.Serializable;
 import java.util.Scanner;
-
+/**
+ Represents a student enrolled in the school.
+ A student can be enrolled in many courses.
+ @author Tran Anh Tai
+ @version 1.0
+ @since 2010-10-15
+ */
 public class Admin implements Serializable {
+    /**
+     Admin corresponding variables
+     */
     private String username,name, password, email;
+    /**
+     different Admin constructors
+     */
     public Admin(String name, String password){
         this.name = name;
         this.password = password;
@@ -17,6 +29,9 @@ public class Admin implements Serializable {
         this(name, password, username);
         this.email = email;
     }
+    /**
+     Admin getAccessing to variable methods
+     */
     public String getName() {
         return this.name;
     }
@@ -32,10 +47,12 @@ public class Admin implements Serializable {
     public String getUsername() {
         return this.username;
     }
-
+    /**
+     Admin functionalities
+     */
     public void SystemConfiguration() {
         System.out.println("Sys config");
-        //TODO configuration the figure - what should be configure here ? :v
+        //TODO configuration ticket price, holidays,..
     }
 
     public void CinemaShowTime() {
@@ -46,5 +63,11 @@ public class Admin implements Serializable {
     public void MovieListing() {
         System.out.println("Movie Listing");
         //TODO create/update/remove Movie lists - required Movie class
+    }
+    public void showTop5ByTicketSales(){
+        // TODO show top 5 movies have most ticket sales
+    }
+    public void showTop5ByReviewRating(){
+        // TODO show to 5 movies with most ok reviews from the users
     }
 }

@@ -41,7 +41,7 @@ public class SerializedDB{
                             if (authentication) {
                                 // TODO - forward to the next page of amending database}
                                 Admin ad = admins.get(i);
-                                System.out.println("Welcome " + ad.getName() + ":)");
+                                System.out.println("Welcome admin " + ad.getName() + " :)");
                                 boolean AdminStop = false;
                                 System.out.println("Enter 1 for Create/Update/Remove movie listing! \n" +
                                         "Enter 2 for Create/Update/Remove cinema showtimes and movie to be show! \n" +
@@ -85,7 +85,7 @@ public class SerializedDB{
                         System.out.println("Movie goer!"); //for debugging only
                         break;
                     default:
-                        System.out.println("Please re-enter suitable option!");
+                        System.out.println("Please enter a valid choice!");
                         break;
                 }
             }
