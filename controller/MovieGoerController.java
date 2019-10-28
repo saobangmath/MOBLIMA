@@ -1,5 +1,4 @@
 package controller;
-import java.util.List;
 import java.util.ArrayList;
 import database.MovieGoerDB;
 import model.MovieGoer;

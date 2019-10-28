@@ -1,13 +1,15 @@
 package database;
-import model.MovieGoer;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-import java.io.IOException;
 
-public class MovieGoerDB extends DB{
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import model.Cinema;
+
+public class CinemaDB extends DB{
 	public static final String SEPARATOR = "|";
-	public static final String filename = "movieGoer.txt";
+	public static final String filename = "cinema.txt";
     // an example of reading
 	public ArrayList readData() {
 		ArrayList alr = new ArrayList() ;// to store Professors data
@@ -18,12 +20,13 @@ public class MovieGoerDB extends DB{
 				String st = (String)stringArray.get(i);
 				// get individual 'fields' of the string separated by SEPARATOR
 				StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
-				String  email = star.nextToken().trim();	// first token
-				int  age = Integer.parseInt(star.nextToken().trim());	// second token
-				String  name = star.nextToken().trim(); // third token
-				int mobile = Integer.parseInt(star.nextToken().trim());
-				MovieGoer goer = new MovieGoer(email, age, name, mobile);
-				alr.add(goer);
+                int ID = Integer.parseInt(star.nextToken().trim());
+                String  name = star.nextToken().trim();	// first token
+                int cineplexId = Integer.parseInt(star.nextToken().trim());
+                int row = Integer.parseInt(star.nextToken().trim());
+                int col = Integer.parseInt(star.nextToken().trim());
+				Cinema cine = new Cinema(name, ID, cineplexId, row, col);
+				alr.add(cine);
 			}
 		}
 		catch (IOException e) {
@@ -37,15 +40,17 @@ public class MovieGoerDB extends DB{
 		List alw = new ArrayList() ;// to store Professors data
 
 		for (int i = 0 ; i < al.size() ; i++) {
-				MovieGoer goer = (MovieGoer)al.get(i);
+				Cinema cine = (Cinema)al.get(i);
 				StringBuilder st =  new StringBuilder() ;
-				st.append(goer.getEmail().trim());
+				st.append(cine.getID());
 				st.append(SEPARATOR);
-				st.append(goer.getAge());
+				st.append(cine.getName().trim());
 				st.append(SEPARATOR);
-				st.append(goer.getName());
-				st.append(SEPARATOR);
-				st.append(goer.getMobile());
+				st.append(cine.getCineplexId());
+                st.append(SEPARATOR);
+				st.append(cine.getRow());
+                st.append(SEPARATOR);
+				st.append(cine.getCol());
 				alw.add(st.toString()) ;
 			}
 		try{

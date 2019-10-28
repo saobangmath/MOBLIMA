@@ -1,13 +1,15 @@
 package database;
-import model.MovieGoer;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-import java.io.IOException;
 
-public class MovieGoerDB extends DB{
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+import model.Cineplex;
+
+public class CineplexDB extends DB{
 	public static final String SEPARATOR = "|";
-	public static final String filename = "movieGoer.txt";
+	public static final String filename = "cineplex.txt";
     // an example of reading
 	public ArrayList readData() {
 		ArrayList alr = new ArrayList() ;// to store Professors data
@@ -18,12 +20,18 @@ public class MovieGoerDB extends DB{
 				String st = (String)stringArray.get(i);
 				// get individual 'fields' of the string separated by SEPARATOR
 				StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
-				String  email = star.nextToken().trim();	// first token
-				int  age = Integer.parseInt(star.nextToken().trim());	// second token
-				String  name = star.nextToken().trim(); // third token
-				int mobile = Integer.parseInt(star.nextToken().trim());
-				MovieGoer goer = new MovieGoer(email, age, name, mobile);
-				alr.add(goer);
+                int ID = Integer.parseInt(star.nextToken().trim());
+                String  name = star.nextToken().trim();	// first token
+                String location = star.nextToken().trim();
+                ArrayList<String> availableMovie = new ArrayList<String>();
+                if(star.countTokens() > 0){
+                    String[]  availableMovieRaw = star.nextToken().trim().split(","); // third token
+                    for(int j = 0 ; j < availableMovieRaw.length; j++){
+                        availableMovie.add(availableMovieRaw[j]);
+                    }
+                }
+				Cineplex cine = new Cineplex(name, ID, location, availableMovie);
+				alr.add(cine);
 			}
 		}
 		catch (IOException e) {
@@ -37,15 +45,15 @@ public class MovieGoerDB extends DB{
 		List alw = new ArrayList() ;// to store Professors data
 
 		for (int i = 0 ; i < al.size() ; i++) {
-				MovieGoer goer = (MovieGoer)al.get(i);
+				Cineplex cine = (Cineplex)al.get(i);
 				StringBuilder st =  new StringBuilder() ;
-				st.append(goer.getEmail().trim());
+				st.append(cine.getID());
 				st.append(SEPARATOR);
-				st.append(goer.getAge());
+				st.append(cine.getName().trim());
 				st.append(SEPARATOR);
-				st.append(goer.getName());
-				st.append(SEPARATOR);
-				st.append(goer.getMobile());
+				st.append(cine.getLocation().trim());
+                st.append(SEPARATOR);
+				st.append(cine.stringifyAvailableMovie().trim());
 				alw.add(st.toString()) ;
 			}
 		try{
