@@ -1,7 +1,11 @@
-package Models;
+package model;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
-import java.util.Scanner;
+import java.util.ArrayList;
+
 /**
  Represents a student enrolled in the school.
  A student can be enrolled in many courses.
@@ -17,16 +21,16 @@ public class Admin implements Serializable {
     /**
      different Admin constructors
      */
-    public Admin(String name, String password){
-        this.name = name;
+    public Admin(String username, String password){
+        this.username = username;
         this.password = password;
     }
-    public Admin(String name, String password, String username){
-        this(name, password);
-        this.username = username;
+    public Admin(String username, String password, String name){
+        this(username, password);
+        this.name = name;
     }
-    public Admin(String name, String password, String username, String email){
-        this(name, password, username);
+    public Admin(String username, String password, String name, String email){
+        this(username, password, name);
         this.email = email;
     }
     /**
@@ -58,16 +62,33 @@ public class Admin implements Serializable {
     public void CinemaShowTime() {
         System.out.println("Cinema Showtime");
         //TODO create/update/remove cinema showtimes and movie to be show - required Movie and Cinema class
+
     }
 
     public void MovieListing() {
         System.out.println("Movie Listing");
         //TODO create/update/remove Movie lists - required Movie class
+        try{
+            FileInputStream filein = new FileInputStream("movies.dat");
+            ObjectInputStream in = new ObjectInputStream(filein);
+            ArrayList<Movie> movies = (ArrayList<Movie>) (in.readObject());
+            for (Movie movie : movies){
+                System.out.println("MovieID: "+ movie.getMovieID() + ", MovieName: " + movie.getMovieName());
+            }
+        }
+        catch (IOException e){
+            System.out.println("Can't load the MovieList !");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
     public void showTop5ByTicketSales(){
         // TODO show top 5 movies have most ticket sales
+
+
     }
     public void showTop5ByReviewRating(){
         // TODO show to 5 movies with most ok reviews from the users
+
     }
 }
