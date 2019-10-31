@@ -4,51 +4,62 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.MovieGoer;
 import controller.MovieGoerController;
-public class MovieGoerInterface{
+public class MovieGoerInterface extends BaseInterface{
     public static void main(String[] aArgs)  {
-        MovieGoerController movieGoerController = new MovieGoerController();
+        MovieGoerController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;
+        String email;
         boolean process = true;
         while(process){
             System.out.println("Please input your choice to continue:");
             System.out.println("1. Retrieve all MovieGoer details");
-            System.out.println("2. Add new MovieGoer");
-            System.out.println("3. Update MovieGoer information");
-            System.out.println("4. Delete MovieGoer ");
-            System.out.println("5. Exit");
+            System.out.println("2. Get MovieGoer by Email");
+            System.out.println("3. Add new MovieGoer");
+            System.out.println("4. Update MovieGoer information");
+            System.out.println("5. Delete MovieGoer ");
+            System.out.println("6. Exit");
             System.out.print("Your choice: ");
             choice = sc.next().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
-                    movieGoerController.displayMovieGoer();
+                    MovieGoerController.displayAll();
                     break;
                 case '2':
-                    if(movieGoerController.createMovieGoer(createMovieGoer())){
+                    email = readEmail().trim();
+                    if(MovieGoerController.read(email) == null){
+                        System.out.println("Movie Goer does not exist");
+                    }
+                    else{
+                        MovieGoerController.displayByID(email);
+                    }
+                    break;
+                case '3':
+                    if(MovieGoerController.create(createMovieGoer())){
                         System.out.println("Create Movie Goer successfully!");
                     }
                     else{
                         System.out.println("Movie Goer has already existed");
                     }
                     break;
-                case '3':
-                    if(!movieGoerController.updateMovieGoer(createMovieGoer())){
+                case '4':
+                    if(!MovieGoerController.update(createMovieGoer())){
                         System.out.println("Movie Goer does not exist to update");
                     }
                     else{
                         System.out.println("Update Movie Goer successfully!");
                     }
                     break;
-                case '4':
-                    if(!movieGoerController.deleteMovieGoer(deleteMovieGoer())){
+                case '5':
+                    if(!MovieGoerController.delete(readEmail())){
                         System.out.println("Movie Goer does not exist to delete");
                     }                 
                     else{
                         System.out.println("Delete Movie Goer successfully!");
                     }   
                     break;
-                case '5':
+                case '6':
                     process = false;
                     break;
                 default:
@@ -88,10 +99,10 @@ public class MovieGoerInterface{
     return new MovieGoer(email, age, name, mobile);
   }
 
-  public static String deleteMovieGoer(){
+  public static String readEmail(){
     String email;
     Scanner sc = new Scanner(System.in);   
-    System.out.println("Email of Movie Goer to delete:");   
+    System.out.println("Input ID to continue:");   
     email = sc.next();
     return email;
   }

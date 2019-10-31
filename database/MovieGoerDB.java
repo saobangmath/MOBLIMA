@@ -9,7 +9,7 @@ public class MovieGoerDB extends DB{
 	public static final String SEPARATOR = "|";
 	public static final String filename = "movieGoer.txt";
     // an example of reading
-	public ArrayList readData() {
+	public static ArrayList readData() {
 		ArrayList alr = new ArrayList() ;// to store Professors data
 		try{
 			// read String from text file
@@ -33,7 +33,7 @@ public class MovieGoerDB extends DB{
 	}
 
 	// an example of saving
-	public void saveData(List al) {
+	public static void saveData(List al) {
 		List alw = new ArrayList() ;// to store Professors data
 
 		for (int i = 0 ; i < al.size() ; i++) {

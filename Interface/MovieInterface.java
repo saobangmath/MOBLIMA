@@ -3,51 +3,61 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Movie;
 import controller.MovieController;
-public class MovieInterface{
+public class MovieInterface extends BaseInterface{
     public static void main(String[] aArgs)  {
-        MovieController MovieController = new MovieController();
+        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice, id;
         boolean process = true;
         while(process){
             System.out.println("Please input your choice to continue:");
             System.out.println("1. Retrieve all Movie details");
-            System.out.println("2. Add new Movie");
-            System.out.println("3. Update Movie information");
-            System.out.println("4. Delete Movie ");
-            System.out.println("5. Exit");
+            System.out.println("2. Get Movie by ID");
+            System.out.println("3. Add new Movie");
+            System.out.println("4. Update Movie information");
+            System.out.println("5. Delete Movie ");
+            System.out.println("6. Exit");
             System.out.print("Your choice: ");
             choice = sc.next().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
-                    MovieController.displayMovie();
+                    MovieController.displayAll();
                     break;
                 case '2':
-                    if(MovieController.createMovie(createMovie())){
+                    id = readID();
+                    if(MovieController.read(id) == null){
+                        System.out.println("Movie does not exist");
+                    }
+                    else{
+                        MovieController.displayByID(id);
+                    }
+                    break;
+                case '3':
+                    if(MovieController.create(createMovie())){
                         System.out.println("Create Movie successfully!");
                     }
                     else{
                         System.out.println("Movie has already existed");
                     }
                     break;
-                case '3':
-                    if(!MovieController.updateMovie(createMovie())){
+                case '4':
+                    if(!MovieController.update(createMovie())){
                         System.out.println("Movie does not exist to update");
                     }
                     else{
                         System.out.println("Update Movie successfully!");
                     }
                     break;
-                case '4':
-                    if(!MovieController.deleteMovie(deleteMovie())){
+                case '5':
+                    if(!MovieController.delete(readID())){
                         System.out.println("Movie does not exist to delete");
                     }                 
                     else{
                         System.out.println("Delete Movie successfully!");
                     }   
                     break;
-                case '5':
+                case '6':
                     process = false;
                     break;
                 default:
@@ -102,11 +112,4 @@ public class MovieInterface{
     return new Movie(name, ID, category, description, director, cast, restriction, 0);
   }
 
-  public static int deleteMovie(){
-    int ID;
-    Scanner sc = new Scanner(System.in);   
-    System.out.println("ID of Movie to delete:");   
-    ID = sc.nextInt();
-    return ID;
-  }
 }

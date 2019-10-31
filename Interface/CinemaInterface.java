@@ -3,51 +3,61 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Cinema;
 import controller.CinemaController;
-public class CinemaInterface{
+public class CinemaInterface extends BaseInterface{
     public static void main(String[] aArgs)  {
-        CinemaController CinemaController = new CinemaController();
+        CinemaController.readDB();
         Scanner sc = new Scanner(System.in);
-        int choice;
+        int choice, id;
         boolean process = true;
         while(process){
             System.out.println("Please input your choice to continue:");
             System.out.println("1. Retrieve all Cinema details");
-            System.out.println("2. Add new Cinema");
-            System.out.println("3. Update Cinema information");
-            System.out.println("4. Delete Cinema ");
-            System.out.println("5. Exit");
+            System.out.println("2. Get Cinema by ID");
+            System.out.println("3. Add new Cinema");
+            System.out.println("4. Update Cinema information");
+            System.out.println("5. Delete Cinema ");
+            System.out.println("6. Exit");
             System.out.print("Your choice: ");
             choice = sc.next().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
-                    CinemaController.displayCinema();
+                    CinemaController.displayAll();
                     break;
                 case '2':
-                    if(CinemaController.createCinema(createCinema())){
+                    id = readID();
+                    if(CinemaController.read(id) == null){
+                        System.out.println("Cinema does not exist");
+                    }
+                    else{
+                        CinemaController.displayByID(id);
+                    }
+                    break;
+                case '3':
+                    if(CinemaController.create(createCinema())){
                         System.out.println("Create Cinema successfully!");
                     }
                     else{
                         System.out.println("Cinema has already existed");
                     }
                     break;
-                case '3':
-                    if(!CinemaController.updateCinema(createCinema())){
+                case '4':
+                    if(!CinemaController.update(createCinema())){
                         System.out.println("Cinema does not exist to update");
                     }
                     else{
                         System.out.println("Update Cinema successfully!");
                     }
                     break;
-                case '4':
-                    if(!CinemaController.deleteCinema(deleteCinema())){
+                case '5':
+                    if(!CinemaController.delete(readID())){
                         System.out.println("Cinema does not exist to delete");
                     }                 
                     else{
                         System.out.println("Delete Cinema successfully!");
                     }   
                     break;
-                case '5':
+                case '6':
                     process = false;
                     break;
                 default:
@@ -93,11 +103,4 @@ public class CinemaInterface{
     return new Cinema(name, ID, cineplexId, row, col);
   }
 
-  public static int deleteCinema(){
-    int ID;
-    Scanner sc = new Scanner(System.in);   
-    System.out.println("ID of Cinema to delete:");   
-    ID = sc.nextInt();
-    return ID;
-  }
 }

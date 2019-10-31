@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import model.Movie;
+import model.Showtime;
 
-public class MovieDB extends DB{
+public class ShowtimeDB extends DB{
 	public static final String SEPARATOR = "|";
-	public static final String filename = "movie.txt";
+	public static final String filename = "showtime.txt";
     // an example of reading
 	public static ArrayList readData() {
 		ArrayList alr = new ArrayList() ;// to store Professors data
@@ -21,15 +21,14 @@ public class MovieDB extends DB{
 				// get individual 'fields' of the string separated by SEPARATOR
 				StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
                 int ID = Integer.parseInt(star.nextToken().trim());
-                String  name = star.nextToken().trim();	// first token
-                String  category = star.nextToken().trim();	
-                String  description = star.nextToken().trim();	
-                String  director = star.nextToken().trim();	
-                String  cast = star.nextToken().trim();	
-                int restriction = Integer.parseInt(star.nextToken().trim());
-                float overallRating = Integer.parseInt(star.nextToken().trim());
-				Movie cine = new Movie(name, ID, category, description, director, cast, restriction, overallRating);
-				alr.add(cine);
+                int movieId = Integer.parseInt(star.nextToken().trim());
+                int cineplexId = Integer.parseInt(star.nextToken().trim());
+                int cinemaId = Integer.parseInt(star.nextToken().trim());
+                String  date = star.nextToken().trim();	
+                String  startTime = star.nextToken().trim();	
+                String  endTime = star.nextToken().trim();	
+				Showtime showtime = new Showtime(ID, movieId, cineplexId, cinemaId, date, startTime, endTime);
+				alr.add(showtime);
 			}
 		}
 		catch (IOException e) {
@@ -43,23 +42,21 @@ public class MovieDB extends DB{
 		List alw = new ArrayList() ;// to store Professors data
 
 		for (int i = 0 ; i < al.size() ; i++) {
-				Movie cine = (Movie)al.get(i);
+				Showtime showtime = (Showtime)al.get(i);
 				StringBuilder st =  new StringBuilder() ;
-				st.append(cine.getID());
+				st.append(showtime.getID());
 				st.append(SEPARATOR);
-				st.append(cine.getName().trim());
+				st.append(showtime.getMovieId());
 				st.append(SEPARATOR);
-				st.append(cine.getCategory().trim());
+				st.append(showtime.getCineplexId());
                 st.append(SEPARATOR);
-				st.append(cine.getDescription().trim());
+				st.append(showtime.getCinemaId());
                 st.append(SEPARATOR);
-                st.append(cine.getDirector().trim());
+				st.append(showtime.getDate().trim());
                 st.append(SEPARATOR);
-                st.append(cine.getCast().trim());
+                st.append(showtime.getStartTime().trim());
                 st.append(SEPARATOR);
-                st.append(cine.getRestriction());
-                st.append(SEPARATOR);
-				st.append(cine.getOverallRating());
+                st.append(showtime.getEndTime().trim());
 				alw.add(st.toString()) ;
 			}
 		try{
