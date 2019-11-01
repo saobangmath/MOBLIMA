@@ -1,16 +1,22 @@
 package controller;
 
+import database.HistoryBookingDB;
 import model.Admin;
 import database.AdminDB;
+import model.Review;
 
 import java.util.ArrayList;
 
 public class AdminController {
     private ArrayList<Admin> AdminList = new ArrayList<Admin>();
+    private ArrayList<Review>ReviewList = new ArrayList<>();
+
     private AdminDB db = new AdminDB();
+    private HistoryBookingDB histDB = new HistoryBookingDB();
 
     public AdminController(){
         this.AdminList = db.readData();
+        this.ReviewList = histDB.readData();
     }
 
     public boolean IsAuthentication(String username, String password){
@@ -37,6 +43,12 @@ public class AdminController {
 
     }
     public void ViewHistoryBooking(){
-        
+        for (int i = 0; i < ReviewList.size(); i++){
+            Review review = ReviewList.get(i);
+            System.out.println(" FilmID: " + review.getMovieID()
+                             + " FilmName: " + review.getMovieName()
+                             + " of user: " + review.getEmail()
+                             + " with comment: " + review.getComment());
+        }
     }
 }

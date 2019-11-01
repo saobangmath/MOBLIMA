@@ -1,0 +1,4 @@
+1|X|tai1@gmail.com|Good
+2|Y|khanh@gmail.com|Good
+1|X|rich@gmail.com|Good
+2|Y|ryan@gmail.com|Good
