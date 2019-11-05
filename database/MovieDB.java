@@ -27,8 +27,10 @@ public class MovieDB extends DB{
                 String  director = star.nextToken().trim();	
                 String  cast = star.nextToken().trim();	
                 int restriction = Integer.parseInt(star.nextToken().trim());
-                float overallRating = Integer.parseInt(star.nextToken().trim());
-				Movie cine = new Movie(name, ID, category, description, director, cast, restriction, overallRating);
+				float overallRating = Integer.parseInt(star.nextToken().trim());
+				String startDate = star.nextToken().trim();
+				String endDate = star.nextToken().trim();
+				Movie cine = new Movie(name, ID, category, description, director, cast, restriction, overallRating, startDate, endDate);
 				alr.add(cine);
 			}
 		}
@@ -60,6 +62,10 @@ public class MovieDB extends DB{
                 st.append(cine.getRestriction());
                 st.append(SEPARATOR);
 				st.append(cine.getOverallRating());
+                st.append(SEPARATOR);
+				st.append(cine.getStartDate());
+                st.append(SEPARATOR);
+				st.append(cine.getEndDate());
 				alw.add(st.toString()) ;
 			}
 		try{

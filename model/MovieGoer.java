@@ -1,6 +1,6 @@
 package model;
 
-public class MovieGoer {
+public class MovieGoer extends Email{
     private String email;
     private int age;
     private String name;

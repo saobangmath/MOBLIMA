@@ -2,6 +2,10 @@ package controller;
 import java.util.ArrayList;
 import database.ShowtimeDB;
 import model.Showtime;
+import model.Cinema;
+import model.Seat;
+import controller.SeatController;
+import controller.CinemaController;
 public class ShowtimeController{
 
     private static ArrayList<Showtime> listShowtimes = new ArrayList<Showtime>();
@@ -15,6 +19,7 @@ public class ShowtimeController{
             return false;
         }
         listShowtimes.add(showtime);
+        batchCreateSeat(showtime.getID(), CinemaController.read(showtime.getCinemaId()));
         ShowtimeDB.saveData(listShowtimes);
         return true;
     }
@@ -85,6 +90,49 @@ public class ShowtimeController{
                 System.out.print("\n");
                 return;
             }
+        }
+    }
+
+    public static void batchCreateSeat(int ID, Cinema cinema){
+        int row = cinema.getRow();
+        int col = cinema.getCol();
+        char rowChar;
+        for(int i = 0; i < row; i++){
+            rowChar = (char) (i + 65);
+            for(int j = 0; j < col; j++){
+                Seat seat;
+                if(rowChar == 'E' || rowChar == 'F' || rowChar == 'G'){
+                    seat = new Seat(rowChar, col, ID, false, false, 0);
+                }
+                else{
+                    seat = new Seat(rowChar, col, ID, false, true, 0);
+                }
+                SeatController.create(seat);
+            }
+        }
+    }
+
+    public static void displaySeatMap(int ID, Cinema cine){
+        int row = cine.getRow();
+        int col = cine.getCol();
+        char rowChar;
+        System.out.print("    ");
+        for(int i = 0; i < col; i++){
+            System.out.print(i+1);
+        }
+        System.out.print("\n");
+        for(int i = 0; i < row; i++){
+            rowChar = (char) (i + 65);
+            System.out.print(rowChar + "   ");
+            for(int j = 0; j < col; j++){
+                if(SeatController.checkOccupied(rowChar, col, ID)){
+                    System.out.print("o ");
+                }
+                else{
+                    System.out.print("x ");
+                }
+            }
+            System.out.print("\n");
         }
     }
 }

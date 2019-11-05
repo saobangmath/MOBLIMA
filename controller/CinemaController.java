@@ -2,6 +2,7 @@ package controller;
 import java.util.ArrayList;
 import database.CinemaDB;
 import model.Cinema;
+
 public class CinemaController{
 
     private static ArrayList<Cinema> listCinemas = new ArrayList<Cinema>();

@@ -70,6 +70,8 @@ public class MovieController{
             System.out.println("Cast: "+ listMovies.get(i).getCast() );
             System.out.println("Restriction: "+ listMovies.get(i).getRestriction() );
             System.out.println("Overall Rating: "+ listMovies.get(i).getOverallRating() );
+            System.out.println("Start Dtae: "+ listMovies.get(i).getStartDate());
+            System.out.println("End Date: "+ listMovies.get(i).getEndDate());
             System.out.println("\n");
         }
     }
@@ -85,6 +87,8 @@ public class MovieController{
                 System.out.println("Cast: "+ listMovies.get(i).getCast() );
                 System.out.println("Restriction: "+ listMovies.get(i).getRestriction() );
                 System.out.println("Overall Rating: "+ listMovies.get(i).getOverallRating() );
+                System.out.println("Start Dtae: "+ listMovies.get(i).getStartDate());
+                System.out.println("End Date: "+ listMovies.get(i).getEndDate());
                 System.out.println("\n");
                 return;
             }
