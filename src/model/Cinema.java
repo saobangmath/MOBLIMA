@@ -1,20 +1,28 @@
 package model;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
-public class Cinema implements Serializable {
-    private int CineplexID, SeatNo;
+public class Cinema {
     private String name;
-    private boolean isOccupied[];
-    private ArrayList<Movie> availableMovies;
-    public Cinema(int CineplexID, int SeatNo, String name){
-        this.CineplexID = CineplexID;
-        this.SeatNo = SeatNo;
-        this.name =  name;
-        this.isOccupied = new boolean[SeatNo];
-        this.availableMovies = new ArrayList<Movie>();
+    private int ID;
+    private int cineplexId;
+    private int row;
+    private int col;
+
+    public Cinema(String nameInput, int IDInput, int cineplexIdInput, int rowInput, int colInput){
+        this.name = nameInput;
+        this.ID = IDInput;
+        this.cineplexId = cineplexIdInput;
+        this.row = rowInput;
+        this.col = colInput;
     }
 
+    public int getID(){ return this.ID; };
+
+    public int getRow(){return this.row; }
+
+    public int getCol() {return this.col;}
+
+    public int getCineplexId() {return this.cineplexId;}
+
+    public String getName(){return this.name;}
 
 }

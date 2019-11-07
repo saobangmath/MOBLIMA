@@ -1,28 +1,38 @@
 package model;
-
-import java.io.Serializable;
 import java.util.ArrayList;
-
-public class Cineplex implements Serializable {
-    private int CineplexID;
+public class Cineplex {
+    private String name;
+    private int ID;
     private String location;
-    ArrayList<Cinema> availableMovies =  new ArrayList<Cinema>();
-    public Cineplex(int CineplexID, String location, ArrayList<Cinema>availableMovies){
-        this.CineplexID = CineplexID;
-        this.location = location;
-        this.availableMovies = availableMovies;
+    private ArrayList<String> availableMovie = new ArrayList<String>();
+
+    public Cineplex(String nameInput, int IDInput, String locationInput, ArrayList<String> availableMovieInput){
+        location = locationInput;
+        ID = IDInput;
+        name = nameInput;
+        availableMovie = availableMovieInput;
     }
 
-    public int getCineplexID() {
-        return this.CineplexID;
-    }
+    public int getID(){ return this.ID; };
 
-    public String getLocation() {
-        return this.location;
-    }
+    public String getLocation(){return this.location; }
 
-    public ArrayList<Cinema> getAvailableMovies() {
-        return this.availableMovies;
+    public String getName() {return this.name;}
+
+    public ArrayList<String> getAvailableMovie() {return this.availableMovie;}
+
+    public String stringifyAvailableMovie(){
+        String result = new String("");
+        if(this.availableMovie.size() == 0){
+            return result;
+        }
+        int  i;
+        for(i = 0 ; i < this.availableMovie.size() - 1; i++){
+            result.concat(this.availableMovie.get(i).trim());
+            result.concat(",");
+        }
+        result.concat(this.availableMovie.get(i).trim());
+        return result;
     }
 
 

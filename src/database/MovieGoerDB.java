@@ -1,7 +1,5 @@
 package database;
 import model.MovieGoer;
-
-import java.nio.file.Files;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.StringTokenizer;

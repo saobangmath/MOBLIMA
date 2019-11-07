@@ -1,41 +1,73 @@
 package model;
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.util.Date;
 
-import java.io.Serializable;
+public class Movie extends DateTime {
+    private String name;
+    private int ID;
+    private String category;
+    private String description;
+    private float overallRating;
+    private String director;
+    private String cast;
+    private int restriction;
+    private String startDate;
+    private String endDate;
 
-public class Movie implements Serializable {
-    private int MovieID, rating;
-    private String MovieName,Description, Restriction, Category;
-    public Movie(int MovieID){
-        this.MovieID = MovieID;
-    }
-    public Movie(int MovieID, String MovieName, String Description){
-        this(MovieID);
-        this.MovieName = MovieName;
-        this.Description = Description;
-        this.rating = 5 - MovieID; // TODO need to be update through the time
-    }
-    public Movie(int MovieID, String MovieName, String Description, String Category){
-        this(MovieID,MovieName,Description);
-        this.Category = Category;
-    }
-
-    public int getMovieID() {
-        return this.MovieID;
-    }
-
-    public String getDescription() {
-        return this.Description;
-    }
-
-    public String getMovieName() {
-        return this.MovieName;
-    }
-
-    public String getRestriction() {
-        return this.Restriction;
+    public Movie(String nameInput, int IDInput, String categoryInput, String descriptionInput,
+                 String directorInput, String castInput, int restrictionInput, float overallRatingInput,
+                 String startDateInput, String endDateInput){
+        this.name = nameInput;
+        this.ID = IDInput;
+        this.category = categoryInput;
+        this.description = descriptionInput;
+        this.overallRating = overallRatingInput;
+        this.director = directorInput;
+        this.cast = castInput;
+        this.restriction = restrictionInput;
+        this.startDate = startDateInput;
+        this.endDate = endDateInput;
     }
 
-    public int getRating() {
-        return this.rating;
+    public int getID(){ return this.ID; };
+
+    public String getName(){return this.name;}
+
+    public String getCategory(){return this.category;}
+
+    public String getDescription(){return this.description;}
+
+    public String getDirector(){return this.director;}
+
+    public String getCast() {return this.cast;}
+
+    public int getRestriction(){return this.restriction;}
+
+    public float getOverallRating(){return this.overallRating;}
+
+    public void setOverallRating(float overallRating){this.overallRating = overallRating;};
+
+    public String getStartDate(){return this.startDate;};
+
+    public String getEndDate(){return this.endDate;}
+
+    public int getStatusMovie(){
+        DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
+        Date currentDate= new Date();
+        try{
+            Date startDateParse = formatDate.parse(this.startDate);
+            Date endDateParse = formatDate.parse(this.endDate);
+            if(currentDate.compareTo(startDateParse) < 0){
+                return 0; // upcoming movie
+            }
+            if(currentDate.compareTo(endDateParse) > 0){
+                return 2; // already over
+            }
+        }
+        catch(Exception e){
+            return -1; // error
+        }
+        return 1; // now showing
     }
 }

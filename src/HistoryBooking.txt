@@ -1,4 +1,4 @@
-1|X|tai1@gmail.com|Good
-2|Y|khanh@gmail.com|Good
-1|X|rich@gmail.com|Good
-2|Y|ryan@gmail.com|Good
+tai@gmail.com|1|1|28-10-2019
+khanh@gmail.com|2|1|28-10-2019
+rich@gmail.com|3|1|28-10-2019
+ryan@gmail.com|2|1|28-10-2019

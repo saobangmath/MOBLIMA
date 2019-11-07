@@ -1,27 +1,34 @@
 package controller;
 
 import database.HistoryBookingDB;
+import database.MovieDB;
 import model.Admin;
 import database.AdminDB;
-import model.Review;
+import model.Booking;
+import model.Movie;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class AdminController {
-    private ArrayList<Admin> AdminList = new ArrayList<Admin>();
-    private ArrayList<Review>ReviewList = new ArrayList<>();
-
-    private AdminDB db = new AdminDB();
-    private HistoryBookingDB histDB = new HistoryBookingDB();
+    private static ArrayList<Admin> AdminList;
+    private static ArrayList<Booking> BookingList;
+    private static ArrayList<Movie> MovieList;
+    private static AdminDB db = new AdminDB();
+    private static HistoryBookingDB histDB = new HistoryBookingDB();
+    private static MovieDB movieDB = new MovieDB();
+    private static MovieController movieController = new MovieController();
 
     public AdminController(){
         this.AdminList = db.readData();
-        this.ReviewList = histDB.readData();
+        this.BookingList = histDB.readData();
+        this.MovieList = movieDB.readData();
+        this.movieController = new MovieController();
     }
 
-    public boolean IsAuthentication(String username, String password){
+    public static boolean IsAuthentication(String username, String password){
         boolean authenticate = false;
-        for (int i = 0; i < this.AdminList.size(); i++){
+        for (int i = 0; i < AdminList.size(); i++){
             Admin ad = AdminList.get(i);
             if (username.equals(ad.getUsername()) && password.equals(ad.getPassword())){
                 authenticate = true;
@@ -33,22 +40,32 @@ public class AdminController {
         }
         return authenticate;
     }
-    public void SystemConfiguration(){
+    public static void AddMovie(){
 
     }
-    public void DisplayTopFiveMovieRankByRatings(){
-
-    }
-    public void DisplayTopFiveMovieRankByTicketsSale(){
-
-    }
-    public void ViewHistoryBooking(){
-        for (int i = 0; i < ReviewList.size(); i++){
-            Review review = ReviewList.get(i);
-            System.out.println(" FilmID: " + review.getMovieID()
-                             + " FilmName: " + review.getMovieName()
-                             + " of user: " + review.getEmail()
-                             + " with comment: " + review.getComment());
+    public static void TopFiveMovieRankByRatings(){
+        Collections.sort(MovieList, new MovieController.SortByRating());
+        int movieID = 0;
+        while (movieID < Math.min(5, MovieList.size())){
+            System.out.println("ID: "+ MovieList.get(movieID).getID());
+            System.out.println("Name: " + MovieList.get(movieID).getName());
+            System.out.println("Category: "+ MovieList.get(movieID).getCategory() );
+            System.out.println("Description: "+ MovieList.get(movieID).getDescription() );
+            System.out.println("Director: "+ MovieList.get(movieID).getDirector() );
+            System.out.println("Cast: "+ MovieList.get(movieID).getCast() );
+            System.out.println("Restriction: "+ MovieList.get(movieID).getRestriction() );
+            System.out.println("Overall Rating: "+ MovieList.get(movieID).getOverallRating() );
+            System.out.println("Start Dtae: "+ MovieList.get(movieID).getStartDate());
+            System.out.println("End Date: "+ MovieList.get(movieID).getEndDate());
+            System.out.println("\n");
+             movieID++;
         }
+    }
+    public static void TopFiveMovieRankByTicketsSale(){
+
+    }
+
+    public static ArrayList<Booking> GetAllBooking(){
+        return BookingList;
     }
 }

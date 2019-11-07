@@ -1,5 +1,6 @@
 package database;
 
+import model.Booking;
 import model.Review;
 
 import java.io.IOException;
@@ -11,21 +12,21 @@ public class HistoryBookingDB  extends DB{
     public static String SEPARATOR = "|";
     public static String filename = "D://NTU CS/Java/MOBLIMA/src/HistoryBooking.txt";
 
-    public static ArrayList<Review> readData(){
-        ArrayList<Review> All = new ArrayList<Review>();
+    public static ArrayList<Booking> readData(){
+        ArrayList<Booking> All = new ArrayList<>();
         try{
             ArrayList StringArray = (ArrayList)read(filename);
             for (int i = 0; i < StringArray.size(); i++) {
                 String st = (String)StringArray.get(i);
                 StringTokenizer star = new StringTokenizer(st, SEPARATOR);
-                // get review component
-                int MovieID = Integer.parseInt(star.nextToken().trim());
-                String MovieName = (star.nextToken().trim());
+                // get booking component
                 String Email = (star.nextToken().trim());
-                String comment = (star.nextToken().trim());
+                int MovieID = Integer.parseInt(star.nextToken().trim());
+                int CineplexID = Integer.parseInt(star.nextToken().trim());
+                String date = star.nextToken().trim();
 
-                Review review = new Review(MovieID, MovieName, Email, comment);
-                All.add(review);
+                Booking booking = new Booking(Email, MovieID, CineplexID, date);
+                All.add(booking);
             }
         }
         catch(IOException e){
@@ -34,22 +35,25 @@ public class HistoryBookingDB  extends DB{
         return All;
     }
 
-    public static void SaveData(ArrayList<Review> All){
-        List ReviewList = new ArrayList();
+    public static void SaveData(ArrayList<Booking> All){
+        List BookingList = new ArrayList();
         for (int i = 0; i < All.size(); i++){
-            Review review = All.get(i);
+            Booking booking = All.get(i);
             StringBuilder stb = new StringBuilder();
-            stb.append(review.getMovieID());
+            stb.append(booking.getMovieID());
             stb.append(SEPARATOR);
-            stb.append(review.getMovieName());
+            stb.append(booking.getUserEmail());
             stb.append(SEPARATOR);
-            stb.append(review.getEmail());
+            stb.append(booking.getCinelexID());
             stb.append(SEPARATOR);
-            stb.append(review.getComment());
-            ReviewList.add(stb.toString());
+            stb.append(booking.getMovieID());
+            stb.append(SEPARATOR);
+            stb.append(booking.getDate());
+
+            BookingList.add(stb.toString());
         }
         try{
-            write(filename, ReviewList);
+            write(filename, BookingList);
         }
         catch(IOException e){
             System.out.println(e.getMessage());

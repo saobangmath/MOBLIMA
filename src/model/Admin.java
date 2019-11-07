@@ -73,7 +73,7 @@ public class Admin implements Serializable {
             ObjectInputStream in = new ObjectInputStream(filein);
             ArrayList<Movie> movies = (ArrayList<Movie>) (in.readObject());
             for (Movie movie : movies){
-                System.out.println("MovieID: "+ movie.getMovieID() + ", MovieName: " + movie.getMovieName());
+                System.out.println("MovieID: "+ movie.getID() + ", MovieName: " + movie.getName());
             }
         }
         catch (IOException e){
