@@ -105,6 +105,7 @@ public class MovieController{
             return (x.getOverallRating() >= y.getOverallRating())  ? 0 : 1;
         }
     }
+
     public static class SortByTicket implements Comparator<Movie>{ //TODO Finish!
 
         @Override
@@ -112,6 +113,7 @@ public class MovieController{
             return 1;
         }
     }
+
     public static void DisplayByTopFiveByRating(){
         ArrayList<Movie> All_movies = new ArrayList<>();
         for (int i = 0; i < listMovies.size(); i++){

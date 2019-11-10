@@ -4,8 +4,6 @@ import database.ShowtimeDB;
 import model.Showtime;
 import model.Cinema;
 import model.Seat;
-import controller.SeatController;
-import controller.CinemaController;
 public class ShowtimeController{
 
     private static ArrayList<Showtime> listShowtimes = new ArrayList<Showtime>();

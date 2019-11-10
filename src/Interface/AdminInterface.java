@@ -21,11 +21,12 @@ public class AdminInterface {
             while (!stop){
                 try{
                     System.out.println("Please input your choice to continue: ");
-                    System.out.println("1. System Configuration");
-                    System.out.println("2. DisPlay top 5 movie rank by Ratings: ");
-                    System.out.println("3. Display top 5 movie rank by Viewers: ");
-                    System.out.println("4. View history booking: ");
-                    System.out.println("5. Exit");
+                    System.out.println("1. Add new Movie");
+                    System.out.println("2. Delete existing Movie");
+                    System.out.println("3. DisPlay top 5 movie rank by Ratings: ");
+                    System.out.println("4. Display top 5 movie rank by Viewers: ");
+                    System.out.println("5. View history booking: ");
+                    System.out.println("6. Exit");
                     System.out.print("Your choice: ");
                     int choice = sc.nextInt();
                     switch (choice){
@@ -33,15 +34,18 @@ public class AdminInterface {
                             adminController.AddMovie();
                             break;
                         case 2:
-                            adminController.TopFiveMovieRankByRatings();
+                            adminController.DeleteMovie();
                             break;
                         case 3:
-                            adminController.TopFiveMovieRankByTicketsSale();
+                            adminController.TopFiveMovieRankByRatings();
                             break;
                         case 4:
-                            ViewHistoryBooking();
+                            adminController.TopFiveMovieRankByTicketsSale();
                             break;
                         case 5:
+                            ViewHistoryBooking();
+                            break;
+                        case 6:
                             stop = true;
                             break;
                         default:
