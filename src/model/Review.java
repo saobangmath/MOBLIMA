@@ -2,11 +2,10 @@ package model;
 
 public class Review {
     private int MovieID;
-    private String email, comment, MovieName;
-    public Review(int MovieID, String MovieName, String email, String comment){
+    private String email, comment;
+    public Review(int MovieID, String email, String comment){
         this.MovieID = MovieID;
         this.email = email;
-        this.MovieName = MovieName;
         this.comment = comment;
     }
 
@@ -14,9 +13,6 @@ public class Review {
         return this.MovieID;
     }
 
-    public String getMovieName() {
-        return this.MovieName;
-    }
 
     public String getEmail() {
         return this.email;

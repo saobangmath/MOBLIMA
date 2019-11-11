@@ -1,0 +1,6 @@
+1|tai@gmail.com|Emotional film!
+2|khanh@gmail.com|Good film!
+3|rich@gmail.com|Not a good film!
+1|linh@gmail.com|Nice film!
+2|anhtai@gmail.com|Nice
+3|anhtai@gmail.com|2.3
