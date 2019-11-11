@@ -23,11 +23,11 @@ public class CineplexDB extends DB{
                 int ID = Integer.parseInt(star.nextToken().trim());
                 String  name = star.nextToken().trim();	// first token
                 String location = star.nextToken().trim();
-                ArrayList<String> availableMovie = new ArrayList<String>();
+                ArrayList<Integer> availableMovie = new ArrayList<Integer>();
                 if(star.countTokens() > 0){
                     String[]  availableMovieRaw = star.nextToken().trim().split(","); // third token
                     for(int j = 0 ; j < availableMovieRaw.length; j++){
-                        availableMovie.add(availableMovieRaw[j]);
+                        availableMovie.add(Integer.parseInt(availableMovieRaw[j]));
                     }
                 }
 				Cineplex cine = new Cineplex(name, ID, location, availableMovie);

@@ -9,13 +9,17 @@ public class CineplexController{
     public static void readDB(){
         listCineplex = CineplexDB.readData();
     }
+
+    public static void saveDB(){
+        CineplexDB.saveData(listCineplex);
+    }
     
     public static boolean create(Cineplex cineplex){
         if(checkExist(cineplex.getID())){
             return false;
         }
+        cineplex.stringifyAvailableMovie();
         listCineplex.add(cineplex);
-        CineplexDB.saveData(listCineplex);
         return true;
     }
 
@@ -40,7 +44,6 @@ public class CineplexController{
         for(int i = 0; i < listCineplex.size(); i++){
             if(listCineplex.get(i).getID() == ID){
                 listCineplex.remove(i);
-                CineplexDB.saveData(listCineplex);
                 return true;
             }
         }   
@@ -51,7 +54,6 @@ public class CineplexController{
         for(int i = 0; i < listCineplex.size(); i++){
              if(listCineplex.get(i).getID() == cineplex.getID()){
                 listCineplex.set(i, cineplex);
-                CineplexDB.saveData(listCineplex);
                 return true;
             }
         }   
@@ -59,22 +61,25 @@ public class CineplexController{
     }
 
     public static void displayAll(){
+        System.out.println("All cineplexes:");
         for(int i = 0; i< listCineplex.size(); i++){
-            System.out.println("ID: "+ listCineplex.get(i).getID());
-            System.out.println("Name: " + listCineplex.get(i).getName());
-            System.out.println("Location: "+ listCineplex.get(i).getLocation());
-            System.out.println("\n");
+            output(listCineplex.get(i));
         }
     }
 
     public static void displayByID(int ID){
         for(int i = 0; i< listCineplex.size(); i++){
             if(listCineplex.get(i).getID() == ID){
-                System.out.println("ID: "+ listCineplex.get(i).getID());
-                System.out.println("Name: " + listCineplex.get(i).getName());
-                System.out.println("Location: "+ listCineplex.get(i).getLocation());
-                System.out.println("\n");
+                output(listCineplex.get(i));
             }
         }
+    }
+
+    public static void output(Cineplex cineplex){
+        System.out.println("ID: "+ cineplex.getID());
+        System.out.println("Name: " + cineplex.getName());
+        System.out.println("Location: "+ cineplex.getLocation());
+        System.out.println("Available movies: " + cineplex.getAvailableMovie());
+        System.out.print("\n");
     }
 }

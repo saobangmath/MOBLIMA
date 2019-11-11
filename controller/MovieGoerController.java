@@ -9,13 +9,16 @@ public class MovieGoerController{
     public static void readDB(){
         listMovieGoer = MovieGoerDB.readData();
     }
+
+    public static void saveDB(){
+        MovieGoerDB.saveData(listMovieGoer);
+    }
     
     public static boolean create(MovieGoer goer){
         if(checkExist(goer.getEmail())){
             return false;
         }
         listMovieGoer.add(goer);
-        MovieGoerDB.saveData(listMovieGoer);
         return true;
     }
 
@@ -41,7 +44,6 @@ public class MovieGoerController{
         for(int i = 0; i < listMovieGoer.size(); i++){
             if(listMovieGoer.get(i).getEmail().equals(email)){
                 listMovieGoer.remove(i);
-                MovieGoerDB.saveData(listMovieGoer);
                 return true;
             }
         }   
@@ -52,7 +54,6 @@ public class MovieGoerController{
         for(int i = 0; i < listMovieGoer.size(); i++){
             if(listMovieGoer.get(i).getEmail().equals(goer.getEmail())){
                 listMovieGoer.set(i, goer);
-                MovieGoerDB.saveData(listMovieGoer);
                 return true;
             }
         }   
@@ -61,24 +62,24 @@ public class MovieGoerController{
 
     public static void displayAll(){
         for(int i = 0; i< listMovieGoer.size(); i++){
-            System.out.println("Email: "+ listMovieGoer.get(i).getEmail());
-            System.out.println("Name: " + listMovieGoer.get(i).getName());
-            System.out.println("Age: "+ listMovieGoer.get(i).getAge());
-            System.out.println("Mobile: "+ listMovieGoer.get(i).getMobile());
-            System.out.println("\n");
+            output(listMovieGoer.get(i));
         }
     }
 
     public static void displayByID(String Email){
         for(int i = 0; i< listMovieGoer.size(); i++){
             if(listMovieGoer.get(i).getEmail().equals(Email)){
-                System.out.println("Email: "+ listMovieGoer.get(i).getEmail());
-                System.out.println("Name: " + listMovieGoer.get(i).getName());
-                System.out.println("Age: "+ listMovieGoer.get(i).getAge());
-                System.out.println("Mobile: "+ listMovieGoer.get(i).getMobile());
-                System.out.println("\n");
+                output(listMovieGoer.get(i));
                 return;
             }
         }
+    }
+
+    public static void output(MovieGoer movieGoer){
+        System.out.println("Email: "+ movieGoer.getEmail());
+        System.out.println("Name: " + movieGoer.getName());
+        System.out.println("Age: "+ movieGoer.getAge());
+        System.out.println("Mobile: "+ movieGoer.getMobile());
+        System.out.print("\n");
     }
 }

@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CinemaInterface",
+            "request": "launch",
+            "mainClass": "Interface.CinemaInterface",
+            "projectName": "assignment_b79e0085"
+        }
+    ]
+}

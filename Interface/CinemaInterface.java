@@ -3,8 +3,9 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Cinema;
 import controller.CinemaController;
+import controller.CineplexController;
 public class CinemaInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void view() {
         CinemaController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
@@ -18,7 +19,7 @@ public class CinemaInterface extends BaseInterface{
             System.out.println("5. Delete Cinema ");
             System.out.println("6. Exit");
             System.out.print("Your choice: ");
-            choice = sc.next().charAt(0);
+            choice = sc.nextLine().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
@@ -64,6 +65,7 @@ public class CinemaInterface extends BaseInterface{
                     break;
             }
         }
+        CinemaController.saveDB();
   }
 
   public static Cinema createCinema(){
@@ -74,21 +76,29 @@ public class CinemaInterface extends BaseInterface{
         try{
             System.out.print("ID: ");
             ID = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");
+
             System.out.print("Name: ");
-            name = sc.next();
+            name = sc.nextLine();
             System.out.print("\n");    
+
+            CineplexController.displayAll();
             System.out.print("CineplexID: ");
             cineplexId = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");    
-            System.out.print("Row: ");
+
+            System.out.print("Number of row: ");
             row = sc.nextInt();
+            sc.nextLine();
             if(row < 0 || row > 15){
                 throw new InvalidKeyException("Row must be from 1 to 15");
             }
             System.out.print("\n");
-            System.out.print("Column: ");
+            System.out.print("Number of column: ");
             col= sc.nextInt();
+            sc.nextLine();
             if(col < 0 || col > 15){
                 throw new InvalidKeyException("Column must be from 1 to 15");
             }
@@ -96,7 +106,6 @@ public class CinemaInterface extends BaseInterface{
             break;
         } catch(Exception e){
             System.out.println("Error: "+ e.getMessage());
-            sc.nextLine();
             continue;
         }
     }

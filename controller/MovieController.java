@@ -9,13 +9,16 @@ public class MovieController{
     public static void readDB(){
         listMovies = MovieDB.readData();
     }
+
+    public static void saveDB(){
+        MovieDB.saveData(listMovies);
+    }
     
     public static boolean create(Movie movie){
         if(checkExist(movie.getID())){
             return false;
         }
         listMovies.add(movie);
-        MovieDB.saveData(listMovies);
         return true;
     }
 
@@ -41,7 +44,6 @@ public class MovieController{
         for(int i = 0; i < listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
                 listMovies.remove(i);
-                MovieDB.saveData(listMovies);
                 return true;
             }
         }   
@@ -53,7 +55,6 @@ public class MovieController{
              if(listMovies.get(i).getID() == movie.getID()){
                 movie.setOverallRating(listMovies.get(i).getOverallRating());
                 listMovies.set(i, movie);
-                MovieDB.saveData(listMovies);
                 return true;
             }
         }   
@@ -61,37 +62,33 @@ public class MovieController{
     }
 
     public static void displayAll(){
+        System.out.println("All available movies:");
         for(int i = 0; i< listMovies.size(); i++){
-            System.out.println("ID: "+ listMovies.get(i).getID());
-            System.out.println("Name: " + listMovies.get(i).getName());
-            System.out.println("Category: "+ listMovies.get(i).getCategory() );
-            System.out.println("Description: "+ listMovies.get(i).getDescription() );
-            System.out.println("Director: "+ listMovies.get(i).getDirector() );
-            System.out.println("Cast: "+ listMovies.get(i).getCast() );
-            System.out.println("Restriction: "+ listMovies.get(i).getRestriction() );
-            System.out.println("Overall Rating: "+ listMovies.get(i).getOverallRating() );
-            System.out.println("Start Dtae: "+ listMovies.get(i).getStartDate());
-            System.out.println("End Date: "+ listMovies.get(i).getEndDate());
-            System.out.println("\n");
+            output(listMovies.get(i));
         }
     }
 
     public static void displayByID(int ID){
         for(int i = 0; i< listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
-                System.out.println("ID: "+ listMovies.get(i).getID());
-                System.out.println("Name: " + listMovies.get(i).getName());
-                System.out.println("Category: "+ listMovies.get(i).getCategory() );
-                System.out.println("Description: "+ listMovies.get(i).getDescription() );
-                System.out.println("Director: "+ listMovies.get(i).getDirector() );
-                System.out.println("Cast: "+ listMovies.get(i).getCast() );
-                System.out.println("Restriction: "+ listMovies.get(i).getRestriction() );
-                System.out.println("Overall Rating: "+ listMovies.get(i).getOverallRating() );
-                System.out.println("Start Dtae: "+ listMovies.get(i).getStartDate());
-                System.out.println("End Date: "+ listMovies.get(i).getEndDate());
-                System.out.println("\n");
+                output(listMovies.get(i));
                 return;
             }
         }
+    }
+
+    public static void output(Movie movie){
+        System.out.println("ID: "+ movie.getID());
+        System.out.println("Name: " + movie.getName());
+        System.out.println("Category: "+ movie.getCategory() );
+        System.out.println("Description: "+ movie.getDescription() );
+        System.out.println("Director: "+ movie.getDirector() );
+        System.out.println("Cast: "+ movie.getCast() );
+        System.out.println("Restriction: "+ movie.getRestriction() );
+        System.out.println("Duration: "+ movie.getDuration() );
+        System.out.println("Overall Rating: "+ movie.getOverallRating() );
+        System.out.println("Start Dtae: "+ movie.getStartDate());
+        System.out.println("End Date: "+ movie.getEndDate());
+        System.out.print("\n");
     }
 }

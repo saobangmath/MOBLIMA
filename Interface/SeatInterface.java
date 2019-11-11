@@ -6,7 +6,8 @@ import controller.SeatController;
 public class SeatInterface extends BaseInterface{
     private static int col, showtimeId;
     private static char row;
-    public static void main(String[] aArgs)  {
+    
+    public static void view()  {
         SeatController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -20,7 +21,7 @@ public class SeatInterface extends BaseInterface{
             System.out.println("5. Delete Seat ");
             System.out.println("6. Exit");
             System.out.print("Your choice: ");
-            choice = sc.next().charAt(0);
+            choice = sc.nextLine().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
@@ -67,6 +68,7 @@ public class SeatInterface extends BaseInterface{
                     break;
             }
         }
+        SeatController.saveDB();
   }
 
   public static Seat createSeat(){
@@ -75,25 +77,27 @@ public class SeatInterface extends BaseInterface{
     Scanner sc = new Scanner(System.in);
     while(true){
         try{
-            System.out.print("Row: ");
-            rowInput = sc.next().charAt(0);
+            System.out.print("Row(A-Z): ");
+            rowInput = sc.nextLine().charAt(0);
             System.out.print("\n");
 
             System.out.print("Column: ");
             colInput = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");   
 
             System.out.print("Showtime Id: ");
             showtimeIdInput = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");    
 
             System.out.print("VIP (1 for true, 0 for false): ");
             vipInput = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");
             break;
         } catch(Exception e){
             System.out.println("Error: "+ e.getMessage());
-            sc.nextLine();
             continue;
         }
     }
@@ -106,11 +110,13 @@ public class SeatInterface extends BaseInterface{
   public static void readInput(){
     Scanner sc = new Scanner(System.in);   
     System.out.println("Input row: ");
-    row = sc.next().charAt(0);
+    row = sc.nextLine().charAt(0);
     System.out.println("Input column: ");
     col = sc.nextInt();
+    sc.nextLine();
     System.out.println("Input Showtime Id: ");
     showtimeId = sc.nextInt();
+    sc.nextLine();
     return;
   }
 }

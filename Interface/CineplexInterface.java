@@ -1,11 +1,14 @@
 package Interface;
 import java.util.Scanner;
 import controller.CineplexController;
+import controller.MovieController;
 import model.Cineplex;
+import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
 public class CineplexInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void view() {
         CineplexController.readDB();
+        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -18,7 +21,7 @@ public class CineplexInterface extends BaseInterface{
             System.out.println("5. Delete Cineplex ");
             System.out.println("6. Exit");
             System.out.print("Your choice: ");
-            choice = sc.next().charAt(0);
+            choice = sc.nextLine().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
@@ -64,28 +67,52 @@ public class CineplexInterface extends BaseInterface{
                     break;
             }
         }
+        CineplexController.saveDB();
   }
 
   public static Cineplex createCineplex(){
-    String name, location;
+    String name, location, inputAVMovie;
     int ID;
-    ArrayList<String> availableMovie = new ArrayList<String>();
+    ArrayList<Integer> availableMovie = new ArrayList<Integer>();
     Scanner sc = new Scanner(System.in);
     while(true){
+        availableMovie.clear();
         try{
             System.out.print("ID: ");
             ID = sc.nextInt();
+            sc.nextLine();
             System.out.print("\n");
+
             System.out.print("Name: ");
-            name = sc.next();
+            name = sc.nextLine();
+            if(name.equals("")){
+                throw new InvalidKeyException("Name can not be empty");
+            }
             System.out.print("\n");    
+
             System.out.print("Location: ");
-            location = sc.next();
-            System.out.print("\n");    
+            location = sc.nextLine();
+            if(location.equals("")){
+                throw new InvalidKeyException("Location can not be empty");
+            }
+            System.out.print("\n");
+            
+            MovieController.displayAll();
+            System.out.print("Available movies(input movie ID seperate by ','): ");
+            inputAVMovie = sc.nextLine();
+            if(inputAVMovie.equals("")){
+                break;
+            }
+            String[] split = inputAVMovie.split(",");
+            for(int i = 0; i < split.length; i++){
+                if(!MovieController.checkExist(Integer.parseInt(split[i]))){
+                    throw new InvalidKeyException("Invalid movie ID, movie ID must be integer");
+                }
+                availableMovie.add(Integer.parseInt(split[i]));
+            }
             break;
         } catch(Exception e){
             System.out.println("Error: "+ e.getMessage());
-            sc.nextLine();
             continue;
         }
     }

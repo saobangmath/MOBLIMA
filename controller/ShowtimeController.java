@@ -6,6 +6,7 @@ import model.Cinema;
 import model.Seat;
 import controller.SeatController;
 import controller.CinemaController;
+import controller.MovieController;
 public class ShowtimeController{
 
     private static ArrayList<Showtime> listShowtimes = new ArrayList<Showtime>();
@@ -14,13 +15,16 @@ public class ShowtimeController{
         listShowtimes = ShowtimeDB.readData();
     }
     
+    public static void saveDB(){
+        ShowtimeDB.saveData(listShowtimes);
+    }
+
     public static boolean create(Showtime showtime){
         if(checkExist(showtime.getID())){
             return false;
         }
         listShowtimes.add(showtime);
         batchCreateSeat(showtime.getID(), CinemaController.read(showtime.getCinemaId()));
-        ShowtimeDB.saveData(listShowtimes);
         return true;
     }
 
@@ -46,7 +50,6 @@ public class ShowtimeController{
         for(int i = 0; i < listShowtimes.size(); i++){
             if(listShowtimes.get(i).getID() == ID){
                 listShowtimes.remove(i);
-                ShowtimeDB.saveData(listShowtimes);
                 return true;
             }
         }   
@@ -57,7 +60,6 @@ public class ShowtimeController{
         for(int i = 0; i < listShowtimes.size(); i++){
              if(listShowtimes.get(i).getID() == showtime.getID()){
                 listShowtimes.set(i, showtime);
-                ShowtimeDB.saveData(listShowtimes);
                 return true;
             }
         }   
@@ -65,35 +67,50 @@ public class ShowtimeController{
     }
 
     public static void displayAll(){
+        System.out.println("All available movies: ");
         for(int i = 0; i< listShowtimes.size(); i++){
-            System.out.println("ID: "+ listShowtimes.get(i).getID());
-            System.out.println("Movie : " + listShowtimes.get(i).getMovieId());
-            System.out.println("Cineplex : "+ listShowtimes.get(i).getCineplexId() );
-            System.out.println("Cinema : "+ listShowtimes.get(i).getCinemaId() );
-            System.out.println("Date : "+ listShowtimes.get(i).getDate() );
-            System.out.println("Start time: "+ listShowtimes.get(i).getStartTime() );
-            System.out.println("End time: "+ listShowtimes.get(i).getEndTime() );
-            System.out.println("\n");
+            output(listShowtimes.get(i));
         }
     }
 
     public static void displayByID(int ID){
         for(int i = 0; i < listShowtimes.size(); i++){
             if(listShowtimes.get(i).getID() == ID){
-                System.out.println("ID: "+ listShowtimes.get(i).getID());
-                System.out.println("Movie : " + listShowtimes.get(i).getMovieId());
-                System.out.println("Cineplex : "+ listShowtimes.get(i).getCineplexId() );
-                System.out.println("Cinema : "+ listShowtimes.get(i).getCinemaId() );
-                System.out.println("Date : "+ listShowtimes.get(i).getDate() );
-                System.out.println("Start time: "+ listShowtimes.get(i).getStartTime() );
-                System.out.println("End time: "+ listShowtimes.get(i).getEndTime() );
-                System.out.print("\n");
+                output(listShowtimes.get(i));
                 return;
             }
         }
     }
 
-    public static void batchCreateSeat(int ID, Cinema cinema){
+    public static void displayByCineplex(int cineplexId){
+        System.out.println("All showtimes in this cineplex");
+        for(int i = 0; i < listShowtimes.size(); i++){
+            if(listShowtimes.get(i).getCineplexId() == cineplexId){
+                output(listShowtimes.get(i));
+            }
+        }
+    }
+
+    public static void output(Showtime showtime){
+        System.out.println("ID: "+ showtime.getID());
+        System.out.println("Movie : " + MovieController.read(showtime.getMovieId()).getName());
+        System.out.println("Cineplex : "+ CineplexController.read(showtime.getCineplexId()).getName() );
+        System.out.println("Cinema : "+ CinemaController.read(showtime.getCinemaId()).getName());
+        System.out.println("Date : "+ showtime.getDate() );
+        System.out.println("Start time: "+ showtime.getStartTime() );
+        System.out.println("End time: "+ showtime.getEndTime() );
+        System.out.print("\n");
+    }
+
+    public static boolean validateShowtime(int cineplexId, String date){
+        for(int i = 0; i < listShowtimes.size(); i++){
+            if(listShowtimes.get(i).getCineplexId() == cineplexId && listShowtimes.get(i).getDate().equals(date)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void batchCreateSeat(int showtimeId, Cinema cinema){
         int row = cinema.getRow();
         int col = cinema.getCol();
         char rowChar;
@@ -102,30 +119,31 @@ public class ShowtimeController{
             for(int j = 0; j < col; j++){
                 Seat seat;
                 if(rowChar == 'E' || rowChar == 'F' || rowChar == 'G'){
-                    seat = new Seat(rowChar, col, ID, false, false, 0);
+                    seat = new Seat(rowChar, j+1, showtimeId, false, false, 0);
                 }
                 else{
-                    seat = new Seat(rowChar, col, ID, false, true, 0);
+                    seat = new Seat(rowChar, j+1, showtimeId, false, true, 0);
                 }
                 SeatController.create(seat);
             }
         }
     }
 
-    public static void displaySeatMap(int ID, Cinema cine){
+    public static void displaySeatMap(int showtimeId, Cinema cine){
         int row = cine.getRow();
         int col = cine.getCol();
         char rowChar;
         System.out.print("    ");
         for(int i = 0; i < col; i++){
-            System.out.print(i+1);
+            System.out.print(i+1 );
+            System.out.print(" ");
         }
         System.out.print("\n");
         for(int i = 0; i < row; i++){
             rowChar = (char) (i + 65);
             System.out.print(rowChar + "   ");
-            for(int j = 0; j < col; j++){
-                if(SeatController.checkOccupied(rowChar, col, ID)){
+            for(int j = 1; j < col+1; j++){
+                if(SeatController.checkOccupied(rowChar, j, showtimeId)){
                     System.out.print("o ");
                 }
                 else{

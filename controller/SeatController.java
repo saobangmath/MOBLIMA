@@ -10,12 +10,14 @@ public class SeatController{
         listSeats = SeatDB.readData();
     }
 
+    public static void saveDB(){
+        SeatDB.saveData(listSeats);
+    }
     public static boolean create(Seat seat){
         if(checkExist(seat.getSeatRow(), seat.getSeatCol(), seat.getShowtimeId())){
             return false;
         }
         listSeats.add(seat);
-        SeatDB.saveData(listSeats);
         return true;
     }
 
@@ -54,7 +56,6 @@ public class SeatController{
             if(listSeats.get(i).getSeatCol() == col && listSeats.get(i).getSeatRow() == row
             && listSeats.get(i).getShowtimeId() == showtimeId){
                 listSeats.remove(i);
-                SeatDB.saveData(listSeats);
                 return true;
             }
         }   
@@ -66,7 +67,6 @@ public class SeatController{
              if(listSeats.get(i).getSeatCol() == seat.getSeatCol() && listSeats.get(i).getSeatRow() == seat.getSeatRow()
              && listSeats.get(i).getShowtimeId() == seat.getShowtimeId()){
                 listSeats.set(i, seat);
-                SeatDB.saveData(listSeats);
                 return true;
             }
         }   
@@ -81,18 +81,13 @@ public class SeatController{
                 seat.setOccupied(true);
                 seat.setPrice(price);
                 listSeats.set(i, seat);
-                SeatDB.saveData(listSeats);
             }
         }
     }
 
     public static void displayAll(){
         for(int i = 0; i< listSeats.size(); i++){
-            System.out.println("Seat Number : "+ listSeats.get(i).getSeatRow() + listSeats.get(i).getSeatCol());
-            System.out.println("Showtime Id: " + listSeats.get(i).getShowtimeId());
-            System.out.println("Occupied: "+ listSeats.get(i).getOccupied() );
-            System.out.println("VIP: "+ listSeats.get(i).getVip() );
-            System.out.println("\n");
+            output(listSeats.get(i));
         }
     }
 
@@ -100,13 +95,17 @@ public class SeatController{
         for(int i = 0; i< listSeats.size(); i++){
             if(listSeats.get(i).getSeatCol() == col && listSeats.get(i).getSeatRow() == row
             && listSeats.get(i).getShowtimeId() == showtimeId){
-                System.out.println("Seat Number : "+ listSeats.get(i).getSeatRow() + listSeats.get(i).getSeatCol());
-                System.out.println("Showtime Id: " + listSeats.get(i).getShowtimeId());
-                System.out.println("Occupied: "+ listSeats.get(i).getOccupied() );
-                System.out.println("VIP: "+ listSeats.get(i).getVip() );
-                System.out.println("\n");
+                output(listSeats.get(i));
                 return;
             }
         }
+    }
+
+    public static void output(Seat seat){
+        System.out.println("Seat Number : "+ seat.getSeatRow() + seat.getSeatCol());
+        System.out.println("Showtime Id: " + seat.getShowtimeId());
+        System.out.println("Occupied: "+ seat.getOccupied() );
+        System.out.println("VIP: "+ seat.getVip() );
+        System.out.print("\n");
     }
 }
