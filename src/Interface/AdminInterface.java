@@ -62,6 +62,7 @@ public class AdminInterface {
         MovieController.saveDB();
         AdminController.saveDB();
     }
+
     public static void AddMovie(){
         System.out.println("Please enter movie ID: ");
         int movieID = sc.nextInt();
@@ -99,17 +100,11 @@ public class AdminInterface {
             System.out.println("The movie is existed in the database!");
         }
     }
+
     public static void DeleteMovie(){
         System.out.println("Enter movie ID to delete: ");
         int movieID = sc.nextInt();
-
-        if (MovieController.checkExist(movieID)){
-            MovieController.delete(movieID);
-            System.out.println("The movie is successfully removed in the database!");
-        }
-        else{
-            System.out.println("The movie is not existed in the database!");
-        }
+        AdminController.DeleteMovie(movieID);
     }
 
     public static void TopFiveMovieRankByRatings(){
