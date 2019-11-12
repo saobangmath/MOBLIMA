@@ -2,31 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7cdbe9e-2a5b-461b-a92e-a0ecc4137142" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Interface/HolidayInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/HolidayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/HolidayDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Holiday.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/BookingInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/CinemaInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/database/CinemaDB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/Cinema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/Cinema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/Price.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/Price.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AdminInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AdminInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/movie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/movie.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/BookingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/BookingInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MovieInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MovieInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CinemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CinemaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/CinemaDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/CinemaDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/HistoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/HistoryDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/MovieDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/MovieDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cinema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Price.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Price.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/MovieController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
+            <state relative-caret-position="389">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -82,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/src/Interface/AdminInterface.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
-              <caret line="106" column="13" lean-forward="true" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+              <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3976#3977#0" expanded="true" />
@@ -95,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+            <state>
+              <caret lean-forward="true" />
             </state>
           </provider>
         </entry>
@@ -104,10 +83,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1144">
-              <caret line="78" column="37" lean-forward="true" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+            <state>
+              <caret lean-forward="true" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Interface/ReviewInterface.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/Movie.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret lean-forward="true" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1997#1998#0" expanded="true" />
+                <element signature="e#2036#2037#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -116,22 +121,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/movie.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/model/Movie.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1997#1998#0" expanded="true" />
-                <element signature="e#2036#2037#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -197,11 +188,11 @@
         <option value="$PROJECT_DIR$/src/controller/HistoryController.java" />
         <option value="$PROJECT_DIR$/src/model/Movie.java" />
         <option value="$PROJECT_DIR$/src/database/MovieDB.java" />
-        <option value="$PROJECT_DIR$/src/movie.txt" />
         <option value="$PROJECT_DIR$/src/controller/MovieController.java" />
         <option value="$PROJECT_DIR$/src/Interface/MovieInterface.java" />
         <option value="$PROJECT_DIR$/src/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/Interface/AdminInterface.java" />
+        <option value="$PROJECT_DIR$/src/movie.txt" />
       </list>
     </option>
   </component>
@@ -211,7 +202,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-15" />
     <option name="y" value="-15" />
     <option name="width" value="2168" />
@@ -268,7 +259,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573566687353" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573573134963" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -292,8 +283,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="MOBLIMAInterface" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Interface.MOBLIMAInterface" />
+    <configuration name="ReviewInterface" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Interface.ReviewInterface" />
       <module name="MOBLIMA" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -324,10 +315,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49469215" visible="true" weight="0.020120725" />
-      <window_info id="Structure" order="1" sideWeight="0.50530785" side_tool="true" visible="true" weight="0.020120725" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49469215" visible="true" weight="0.2112676" />
+      <window_info id="Structure" order="1" sideWeight="0.50530785" side_tool="true" visible="true" weight="0.2112676" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -371,13 +361,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="651" selection-start-line="651" selection-end-line="651" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Admin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -788,6 +771,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/text/SimpleDateFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="596" column="11" selection-start-line="596" selection-start-column="11" selection-end-line="596" selection-end-column="11" />
+          <folding>
+            <element signature="e#23924#23925#0" expanded="true" />
+            <element signature="e#23996#23997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/MovieDB.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
@@ -810,46 +804,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MovieController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1144">
-          <caret line="78" column="37" lean-forward="true" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="596" column="11" selection-start-line="596" selection-start-column="11" selection-end-line="596" selection-end-column="11" />
-          <folding>
-            <element signature="e#23924#23925#0" expanded="true" />
-            <element signature="e#23996#23997#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Interface/AdminInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
-          <caret line="106" column="13" lean-forward="true" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <caret line="146" lean-forward="true" selection-start-line="146" selection-end-line="146" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3976#3977#0" expanded="true" />
@@ -858,17 +824,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Interface/ReviewInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/movie.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Movie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
+        <state>
+          <caret lean-forward="true" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1997#1998#0" expanded="true" />
