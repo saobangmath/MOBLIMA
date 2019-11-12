@@ -20,7 +20,7 @@ public class HistoryDB extends DB{
                 String st = (String)stringArray.get(i);
                 // get individual 'fields' of the string separated by SEPARATOR
                 StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
-                int ID = Integer.parseInt(star.nextToken().trim());
+                long ID = Long.parseLong(star.nextToken().trim());
                 String  email = star.nextToken().trim();
                 int showtimeId = Integer.parseInt(star.nextToken().trim());
                 String transactionDate = star.nextToken().trim();

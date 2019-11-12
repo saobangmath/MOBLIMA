@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import model.Cinema;
+import model.Holiday;
 
-public class CinemaDB extends DB{
+public class HolidayDB extends DB{
     public static final String SEPARATOR = "|";
-    public static final String filename = "cinema.txt";
+    public static final String filename = "holiday.txt";
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
@@ -20,14 +20,9 @@ public class CinemaDB extends DB{
                 String st = (String)stringArray.get(i);
                 // get individual 'fields' of the string separated by SEPARATOR
                 StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
-                int ID = Integer.parseInt(star.nextToken().trim());
-                String  name = star.nextToken().trim();	// first token
-                int cineplexId = Integer.parseInt(star.nextToken().trim());
-                int row = Integer.parseInt(star.nextToken().trim());
-                int col = Integer.parseInt(star.nextToken().trim());
-                int cinemaClass = Integer.parseInt(star.nextToken().trim());
-                Cinema cine = new Cinema(name, ID, cineplexId, row, col, cinemaClass);
-                alr.add(cine);
+                String date = star.nextToken().trim();
+                Holiday holiday = new Holiday(date);
+                alr.add(holiday);
             }
         }
         catch (IOException e) {
@@ -41,19 +36,10 @@ public class CinemaDB extends DB{
         List alw = new ArrayList() ;// to store Professors data
 
         for (int i = 0 ; i < al.size() ; i++) {
-            Cinema cine = (Cinema)al.get(i);
+            Holiday Holiday = (Holiday)al.get(i);
             StringBuilder st =  new StringBuilder() ;
-            st.append(cine.getID());
+            st.append(Holiday.getDate());
             st.append(SEPARATOR);
-            st.append(cine.getName().trim());
-            st.append(SEPARATOR);
-            st.append(cine.getCineplexId());
-            st.append(SEPARATOR);
-            st.append(cine.getRow());
-            st.append(SEPARATOR);
-            st.append(cine.getCol());
-            st.append(SEPARATOR);
-            st.append(cine.getCinemaClass());
             alw.add(st.toString()) ;
         }
         try{

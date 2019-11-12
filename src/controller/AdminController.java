@@ -37,7 +37,8 @@ public class AdminController {
 
     public static void AddMovie(String nameInput, int movieID, String category,
                                 String description, String director, String cast,
-                                int restriction, String startDate, String endDate, int duration){
+                                int restriction, String startDate, String endDate,
+                                String previewDate, int duration){
         if (MovieController.checkExist(movieID)){
             System.out.println("The movieID have existed in the database!");
             return;
@@ -52,6 +53,7 @@ public class AdminController {
                     0,
                     startDate,
                     endDate,
+                    previewDate,
                     duration
             );
             MovieController.create(movie);

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 public class BookingInterface {
     static Scanner sc = new Scanner(System.in);
-    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price, historyID;
+    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price;
+    static long historyID;
     static ArrayList<Character> rows = new ArrayList<Character>();
     static ArrayList<Integer> cols = new ArrayList<Integer>();
     static String date, email, transactionDate, transactionTime, seatString;
@@ -187,6 +188,9 @@ public class BookingInterface {
                     row  = arr[i].charAt(0);
                     col = Integer.parseInt(arr[i].substring(1));
                     if(SeatController.checkExist(row, col, showtimeID)){
+                        if(SeatController.checkOccupied(row, col, showtimeID)){
+                            throw new InvalidKeyException("Seats are occupied");
+                        }
                         rows.add(row);
                         cols.add(col);
                     }else{
@@ -269,13 +273,14 @@ public class BookingInterface {
         for(int i = 0; i < noTicket; i++){
             Seat seat = SeatController.read(rows.get(i), cols.get(i), showtimeID);
             boolean vip = false, special = false;
-            if(Showtime.validateWeekend(showtime.getDate())){
+            if(Showtime.validateWeekend(showtime.getDate())||
+                    HolidayController.checkExist(showtime.getDate())){
                 special = true;
             }
             if(seat.getVip()){
                 vip = true;
             }
-            price += Price.getPrice(vip, special, discount);
+            price += Price.getPrice(vip, special, discount, cinema.getCinemaClass());
         }
         System.out.println("Please confirm your booking:");
         System.out.println("Movie: "+ movie.getName());

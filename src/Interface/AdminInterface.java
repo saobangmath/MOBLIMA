@@ -5,6 +5,7 @@ import controller.MovieController;
 import model.*;
 import controller.AdminController;
 
+import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -54,7 +55,7 @@ public class AdminInterface {
                     }
                 }
                 catch(Exception e){
-                    System.out.println("Please enter valid choice");
+                    System.out.println("Exception > " + e.getMessage());
                     sc.nextLine(); // flush the nextline character!
                 }
             }
@@ -85,16 +86,32 @@ public class AdminInterface {
             System.out.println("Restriction: ");
             int restriction = sc.nextInt();
 
-            System.out.println("Start date: ");
+            System.out.println("Start date (dd/MM/yyyy): ");
             String startDate = sc.next();
+            if(!Movie.validateDate(startDate)){
+                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
+            }
+            System.out.print("\n");
 
-            System.out.println("End date: ");
+            System.out.print("End date (dd/MM/yyyy): ");
             String endDate = sc.next();
+            if(!Movie.validateDate(endDate)){
+                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
+            }
+            System.out.print("\n");
+
+            System.out.print("Preview date (dd/MM/yyyy): ");
+            String previewDate = sc.next();
+            if(!Movie.validateDate(previewDate)){
+                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
+            }
+            System.out.print("\n");
 
             System.out.println("Duration: ");
             int duration = sc.nextInt();
+            System.out.println("\n");
 
-            AdminController.AddMovie(nameInput, movieID, category, description, director, cast, restriction, startDate, endDate, duration);
+            AdminController.AddMovie(nameInput, movieID, category, description, director, cast, restriction, startDate, endDate, previewDate, duration);
         }
         else{
             System.out.println("The movie is existed in the database!");

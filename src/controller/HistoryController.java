@@ -31,7 +31,7 @@ public class HistoryController{
         }
         return null;
     }
-    public static boolean checkExist(int ID){
+    public static boolean checkExist(double ID){
         for(int i = 0; i < listHistory.size(); i++){
             if(listHistory.get(i).getID() == ID){
                 return true;

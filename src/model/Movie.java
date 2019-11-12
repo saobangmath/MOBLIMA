@@ -13,12 +13,13 @@ public class Movie extends DateTime {
     private String cast;
     private int restriction;
     private String startDate;
+    private String previewDate;
     private String endDate;
     private int duration;
 
     public Movie(String nameInput, int IDInput, String categoryInput, String descriptionInput,
                  String directorInput, String castInput, int restrictionInput, float overallRatingInput,
-                 String startDateInput, String endDateInput, int duration){
+                 String startDateInput, String endDateInput, String previewDateInput, int duration){
         this.name = nameInput;
         this.ID = IDInput;
         this.category = categoryInput;
@@ -30,6 +31,7 @@ public class Movie extends DateTime {
         this.startDate = startDateInput;
         this.endDate = endDateInput;
         this.duration = duration;
+        this.previewDate = previewDateInput;
     }
 
     public int getID(){ return this.ID; };
@@ -56,6 +58,10 @@ public class Movie extends DateTime {
 
     public int getDuration(){
         return this.duration;
+    }
+
+    public String getPreviewDate(){
+        return this.previewDate;
     }
 
     public String getRestrictionDetail(){

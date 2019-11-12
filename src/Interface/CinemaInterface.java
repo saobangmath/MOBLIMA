@@ -69,7 +69,7 @@ public class CinemaInterface extends BaseInterface{
 
     public static Cinema createCinema(){
         String name;
-        int row, col, ID, cineplexId;
+        int row, col, ID, cineplexId, cinemaClass;
         Scanner sc = new Scanner(System.in);
         while(true){
             try{
@@ -94,6 +94,14 @@ public class CinemaInterface extends BaseInterface{
                     throw new InvalidKeyException("Column must be from 1 to 15");
                 }
                 System.out.print("\n");
+
+                System.out.print("Cinema class (1: normal, 2:platinum suite 3: elite): ");
+                cinemaClass = sc.nextInt();
+                sc.nextLine();
+                if(cinemaClass < 1 || cinemaClass > 3){
+                    throw new InvalidKeyException("Invalid range of cinema class");
+                }
+
                 break;
             } catch(Exception e){
                 System.out.println("Error: "+ e.getMessage());
@@ -101,7 +109,7 @@ public class CinemaInterface extends BaseInterface{
                 continue;
             }
         }
-        return new Cinema(name, ID, cineplexId, row, col);
+        return new Cinema(name, ID, cineplexId, row, col, cinemaClass);
     }
 
 }
