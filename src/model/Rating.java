@@ -21,4 +21,5 @@ public class Rating {
     public String getEmail() {
         return this.email;
     }
+
 }

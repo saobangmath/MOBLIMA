@@ -1,10 +1,1 @@
-1|tai@gmail.com|4.0
-2|dat@gmail.com|3.0
-1|linh@gmail.com|5.0
-3|hsd@gmail.com|3.5
-5|hsg@gmail.com|4.5
-2|dshdjsd|4.5
-7|dshdjsd@gmail.com|4.3
-1|dshdjsd@gmail.com|2.4
-2|dshdjsd@gmail.com|5.0
-2|dshdjsd@gmail.com|4.5
+1|w|4.5

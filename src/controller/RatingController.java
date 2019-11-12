@@ -1,76 +1,83 @@
 package controller;
 
+import database.MovieDB;
 import database.RatingDB;
+import model.Movie;
 import model.Rating;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class RatingController {
-    private static RatingDB db = new RatingDB();
-    private static Scanner sc = new Scanner(System.in);
-    public static MovieController movieController = new MovieController();
-    private static ArrayList RatingList;
+    private static ArrayList RatingList, MovieList;
 
-    public RatingController(){
-        RatingList = db.readData();
-        movieController.readDB();
+    public static void readDB(){
+        RatingList = RatingDB.readData();
+        MovieList = MovieDB.readData();
     }
 
-    public static void getAverageRatingByID(){
-        System.out.println("Enter the MovieID: ");
-        int MovieID = sc.nextInt();
-        int count = 0;
-        float total = 0;
-        for (int i = 0; i < RatingList.size(); i++){
-            Rating MovieRating = (Rating) RatingList.get(i);
-            if (MovieRating.getMovieID() == MovieID){
-                count ++;
-                total = total + MovieRating.getRating();
+    public static void saveDB(){
+        RatingDB.saveData(RatingList);
+        MovieDB.saveData(MovieList);
+    }
+
+    public static float GetOverall(int movieID){
+        for (int i = 0; i < MovieList.size(); i++){
+            Movie movie = (Movie) MovieList.get(i);
+            if (movie.getID() == movieID){
+                return movie.getOverallRating();
             }
         }
-        float average = (count != 0) ? (total / count) : - 1;
-        if (total != 0){
-            System.out.println("Movie with MovieID: " + MovieID + " has average rating equals to: " + average);
+        return -1;
+    }
+
+    public static void CreateRating(int movieID, float rating, String email){
+        RatingList.add(new Rating(movieID, email, rating)); // TODO the real email is taken in the UserInterface
+        UpdateOverallRating(movieID, rating);
+        try{
+            saveDB();
+        }
+        catch (Exception e){
+            System.out.println("Exception > " + e.getMessage());
+        }
+        System.out.println("Your rating for the film is successfully added!");
+    }
+
+
+    public static void UpdateOverallRating(int movieID, float new_rate){
+        if (MovieController.checkExist(movieID)){
+            ArrayList alw = new ArrayList();
+            for (int i = 0; i < MovieList.size(); i++){
+                Movie movie = (Movie)MovieList.get(i);
+                if (movie.getID() == movieID){
+                    int rating_count = 0;
+                    for (int j = 0; j < RatingList.size();j++){
+                        Rating rating = (Rating)RatingList.get(j);
+                        if (rating.getMovieID() == movieID){
+                            ++rating_count;
+                        }
+                    }
+                    System.out.println(rating_count);
+                    float updated_rating = ((rating_count - 1) * movie.getOverallRating() + new_rate) / (rating_count);
+                    movie.setOverallRating(updated_rating);
+                }
+                alw.add(movie);
+            }
         }
         else{
-            System.out.println("This Movie has no feedback previously!");
+            System.out.println("The Movie is not existed in the database!");
         }
     }
-
-    public static void AddRating(){
-        System.out.println("Enter the MovieID: ");
-        int MovieID = sc.nextInt();
-        if (movieController.checkExist(MovieID)){
-            System.out.println("Enter your own rating: ");
-            float rating = sc.nextFloat();
-            RatingList.add(new Rating(MovieID, "dshdjsd@gmail.com", rating)); // TODO the real email is taken in the UserInterface
-            try{
-                db.saveData(RatingList);
-            }
-            catch (Exception e){
-                System.out.println("Exception > " + e.getMessage());
-            }
-            System.out.println("Your rating for the film is successfully added!");
-        }
-        else{
-            System.out.println("There is no movie with such ID in the database!");
-        }
-    }
-
-    public static void ViewMovieRatingByID(){
-        System.out.println("Enter the MovieID: ");
-        int MovieID = sc.nextInt();
+    public static void DisplayRating(int movieID){
         boolean existed = false;
         for (int i = 0; i < RatingList.size(); i++){
             Rating rating = (Rating)RatingList.get(i);
-            if (rating.getMovieID() == MovieID){
+            if (rating.getMovieID() == movieID){
                 existed = true;
-                System.out.println("User: " + rating.getEmail() + " has rate the Movie with ID " + MovieID + " with rating: " + rating.getRating());
+                System.out.println("User: " + rating.getEmail() + " has rate the Movie with ID " + movieID + " with rating: " + rating.getRating());
             }
         }
         if (!existed){
-            System.out.println("There is no movie with such ID in the database!");
+            System.out.println("There is no Movie with such ID in the database!");
         }
     }
 }

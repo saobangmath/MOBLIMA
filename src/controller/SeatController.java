@@ -10,6 +10,9 @@ public class SeatController{
         listSeats = SeatDB.readData();
     }
 
+    public static void saveDB() {
+        SeatDB.saveData(listSeats);
+    }
     public static boolean create(Seat seat){
         if(checkExist(seat.getSeatRow(), seat.getSeatCol(), seat.getShowtimeId())){
             return false;

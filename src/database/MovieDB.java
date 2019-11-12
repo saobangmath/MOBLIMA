@@ -3,7 +3,6 @@ package database;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 
 import model.Movie;
@@ -13,7 +12,7 @@ public class MovieDB extends DB{
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/movie.txt";
     // an example of reading
     public static ArrayList readData() {
-        ArrayList alr = new ArrayList() ;// to store movie data
+        ArrayList alr = new ArrayList() ;// to store Movie data
         try{
             // read String from text file
             ArrayList stringArray = (ArrayList)read(filename);
@@ -31,7 +30,8 @@ public class MovieDB extends DB{
                 float overallRating = Float.parseFloat(star.nextToken().trim());
                 String startDate = star.nextToken().trim();
                 String endDate = star.nextToken().trim();
-                Movie cine = new Movie(name, ID, category, description, director, cast, restriction, overallRating, startDate, endDate);
+                int duration = Integer.parseInt(star.nextToken().trim());
+                Movie cine = new Movie(name, ID, category, description, director, cast, restriction, overallRating, startDate, endDate, duration);
                 alr.add(cine);
             }
         }
@@ -67,6 +67,8 @@ public class MovieDB extends DB{
             st.append(cine.getStartDate());
             st.append(SEPARATOR);
             st.append(cine.getEndDate());
+            st.append(SEPARATOR);
+            st.append(cine.getDuration());
             alw.add(st.toString()) ;
         }
         try{

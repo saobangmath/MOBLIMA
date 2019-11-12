@@ -1,8 +1,10 @@
 package Interface;
 import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
+
 import model.Movie;
 import controller.MovieController;
+
 public class MovieInterface extends BaseInterface{
     public static void main(String[] aArgs)  {
         MovieController.readDB();
@@ -68,32 +70,33 @@ public class MovieInterface extends BaseInterface{
 
     public static Movie createMovie(){
         String name, description, cast, director, category, startDate, endDate;
-        int ID, restriction;
+        int ID, restriction, duration;
         Scanner sc = new Scanner(System.in);
         while(true){
             try{
                 System.out.print("ID: ");
                 ID = sc.nextInt();
+                sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Name: ");
-                name = sc.next();
+                name = sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Category: ");
-                category = sc.next();
+                category = sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Description: ");
-                description = sc.next();
+                description = sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Director: ");
-                director = sc.next();
+                director = sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Cast: ");
-                cast = sc.next();
+                cast = sc.nextLine();
                 System.out.print("\n");
 
                 System.out.print("Restriction( 1. No Restriction   2. 10+   3. 16+    4. 18+ ): ");
@@ -116,6 +119,8 @@ public class MovieInterface extends BaseInterface{
                     throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
                 }
                 System.out.print("\n");
+                System.out.println("Duration: ");
+                duration = sc.nextInt();
                 break;
             } catch(Exception e){
                 System.out.println("Error: "+ e.getMessage());
@@ -123,6 +128,6 @@ public class MovieInterface extends BaseInterface{
                 continue;
             }
         }
-        return new Movie(name, ID, category, description, director, cast, restriction, 0, startDate, endDate);
+        return new Movie(name, ID, category, description, director, cast, restriction, 0, startDate, endDate, duration);
     }
 }

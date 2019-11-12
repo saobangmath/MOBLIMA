@@ -64,6 +64,7 @@ public class CinemaInterface extends BaseInterface{
                     break;
             }
         }
+        CinemaController.saveDB();
     }
 
     public static Cinema createCinema(){

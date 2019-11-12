@@ -4,26 +4,24 @@ import database.HistoryBookingDB;
 import database.MovieDB;
 import model.Admin;
 import database.AdminDB;
-import model.Booking;
 import model.Movie;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
+
 
 public class AdminController {
     private static ArrayList<Admin> AdminList;
-    private static ArrayList<Booking> BookingList;
     private static ArrayList MovieList;
-    private static AdminDB db = new AdminDB();
-    private static HistoryBookingDB histDB = new HistoryBookingDB();
-    private static MovieDB movieDB = new MovieDB();
-    private static MovieController movieController = new MovieController();
 
-    public AdminController(){
-        this.AdminList = db.readData();
-        this.BookingList = histDB.readData();
-        this.MovieList = movieDB.readData();
+
+    public static void readDB(){
+        AdminList = AdminDB.readData();
+        MovieList = MovieDB.readData();
+    }
+
+    public static void saveDB(){
+        AdminDB.saveData(AdminList);
+        MovieDB.saveData(MovieList);
     }
 
     public static boolean IsAuthentication(String username, String password){
@@ -40,43 +38,15 @@ public class AdminController {
         }
         return authenticate;
     }
-    public static void AddMovie(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("ID: ");
-        int movieID = sc.nextInt();
+
+    public static void AddMovie(String nameInput, int movieID, String category,
+                                String description, String director, String cast,
+                                int restriction, String startDate, String endDate, int duration){
         if (checkExist(movieID)){
             System.out.println("The movieID have existed in the database!");
             return;
         }
         else{
-            System.out.println("Name: ");
-            String nameInput = sc.nextLine();
-            sc.nextLine();
-
-            System.out.println("Category: ");
-            String category = sc.nextLine();
-            sc.nextLine();
-
-            System.out.println("Description: ");
-            String description = sc.nextLine();
-            sc.nextLine();
-
-            System.out.println("Director: ");
-            String director = sc.nextLine();
-            sc.nextLine();
-
-            System.out.println("Cast: ");
-            String cast = sc.nextLine();
-            sc.nextLine();
-
-            System.out.println("Restriction: ");
-            int restriction = sc.nextInt();
-
-            System.out.println("Start date: ");
-            String startDate = sc.next();
-
-            System.out.println("End date: ");
-            String endDate = sc.next();
             MovieList.add(new Movie(nameInput,
                                 movieID, category,
                                 description,
@@ -85,10 +55,10 @@ public class AdminController {
                                 restriction,
                                 0,
                                 startDate,
-                                endDate
+                                endDate,
+                                duration
                                 ));
-            MovieDB.saveData(MovieList);
-            System.out.println("The film added sucessfully!");
+            System.out.println("The film is added sucessfully!");
         }
     }
 
@@ -102,35 +72,19 @@ public class AdminController {
     }
 
     public static void TopFiveMovieRankByRatings(){
-        Collections.sort(MovieList, new MovieController.SortByRating());
-        int movieID = 0;
-        while (movieID < Math.min(5, MovieList.size())){
-            System.out.println("ID: "+ ((Movie)MovieList.get(movieID)).getID());
-            System.out.println("Name: " + ((Movie)MovieList.get(movieID)).getName());
-            System.out.println("Category: "+ ((Movie)MovieList.get(movieID)).getCategory() );
-            System.out.println("Description: "+ ((Movie)MovieList.get(movieID)).getDescription() );
-            System.out.println("Director: "+ ((Movie)MovieList.get(movieID)).getDirector() );
-            System.out.println("Cast: "+ ((Movie)MovieList.get(movieID)).getCast() );
-            System.out.println("Restriction: "+ ((Movie)MovieList.get(movieID)).getRestriction() );
-            System.out.println("Overall Rating: "+ ((Movie)MovieList.get(movieID)).getOverallRating() );
-            System.out.println("Start Date: "+ ((Movie)MovieList.get(movieID)).getStartDate());
-            System.out.println("End Date: "+ ((Movie)MovieList.get(movieID)).getEndDate());
-            System.out.println("\n");
-             movieID++;
-        }
+
+        MovieController.DisplayByTopFiveByRating();
     }
+
     public static void TopFiveMovieRankByTicketsSale(){
 
+        MovieController.DisplayByTopFiveByTicketSale();
     }
 
-    public void DeleteMovie() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter Movie ID: ");
-        int movieID = sc.nextInt();
+    public static void DeleteMovie(int movieID) {
         for (int i = 0; i < MovieList.size(); i++){
             if (((Movie)MovieList.get(i)).getID() == movieID){
                 MovieList.remove(i);
-                MovieDB.saveData(MovieList);
                 System.out.println("The film is successfully removed in the database!");
                 return;
             }

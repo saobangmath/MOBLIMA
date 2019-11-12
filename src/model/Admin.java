@@ -13,7 +13,7 @@ import java.util.ArrayList;
  @version 1.0
  @since 2010-10-15
  */
-public class Admin implements Serializable {
+public class Admin{
     /**
      Admin corresponding variables
      */
@@ -50,45 +50,5 @@ public class Admin implements Serializable {
 
     public String getUsername() {
         return this.username;
-    }
-    /**
-     Admin functionalities
-     */
-    public void SystemConfiguration() {
-        System.out.println("Sys config");
-        //TODO configuration ticket price, holidays,..
-    }
-
-    public void CinemaShowTime() {
-        System.out.println("Cinema Showtime");
-        //TODO create/update/remove cinema showtimes and movie to be show - required Movie and Cinema class
-
-    }
-
-    public void MovieListing() {
-        System.out.println("Movie Listing");
-        //TODO create/update/remove Movie lists - required Movie class
-        try{
-            FileInputStream filein = new FileInputStream("movies.dat");
-            ObjectInputStream in = new ObjectInputStream(filein);
-            ArrayList<Movie> movies = (ArrayList<Movie>) (in.readObject());
-            for (Movie movie : movies){
-                System.out.println("MovieID: "+ movie.getID() + ", MovieName: " + movie.getName());
-            }
-        }
-        catch (IOException e){
-            System.out.println("Can't load the MovieList !");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    public void showTop5ByTicketSales(){
-        // TODO show top 5 movies have most ticket sales
-
-
-    }
-    public void showTop5ByReviewRating(){
-        // TODO show to 5 movies with most ok reviews from the users
-
     }
 }

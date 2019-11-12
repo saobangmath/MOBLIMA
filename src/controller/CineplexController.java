@@ -10,6 +10,10 @@ public class CineplexController{
         listCineplex = CineplexDB.readData();
     }
 
+    public static void saveDB() {
+        CineplexDB.saveData(listCineplex);
+    }
+
     public static boolean create(Cineplex cineplex){
         if(checkExist(cineplex.getID())){
             return false;

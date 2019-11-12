@@ -66,6 +66,7 @@ public class MovieGoerInterface extends BaseInterface{
                     break;
             }
         }
+        MovieGoerController.saveDB();
     }
 
     public static MovieGoer createMovieGoer(){

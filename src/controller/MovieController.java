@@ -1,17 +1,20 @@
 package controller;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import database.MovieDB;
 import model.Movie;
+
 public class MovieController{
 
     private static ArrayList<Movie> listMovies = new ArrayList<Movie>();
 
     public static void readDB(){
         listMovies = MovieDB.readData();
+    }
+
+    public static void saveDB(){
+        MovieDB.saveData(listMovies);
     }
 
     public static boolean create(Movie movie){
@@ -99,10 +102,10 @@ public class MovieController{
         }
     }
 
-    public static class SortByRating implements Comparator<Movie> {
+    public static class SortByRating implements Comparator<Object> {
         @Override
-        public int compare(Movie x, Movie y) {
-            return (x.getOverallRating() >= y.getOverallRating())  ? 0 : 1;
+        public int compare(Object x, Object y) {
+            return (((Movie)x).getOverallRating() >= ((Movie)y).getOverallRating())  ? 0 : 1;
         }
     }
 
@@ -132,7 +135,7 @@ public class MovieController{
         for(int i = 0; i < listMovies.size(); i++){
             All_Movie.add(listMovies.get(i));
         }
-        // TODO add overall rating to the class movie -> return this class
+        // TODO add overall rating to the class Movie -> return this class
 
     }
 }

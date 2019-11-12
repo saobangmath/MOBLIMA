@@ -11,7 +11,8 @@ import java.util.StringTokenizer;
 public class RatingDB extends DB{
     public static String filename = "D://NTU CS/Java/MOBLIMA/src/rating.txt";
     public static String SEPARATOR = "|";
-    public ArrayList readData(){
+
+    public static ArrayList readData(){
         ArrayList alr = new ArrayList();
         try{
             ArrayList StringArray = (ArrayList)read(filename);
@@ -30,7 +31,7 @@ public class RatingDB extends DB{
         }
         return alr;
     }
-    public void saveData(List alr){
+    public static void saveData(List alr){
         ArrayList alw = new ArrayList();
         for (int i = 0; i < alr.size(); i++){
             Rating MovieRating = (Rating) alr.get(i);

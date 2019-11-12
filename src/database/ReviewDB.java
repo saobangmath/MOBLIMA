@@ -30,6 +30,7 @@ public class ReviewDB extends DB {
         }
         return alr;
     }
+
     public static void saveData(ArrayList alr){
         List alw = new ArrayList();
         for (int i = 0; i < alr.size(); i++){

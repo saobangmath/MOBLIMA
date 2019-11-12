@@ -4,9 +4,9 @@ public class Cineplex {
     private String name;
     private int ID;
     private String location;
-    private ArrayList<String> availableMovie = new ArrayList<String>();
+    private ArrayList<Integer> availableMovie = new ArrayList<Integer>();
 
-    public Cineplex(String nameInput, int IDInput, String locationInput, ArrayList<String> availableMovieInput){
+    public Cineplex(String nameInput, int IDInput, String locationInput, ArrayList<Integer> availableMovieInput){
         location = locationInput;
         ID = IDInput;
         name = nameInput;
@@ -19,8 +19,11 @@ public class Cineplex {
 
     public String getName() {return this.name;}
 
-    public ArrayList<String> getAvailableMovie() {return this.availableMovie;}
+    public ArrayList<Integer> getAvailableMovie() {return this.availableMovie;}
 
+    public boolean checkAvailableMovie(int movieId){
+        return this.availableMovie.contains(movieId);
+    }
     public String stringifyAvailableMovie(){
         String result = new String("");
         if(this.availableMovie.size() == 0){
@@ -28,10 +31,9 @@ public class Cineplex {
         }
         int  i;
         for(i = 0 ; i < this.availableMovie.size() - 1; i++){
-            result.concat(this.availableMovie.get(i).trim());
-            result.concat(",");
+            result = result + String.valueOf(this.availableMovie.get(i)) + ",";
         }
-        result.concat(this.availableMovie.get(i).trim());
+        result = result + String.valueOf(this.availableMovie.get(i));
         return result;
     }
 

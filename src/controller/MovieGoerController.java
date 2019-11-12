@@ -10,6 +10,9 @@ public class MovieGoerController{
         listMovieGoer = MovieGoerDB.readData();
     }
 
+    public static void saveDB() {
+        MovieGoerDB.saveData(listMovieGoer);
+    }
     public static boolean create(MovieGoer goer){
         if(checkExist(goer.getEmail())){
             return false;

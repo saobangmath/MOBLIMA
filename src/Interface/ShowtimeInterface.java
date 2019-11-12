@@ -1,11 +1,17 @@
 package Interface;
 import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
+
+import controller.*;
 import model.Showtime;
-import controller.ShowtimeController;
+
 public class ShowtimeInterface{
     public static void main(String[] aArgs)  {
         ShowtimeController.readDB();
+        CineplexController.readDB();
+        CinemaController.readDB();
+        SeatController.readDB();
+        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -64,6 +70,9 @@ public class ShowtimeInterface{
                     break;
             }
         }
+        MovieController.saveDB();
+        ShowtimeController.saveDB();
+        SeatController.saveDB();
     }
 
     public static Showtime createShowtime(){

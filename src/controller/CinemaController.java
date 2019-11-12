@@ -11,6 +11,9 @@ public class CinemaController{
         listCinemas = CinemaDB.readData();
     }
 
+    public static void saveDB(){
+        CinemaDB.saveData(listCinemas);
+    }
     public static Cinema read(int ID){
         for(int i = 0; i < listCinemas.size(); i++){
             if(listCinemas.get(i).getID() == ID){

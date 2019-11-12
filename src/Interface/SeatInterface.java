@@ -109,8 +109,10 @@ public class SeatInterface extends BaseInterface{
         row = sc.next().charAt(0);
         System.out.println("Input column: ");
         col = sc.nextInt();
+        sc.nextLine();
         System.out.println("Input Showtime Id: ");
         showtimeId = sc.nextInt();
+        sc.nextLine();
         return;
     }
 }

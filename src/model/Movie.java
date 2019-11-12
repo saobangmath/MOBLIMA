@@ -14,10 +14,11 @@ public class Movie extends DateTime {
     private int restriction;
     private String startDate;
     private String endDate;
+    private int duration;
 
     public Movie(String nameInput, int IDInput, String categoryInput, String descriptionInput,
                  String directorInput, String castInput, int restrictionInput, float overallRatingInput,
-                 String startDateInput, String endDateInput){
+                 String startDateInput, String endDateInput, int duration){
         this.name = nameInput;
         this.ID = IDInput;
         this.category = categoryInput;
@@ -28,6 +29,7 @@ public class Movie extends DateTime {
         this.restriction = restrictionInput;
         this.startDate = startDateInput;
         this.endDate = endDateInput;
+        this.duration = duration;
     }
 
     public int getID(){ return this.ID; };
@@ -52,6 +54,26 @@ public class Movie extends DateTime {
 
     public String getEndDate(){return this.endDate;}
 
+    public int getDuration(){
+        return this.duration;
+    }
+
+    public String getRestrictionDetail(){
+        //1. No Restriction   2. 10+   3. 16+    4. 18+
+        if(this.restriction == 4){
+            return "18+";
+        }
+        else if(this.restriction == 2){
+            return "10+";
+        }
+        else if(this.restriction == 3){
+            return "16+";
+        }
+        else{
+            return "No restriction";
+        }
+    }
+
     public int getStatusMovie(){
         DateFormat formatDate = new SimpleDateFormat("dd/MM/yyyy");
         Date currentDate= new Date();
@@ -59,7 +81,7 @@ public class Movie extends DateTime {
             Date startDateParse = formatDate.parse(this.startDate);
             Date endDateParse = formatDate.parse(this.endDate);
             if(currentDate.compareTo(startDateParse) < 0){
-                return 0; // upcoming movie
+                return 0; // upcoming Movie
             }
             if(currentDate.compareTo(endDateParse) > 0){
                 return 2; // already over
