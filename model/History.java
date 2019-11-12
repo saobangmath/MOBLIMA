@@ -1,7 +1,7 @@
 package model;
 import java.util.ArrayList;
 public class History extends DateTime{
-    private int ID;
+    private long ID;
     private String email;
     private int showtimeId;
     private String transactionDate;
@@ -12,7 +12,7 @@ public class History extends DateTime{
     private ArrayList<Integer> seatCol;
 
 
-    public History(int IDInput, String emailInput, int showtimeIdInput, String transactionDateInput, String transactionTimeInput,
+    public History(long IDInput, String emailInput, int showtimeIdInput, String transactionDateInput, String transactionTimeInput,
         int priceInput, int noTicketInput, ArrayList<Character> seatRowInput, ArrayList<Integer> seatColInput){
         this.ID = IDInput;
         this.email = emailInput;
@@ -25,7 +25,7 @@ public class History extends DateTime{
         this.seatCol = seatColInput;
     }
 
-    public int getID(){return this.ID;}
+    public long getID(){return this.ID;}
     
     public String getEmail(){return this.email;}
 

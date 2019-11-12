@@ -87,8 +87,9 @@ public class MovieController{
         System.out.println("Restriction: "+ movie.getRestriction() );
         System.out.println("Duration: "+ movie.getDuration() );
         System.out.println("Overall Rating: "+ movie.getOverallRating() );
-        System.out.println("Start Dtae: "+ movie.getStartDate());
+        System.out.println("Start Date: "+ movie.getStartDate());
         System.out.println("End Date: "+ movie.getEndDate());
+        System.out.println("Preview Date: "+ movie.getPreviewDate());
         System.out.print("\n");
     }
 }

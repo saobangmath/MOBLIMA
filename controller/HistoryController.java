@@ -23,7 +23,7 @@ public class HistoryController{
         return true;
     }
 
-    public static History read(int ID){
+    public static History read(double ID){
         for(int i = 0; i < listHistory.size(); i++){
             if(listHistory.get(i).getID() == ID){
                 return listHistory.get(i);
@@ -31,7 +31,7 @@ public class HistoryController{
         }   
         return null;   
     }
-    public static boolean checkExist(int ID){
+    public static boolean checkExist(double ID){
         for(int i = 0; i < listHistory.size(); i++){
             if(listHistory.get(i).getID() == ID){
                 return true;
@@ -40,7 +40,7 @@ public class HistoryController{
         return false;
     }
 
-    public static boolean delete(int ID){
+    public static boolean delete(double ID){
         for(int i = 0; i < listHistory.size(); i++){
             if(listHistory.get(i).getID() == ID){
                 listHistory.remove(i);
@@ -100,6 +100,7 @@ public class HistoryController{
         System.out.println("Price: " + history.getPrice());
         System.out.println("Transaction time: " + history.getTransactionTime());
         System.out.println("Transaction date: " + history.getTransactionDate());
+        System.out.println("Transaction ID: " + String.valueOf(history.getID()));
         System.out.print("\n");
     }
 }

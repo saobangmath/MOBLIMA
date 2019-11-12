@@ -67,7 +67,7 @@ public class ShowtimeController{
     }
 
     public static void displayAll(){
-        System.out.println("All available movies: ");
+        System.out.println("All available showtimes: ");
         for(int i = 0; i< listShowtimes.size(); i++){
             output(listShowtimes.get(i));
         }
@@ -129,7 +129,8 @@ public class ShowtimeController{
         }
     }
 
-    public static void displaySeatMap(int showtimeId, Cinema cine){
+    public static void displaySeatMap(int showtimeId){
+        Cinema cine = CinemaController.read(ShowtimeController.read(showtimeId).getCinemaId());
         int row = cine.getRow();
         int col = cine.getCol();
         char rowChar;

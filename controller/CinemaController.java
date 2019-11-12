@@ -90,6 +90,7 @@ public class CinemaController{
         System.out.println("Cineplex: " + CineplexController.read(cinema.getCineplexId()).getName());
         System.out.println("Number of rows: "+ cinema.getRow());
         System.out.println("Number of columns: " + cinema.getCol());
+        System.out.println("Cinema class: " + cinema.getCinemaClassDetail());
         System.out.print("\n");
     }
 }

@@ -68,7 +68,7 @@ public class MovieInterface extends BaseInterface{
   }
 
   public static Movie createMovie(){
-    String name, description, cast, director, category, startDate, endDate;
+    String name, description, cast, director, category, startDate, endDate, previewDate;
     int ID, restriction, duration;
     Scanner sc = new Scanner(System.in);
     while(true){
@@ -119,6 +119,13 @@ public class MovieInterface extends BaseInterface{
                 throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
             }
             System.out.print("\n");
+
+            System.out.print("Preview date (dd/MM/yyyy): ");
+            previewDate = sc.nextLine();
+            if(!Movie.validateDate(previewDate)){
+                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
+            }
+            System.out.print("\n");
         
             System.out.print("Duration: ");
             duration = sc.nextInt();
@@ -130,7 +137,7 @@ public class MovieInterface extends BaseInterface{
             continue;
         }
     }
-    return new Movie(name, ID, category, description, director, cast, restriction, 0, startDate, endDate, duration);
+    return new Movie(name, ID, category, description, director, cast, restriction, 0, startDate, endDate, previewDate, duration);
   }
 
 }

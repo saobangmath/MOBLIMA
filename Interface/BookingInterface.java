@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.Random;
 public class BookingInterface {
     static Scanner sc = new Scanner(System.in);
-    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price, historyID;
+    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price;
+    static long historyID;
     static ArrayList<Character> rows = new ArrayList<Character>();
     static ArrayList<Integer> cols = new ArrayList<Integer>();
     static String date, email, transactionDate, transactionTime, seatString;
@@ -30,13 +31,12 @@ public class BookingInterface {
             cineplexIDInput();
 
             ShowtimeController.displayByCineplex(cineplexID);
-            dateInput();
             showtimeIDInput();
 
             noTicketInput();
             System.out.println("x denotes empty, o denotes occupied");
             cinemaID = ShowtimeController.read(showtimeID).getCinemaId();
-            ShowtimeController.displaySeatMap(showtimeID, CinemaController.read(cinemaID));
+            ShowtimeController.displaySeatMap(showtimeID);
             seatNumberInput();
             discountInput();
             emailInput();
@@ -48,7 +48,8 @@ public class BookingInterface {
         transactionDate = DateTime.getCurrentDate();
         transactionTime = DateTime.getCurrentTime();
         Random rand = new Random();
-        historyID = rand.nextInt(1000000000);
+        String transactionID = "" + showtimeID + transactionDate.replace("/", "") + transactionTime.replace(":", "");
+        historyID = Long.parseLong(transactionID.trim());
         History history = new History(historyID, email, showtimeID, transactionDate, transactionTime, price, noTicket, rows, cols);
         HistoryController.create(history);
         if(!MovieGoerController.checkExist(email)){
@@ -103,27 +104,6 @@ public class BookingInterface {
             catch(Exception e){
                 System.out.println("Error: "+ e.getMessage());
                 System.out.print("\n");
-            }
-        }
-    }
-
-    public static void dateInput(){
-        while(true){
-            try{
-                System.out.println("Please input date to continue (dd/MM/yyyy)");
-                date = sc.nextLine();
-                if(Showtime.validateDate(date)){
-                    if(!ShowtimeController.validateShowtime(cineplexID, date)){
-                        throw new InvalidKeyException("There is no showtime for this movie in this cineplex on this date");
-                    };
-                    break;
-                }
-                else{
-                    throw new InvalidKeyException("Invalid date format does not exist");
-                }
-            }
-            catch(Exception e){
-                System.out.println("Error: "+ e.getMessage());
             }
         }
     }
@@ -187,6 +167,9 @@ public class BookingInterface {
                     row  = arr[i].charAt(0);
                     col = Integer.parseInt(arr[i].substring(1));
                     if(SeatController.checkExist(row, col, showtimeID)){
+                        if(SeatController.checkOccupied(row, col, showtimeID)){
+                            throw new InvalidKeyException("Seats are occupied");
+                        }
                         rows.add(row);
                         cols.add(col);
                     }else{
@@ -269,13 +252,13 @@ public class BookingInterface {
         for(int i = 0; i < noTicket; i++){
             Seat seat = SeatController.read(rows.get(i), cols.get(i), showtimeID);
             boolean vip = false, special = false;
-            if(Showtime.validateWeekend(showtime.getDate())){
+            if(Showtime.validateWeekend(showtime.getDate()) || HolidayController.checkExist(showtime.getDate())){
                 special = true;
             }
             if(seat.getVip()){
                 vip = true;
             }
-            price += Price.getPrice(vip, special, discount);
+            price += Price.getPrice(vip, special, discount, cinema.getCinemaClass());
         }
         System.out.println("Please confirm your booking:");
         System.out.println("Movie: "+ movie.getName());

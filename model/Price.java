@@ -6,7 +6,7 @@ public class Price {
     private static final int VIP_SPECIAL = 10;
     private static final int VIP_NON_SPECIAL = 9;
 
-    public static int getPrice(boolean vipSeat, boolean specialTime, boolean discount){
+    public static int getPrice(boolean vipSeat, boolean specialTime, boolean discount, int cinemaClass){
         int price = NORMAL_NON_SPECIAL;
         if(vipSeat && specialTime){
             price = VIP_SPECIAL;
@@ -20,6 +20,10 @@ public class Price {
 
         if(discount){
             price -= 1;
+        }
+
+        if(cinemaClass > 1){
+            price += cinemaClass;
         }
         return price;
     }

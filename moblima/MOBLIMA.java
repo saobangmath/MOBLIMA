@@ -9,7 +9,8 @@ public class MOBLIMA{
         readData();
         boolean process = true;
         while(process){
-            BookingInterface.view();
+            AvailabilityInterface.view();
+            process = false;
         }
         saveData();
     }
@@ -22,6 +23,7 @@ public class MOBLIMA{
         SeatController.readDB();
         ShowtimeController.readDB();
         HistoryController.readDB();
+        HolidayController.readDB();
     }
 
     public static void saveData(){
@@ -32,5 +34,6 @@ public class MOBLIMA{
         SeatController.saveDB();
         ShowtimeController.saveDB();
         HistoryController.saveDB(); 
+        HolidayController.readDB();
     }
 }

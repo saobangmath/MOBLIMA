@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - MOBLIMA",
+            "request": "launch",
+            "mainClass": "moblima.MOBLIMA",
+            "projectName": "assignment_b79e0085"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - CinemaInterface",
             "request": "launch",
             "mainClass": "Interface.CinemaInterface",
