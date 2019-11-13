@@ -2,6 +2,7 @@ package Interface;
 
 import controller.MovieController;
 import controller.RatingController;
+import model.Email;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -55,19 +56,24 @@ public class RatingInterface {
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
             String email = sc.next();
-            System.out.println("Enter your rating: ");
-            String rating = sc.next();
-            try{
-                float rating_value = Float.parseFloat(rating);
-                if (rating_value > 0 && rating_value <= 5){
-                    RatingController.CreateRating(movieID, rating_value, email);
+            if (Email.validateEmail(email)){
+                System.out.println("Enter your rating: ");
+                String rating = sc.next();
+                try{
+                    float rating_value = Float.parseFloat(rating);
+                    if (rating_value > 0 && rating_value <= 5){
+                        RatingController.CreateRating(movieID, rating_value, email);
+                    }
+                    else{
+                        System.out.println("Rating should be between (0, 5)!");
+                    }
                 }
-                else{
-                    System.out.println("Rating should be between (0, 5)!");
+                catch (InputMismatchException e){
+                    System.out.println("Please enter valid input!");
                 }
             }
-            catch (InputMismatchException e){
-                System.out.println("Please enter valid input!");
+            else{
+                System.out.println("The email input is not legal!");
             }
         }
         else{

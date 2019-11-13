@@ -1,6 +1,7 @@
 package Interface;
 import controller.MovieController;
 import controller.ReviewController;
+import model.Email;
 
 import java.util.Scanner;
 
@@ -58,9 +59,14 @@ public class ReviewInterface {
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
             String email = sc.next();
-            System.out.println("Enter your comment: ");
-            String comment = sc.next();
-            ReviewController.AddReview(email, movieID, comment);
+            if (Email.validateEmail(email)){
+                System.out.println("Enter your comment: ");
+                String comment = sc.next();
+                ReviewController.AddReview(email, movieID, comment);
+            }
+            else{
+                System.out.println("Your email is not legal!");
+            }
         }
         else{
             System.out.println("The movie ID is not existed in the database!");
