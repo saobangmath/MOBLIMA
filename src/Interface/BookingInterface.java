@@ -37,7 +37,7 @@ public class BookingInterface {
             noTicketInput();
             System.out.println("x denotes empty, o denotes occupied");
             cinemaID = ShowtimeController.read(showtimeID).getCinemaId();
-            ShowtimeController.displaySeatMap(showtimeID, CinemaController.read(cinemaID));
+            ShowtimeController.displaySeatMap(showtimeID);
             seatNumberInput();
             discountInput();
             emailInput();

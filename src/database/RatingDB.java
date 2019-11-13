@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * This module saving and reading the data from Rating database
+ * @author Tran Anh Tai
+ */
 public class RatingDB extends DB{
     public static String filename = "D://NTU CS/Java/MOBLIMA/src/rating.txt";
     public static String SEPARATOR = "|";

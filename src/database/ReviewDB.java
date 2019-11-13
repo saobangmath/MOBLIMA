@@ -3,11 +3,14 @@ package database;
 import model.Review;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * This module saving and reading the data from the Review database
+ * @author Tran Anh Tai
+ */
 public class ReviewDB extends DB {
     public static String SEPARATOR = "|";
     public static String filename = "D://NTU CS/Java/MOBLIMA/src/review.txt";

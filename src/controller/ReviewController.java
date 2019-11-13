@@ -5,25 +5,42 @@ import model.Review;
 
 import java.util.ArrayList;
 
+/**
+ * Represents all operations related to the Review object
+ * @author Tran Anh Tai
+ */
 public class ReviewController{
     private static ArrayList ReviewList;
 
+    /**
+     * store the review database to a ReviewList for internal operations
+     */
     public static void readDB() {
         ReviewList = ReviewDB.readData();
     }
 
+    /**
+     * save back to the Review database with a ReviewList overriding such database file
+     */
     public static void saveDB(){
         ReviewDB.saveData(ReviewList);
     }
 
-    public static void AddReview(String email, int movieID, String comment){
-        Review review = new Review(movieID, email,comment);
+    /**
+     * create a new review
+     * @param review
+     */
+    public static void create(Review review){
         ReviewList.add(review);
         ReviewDB.saveData(ReviewList);
         System.out.println("Thanks for your kind review!");
     }
 
-    public static void RetrieveAllReview(int movieID){
+    /**
+     * display all review details for a movieID
+     * @param movieID
+     */
+    public static void display(int movieID){
         boolean existed = false;
         for (int i = 0; i < ReviewList.size(); i++){
             Review review = (Review) ReviewList.get(i);

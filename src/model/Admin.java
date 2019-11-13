@@ -7,19 +7,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- Represents a student enrolled in the school.
- A student can be enrolled in many courses.
- @author Tran Anh Tai
- @version 1.0
- @since 2010-10-15
+ *Represents Admin object
+ *@author Tran Anh Tai
  */
 public class Admin{
-    /**
-     Admin corresponding variables
-     */
     private String username,name, password, email;
+
     /**
-     different Admin constructors
+     *different set of Admin constructors for various usage
      */
     public Admin(String username, String password){
         this.username = username;
@@ -33,21 +28,35 @@ public class Admin{
         this(username, password, name);
         this.email = email;
     }
+
     /**
-     Admin getAccessing to variable methods
+     * get the admin name
+     * @return name
      */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * get the admin password
+     * @return password
+     */
     public String getPassword() {
         return this.password;
     }
 
+    /**
+     * get the admin email
+     * @return email
+     */
     public String getEmail() {
         return this.email;
     }
 
+    /**
+     * get the admin username
+     * @return username
+     */
     public String getUsername() {
         return this.username;
     }

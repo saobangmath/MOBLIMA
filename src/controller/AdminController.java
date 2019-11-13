@@ -1,26 +1,36 @@
 package controller;
 
-import database.HistoryBookingDB;
-import database.MovieDB;
 import model.Admin;
 import database.AdminDB;
 import model.Movie;
 
 import java.util.ArrayList;
 
-
+/**
+ * Represents all operations related to Admin object
+ * @author Tran Anh Tai
+ */
 public class AdminController {
     private static ArrayList<Admin> AdminList;
 
     public static void readDB(){
+        /**
+         * read the Admin database store in the list to a local Arraylist for other method using
+         */
         AdminList = AdminDB.readData();
     }
 
     public static void saveDB(){
+        /**
+         * override the AdminList to the file storing Admin details
+         */
         AdminDB.saveData(AdminList);
     }
 
-    public static boolean IsAuthentication(String username, String password){
+    public static boolean isAuthenticate(String username, String password){
+        /**
+         * for login the admin into the system configuration
+         */
         boolean authenticate = false;
         for (int i = 0; i < AdminList.size(); i++){
             Admin ad = AdminList.get(i);
@@ -35,35 +45,25 @@ public class AdminController {
         return authenticate;
     }
 
-    public static void AddMovie(String nameInput, int movieID, String category,
-                                String description, String director, String cast,
-                                int restriction, String startDate, String endDate,
-                                String previewDate, int duration){
-        if (MovieController.checkExist(movieID)){
+    public static void addMovie(Movie movie){
+        /**
+         * adding the new movie into the movie database if does not exist
+         */
+        if (MovieController.checkExist(movie.getID())){
             System.out.println("The movieID have existed in the database!");
             return;
         }
         else{
-            Movie movie = new Movie(nameInput,
-                    movieID, category,
-                    description,
-                    director,
-                    cast,
-                    restriction,
-                    0,
-                    startDate,
-                    endDate,
-                    previewDate,
-                    duration
-            );
             MovieController.create(movie);
             System.out.println("The film is added successfully!");
         }
     }
 
-    public static void DeleteMovie(int movieID) {
-        if (MovieController.checkExist(movieID)){
-            MovieController.delete(movieID);
+    public static void deleteMovie(int movieID) {
+        /**
+         * deleting a movie in the movie database if exist
+         */
+        if (MovieController.delete(movieID)){
             System.out.println("The film is successfully removed!");
         }
         else{
@@ -71,13 +71,17 @@ public class AdminController {
         }
     }
 
-    public static void TopFiveMovieRankByRatings(){
-
-        MovieController.DisplayByTopFiveByRating();
+    public static void topFiveByRating(){
+        /**
+         * display top 5 movie by its rating descending
+         */
+        MovieController.topFiveByRating();
     }
 
-    public static void TopFiveMovieRankByTicketsSale(){
-
-        MovieController.DisplayByTopFiveByTicketSale();
+    public static void topFiveByTicket(){
+        /**
+         * display top 5 movie by its tickets sales descending
+         */
+        MovieController.topFiveByTicket();
     }
 }

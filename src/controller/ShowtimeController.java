@@ -129,7 +129,8 @@ public class ShowtimeController{
         }
     }
 
-    public static void displaySeatMap(int showtimeId, Cinema cine){
+    public static void displaySeatMap(int showtimeId){
+        Cinema cine = CinemaController.read(ShowtimeController.read(showtimeId).getCinemaId());
         int row = cine.getRow();
         int col = cine.getCol();
         char rowChar;

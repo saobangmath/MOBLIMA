@@ -2,12 +2,25 @@ package Interface;
 import controller.MovieController;
 import controller.ReviewController;
 import model.Email;
+import model.Review;
 
 import java.util.Scanner;
 
+/**
+ * Represent all related Review console display
+ * @author Tran Anh Tai
+ */
 public class ReviewInterface {
     private static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args) {
+
+    public static void main(String[] args) { // local testing
+        view();
+    }
+
+    /**
+     * main interface for review
+     */
+    public static void view() {
         MovieController.readDB();
         ReviewController.readDB();
         boolean stop = false;
@@ -21,10 +34,10 @@ public class ReviewInterface {
                 char choice = sc.next().charAt(0);
                 switch (choice){
                     case '1':
-                        AddReview();
+                        addReview();
                         break;
                     case '2':
-                        RetrieveReview();
+                        displayReview();
                         break;
                     case '3':
                         stop = true;
@@ -42,18 +55,24 @@ public class ReviewInterface {
         }
     }
 
-    private static void RetrieveReview() {
+    /**
+     * display all reviews for a movie ID
+     */
+    private static void displayReview() {
         System.out.println("Enter Movie ID: ");
         int movieID = sc.nextInt();
         if (MovieController.checkExist(movieID)){
-            ReviewController.RetrieveAllReview(movieID);
+            ReviewController.display(movieID);
         }
         else{
             System.out.println("The movie ID is not existed in the database!");
         }
     }
 
-    private static void AddReview() {
+    /**
+     * add new review for a movieID
+     */
+    private static void addReview() {
         System.out.println("Enter Movie ID: ");
         int movieID = sc.nextInt();
         if (MovieController.checkExist(movieID)){
@@ -62,7 +81,8 @@ public class ReviewInterface {
             if (Email.validateEmail(email)){
                 System.out.println("Enter your comment: ");
                 String comment = sc.next();
-                ReviewController.AddReview(email, movieID, comment);
+                Review review = new Review(movieID, email, comment);
+                ReviewController.create(review);
             }
             else{
                 System.out.println("Your email is not legal!");

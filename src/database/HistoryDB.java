@@ -9,7 +9,7 @@ import model.History;
 
 public class HistoryDB extends DB{
     public static final String SEPARATOR = "|";
-    public static final String filename = "history.txt";
+    public static final String filename = "D://NTU CS/Java/MOBLIMA/src/history.txt";
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data

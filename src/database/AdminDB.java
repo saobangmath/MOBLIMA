@@ -7,9 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * This module process saving and reading the data from the Admin database
+ * @author Tran Anh Tai
+ */
 public class AdminDB extends DB {
     public static final String SEPARATOR = "|";
     public  static final String filename = "D://NTU CS/Java/MOBLIMA/src/Admin.txt";
+
+    /**
+     * get all admins from admin database
+     * @return all available Admins
+     */
     public static ArrayList readData(){
         ArrayList admins = new ArrayList<>(); // storing admin info
         try{
@@ -30,6 +39,11 @@ public class AdminDB extends DB {
         }
         return admins;
     }
+
+    /**
+     * save the admins list back to the admin database by overriding the database text file
+     * @param admins
+     */
     public static void saveData(List admins){
         List adminlist = new ArrayList();
         for (int i = 0; i < admins.size(); i++){
@@ -43,7 +57,7 @@ public class AdminDB extends DB {
             stb.append(admin.getName());
             stb.append(SEPARATOR);
             stb.append(admin.getEmail());
-            // add such string object to a adminList
+            // create such string object to a adminList
             adminlist.add(stb.toString());
         }
         try{

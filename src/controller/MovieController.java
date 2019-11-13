@@ -2,19 +2,28 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import database.HistoryBookingDB;
+import database.HistoryDB;
 import database.MovieDB;
+import model.History;
 import model.Movie;
 
 public class MovieController{
 
     private static ArrayList<Movie> listMovies = new ArrayList<Movie>();
+    private static ArrayList<History> listHistory = new ArrayList<>();
 
     public static void readDB(){
+
         listMovies = MovieDB.readData();
+        listHistory = HistoryDB.readData();
     }
 
     public static void saveDB(){
+
         MovieDB.saveData(listMovies);
+        HistoryDB.saveData(listHistory);
     }
 
     public static boolean create(Movie movie){
@@ -99,40 +108,84 @@ public class MovieController{
         System.out.print("\n");
     }
 
-    public static class SortByRating implements Comparator<Object> {
-        @Override
-        public int compare(Object x, Object y) {
-            return (((Movie)x).getOverallRating() >= ((Movie)y).getOverallRating())  ? 0 : 1;
-        }
-    }
-
-    public static class SortByTicket implements Comparator<Movie>{ //TODO Finish!
-
+    public static class SortByRating implements Comparator<Movie> {
         @Override
         public int compare(Movie x, Movie y) {
-            return 1;
+            float x_rate = x.getOverallRating();
+            float y_rate = y.getOverallRating();
+
+            if (x_rate > y_rate){
+                return -1;
+            }
+            else if (x_rate < y_rate){
+                return 1;
+            }
+            else{
+                return 0;
+            }
         }
     }
 
-    public static void DisplayByTopFiveByRating(){
-        ArrayList<Movie> All_movies = new ArrayList<>();
+    public static int getTicket(int movieID){
+        int ticket = 0;
+        for (int i = 0; i < listHistory.size(); i++){
+            History history = listHistory.get(i);
+            if (history.getID() == movieID){
+                ticket = ticket + history.getNoTicket();
+            }
+        }
+        return ticket;
+    }
+
+    public static class SortByTicket implements Comparator<Movie>{
+        @Override
+        public int compare(Movie x, Movie y) {
+            int x_tickets = getTicket(x.getID());
+            int y_tickets = getTicket(y.getID());
+            if (x_tickets > y_tickets){
+                return -1;
+            }
+            else if (x_tickets < y_tickets){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+
+    }
+
+
+    public static void topFiveByRating(){
+        ArrayList<Movie> all_movies = new ArrayList<>();
+
         for (int i = 0; i < listMovies.size(); i++){
-            All_movies.add(listMovies.get(i));
+            all_movies.add(listMovies.get(i));
         }
-        Collections.sort(All_movies, new SortByRating());
-        int Movie_ID = 0;
-        while(Movie_ID < Math.min(5, listMovies.size())){
-            ++Movie_ID;
-            displayByID(Movie_ID);
+
+        Collections.sort(all_movies, new SortByRating());
+        int index = 0;
+
+        while(index < Math.min(5, listMovies.size())){
+            output(all_movies.get(index));
+            ++index;
         }
     }
 
-    public static void  DisplayByTopFiveByTicketSale(){
-        ArrayList<Movie> All_Movie = new ArrayList<>();
+    public static void topFiveByTicket(){
+        ArrayList<Movie> all_movie = new ArrayList<>();
+
         for(int i = 0; i < listMovies.size(); i++){
-            All_Movie.add(listMovies.get(i));
+            all_movie.add(listMovies.get(i));
         }
-        // TODO add overall rating to the class Movie -> return this class
 
+        Collections.sort(all_movie, new SortByTicket());
+        int index = 0;
+
+        while (index < Math.min(5, listMovies.size())){
+            output(all_movie.get(index));
+            ++index;
+        }
     }
+
 }

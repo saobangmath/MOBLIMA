@@ -7,20 +7,35 @@ import model.Rating;
 
 import java.util.ArrayList;
 
+/**
+ * Represents all operations related to Rating object
+ * @author Tran Anh Tai
+ */
 public class RatingController {
     private static ArrayList RatingList, MovieList;
 
+    /**
+     * read all ratings, movies databases to RatingList and MovieList respectively for internal operations
+     */
     public static void readDB(){
         RatingList = RatingDB.readData();
         MovieList = MovieDB.readData();
     }
 
+    /**
+     * saving back to Rating and Movie databases by overriding the databases files with RatingList and MovieList
+     */
     public static void saveDB(){
         RatingDB.saveData(RatingList);
         MovieDB.saveData(MovieList);
     }
 
-    public static float GetOverall(int movieID){
+    /**
+     * get overall rating of a movie ID
+     * @param movieID
+     * @return this movieID overall rating
+     */
+    public static float get(int movieID){
         for (int i = 0; i < MovieList.size(); i++){
             Movie movie = (Movie) MovieList.get(i);
             if (movie.getID() == movieID){
@@ -30,9 +45,13 @@ public class RatingController {
         return -1;
     }
 
-    public static void CreateRating(int movieID, float rating, String email){
-        RatingList.add(new Rating(movieID, email, rating)); // TODO the real email is taken in the UserInterface
-        UpdateOverallRating(movieID, rating);
+    /**
+     * create a new rating
+     * @param rate
+     */
+    public static void create(Rating rate){
+        RatingList.add(rate); // TODO the real email is taken in the UserInterface
+        update(rate.getMovieID(), rate.getRating());
         try{
             saveDB();
         }
@@ -42,8 +61,12 @@ public class RatingController {
         System.out.println("Your rating for the film is successfully added!");
     }
 
-
-    public static void UpdateOverallRating(int movieID, float new_rate){
+    /**
+     * update overall rating of a movieID with a new rating added
+     * @param movieID
+     * @param new_rate
+     */
+    public static void update(int movieID, float new_rate){
         if (MovieController.checkExist(movieID)){
             ArrayList alw = new ArrayList();
             for (int i = 0; i < MovieList.size(); i++){
@@ -67,7 +90,12 @@ public class RatingController {
             System.out.println("The Movie is not existed in the database!");
         }
     }
-    public static void DisplayRating(int movieID){
+
+    /**
+     * display all rating details for a movie ID
+     * @param movieID
+     */
+    public static void display(int movieID){
         boolean existed = false;
         for (int i = 0; i < RatingList.size(); i++){
             Rating rating = (Rating)RatingList.get(i);

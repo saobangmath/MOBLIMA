@@ -1,7 +1,8 @@
 package Interface;
 
-import controller.BookingController;
+import controller.HistoryController;
 import controller.MovieController;
+import database.HistoryDB;
 import model.*;
 import controller.AdminController;
 
@@ -9,17 +10,30 @@ import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents all related Admin console display
+ * @author Tran Anh Tai
+ */
 public class AdminInterface {
     private static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        view();
+    }
+
+    /**
+     *
+     */
+    public static void view(){
         AdminController.readDB();
         MovieController.readDB();
+        HistoryController.readDB();
+
         boolean stop = false;
         System.out.println("Enter your username: ");
         String username = sc.next();
         System.out.println("Enter your password: ");
         String password = sc.next();
-        if (AdminController.IsAuthentication(username, password)){
+        if (AdminController.isAuthenticate(username, password)){
             while (!stop){
                 try{
                     System.out.println("Please input your choice to continue: ");
@@ -33,19 +47,19 @@ public class AdminInterface {
                     char choice = sc.next().charAt(0);
                     switch (choice){
                         case '1':
-                            AddMovie();
+                            createMovie();
                             break;
                         case '2':
-                            DeleteMovie();
+                            deleteMovie();
                             break;
                         case '3':
-                            TopFiveMovieRankByRatings();
+                            topFiveByRating();
                             break;
                         case '4':
-                            TopFiveMovieRankByTicketsSale();
+                            topFiveByTicket();
                             break;
                         case '5':
-                            ViewHistoryBooking();
+                            viewHistory();
                             break;
                         case '6':
                             stop = true;
@@ -62,9 +76,13 @@ public class AdminInterface {
         }
         MovieController.saveDB();
         AdminController.saveDB();
+        HistoryController.saveDB();
     }
 
-    public static void AddMovie(){
+    /**
+     * creating new movie
+     */
+    public static void createMovie(){
         System.out.println("Please enter movie ID: ");
         int movieID = sc.nextInt();
         if (!MovieController.checkExist(movieID)){
@@ -111,36 +129,54 @@ public class AdminInterface {
             int duration = sc.nextInt();
             System.out.println("\n");
 
-            AdminController.AddMovie(nameInput, movieID, category, description, director, cast, restriction, startDate, endDate, previewDate, duration);
+            Movie movie = new Movie(nameInput, movieID, category,
+                    description, director, cast, restriction,0,
+                    startDate, endDate, previewDate, duration);
+
+            AdminController.addMovie(movie);
         }
         else{
             System.out.println("The movie is existed in the database!");
         }
     }
 
-    public static void DeleteMovie(){
+    /**
+     * deleting movie
+     */
+    public static void deleteMovie(){
         System.out.println("Enter movie ID to delete: ");
         int movieID = sc.nextInt();
-        AdminController.DeleteMovie(movieID);
+        AdminController.deleteMovie(movieID);
     }
 
-    public static void TopFiveMovieRankByRatings(){
-        AdminController.TopFiveMovieRankByRatings();
+    /**
+     * display top 5 movie by rating
+     */
+    public static void topFiveByRating(){
+        AdminController.topFiveByRating();
     }
 
-    public static void TopFiveMovieRankByTicketsSale(){
+    /**
+     * display top 5 movies by tickets sales
+     */
+    public static void topFiveByTicket(){
 
-        AdminController.TopFiveMovieRankByTicketsSale();
+        AdminController.topFiveByTicket();
     }
 
-    public static void ViewHistoryBooking(){
-        ArrayList<Booking> BookingList = BookingController.getAllBooking();
-        for (int i = 0; i < BookingList.size(); i++){
-            Booking booking = BookingList.get(i);
-            System.out.println(" User: " + booking.getUserEmail()
-                    + " has booked movieID " + booking.getMovieID()
-                    + " at cinelex: " + booking.getCinelexID()
-                    + " on: " + booking.getDate());
+    /**
+     * view all history booking transactions details
+     */
+    public static void viewHistory(){
+        ArrayList<History> histories = HistoryDB.readData();
+        for (History history : histories){
+            System.out.println("User: " + history.getEmail() +
+                               " has booked: " + history.getNoTicket() +
+                               " tickets for the Movie with ID: " + history.getID() +
+                               " on: " + history.getTransactionDate() +
+                               " at: " + history.getTransactionTime() );
+
         }
+        System.out.println();
     }
 }

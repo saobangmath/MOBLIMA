@@ -3,13 +3,26 @@ package Interface;
 import controller.MovieController;
 import controller.RatingController;
 import model.Email;
+import model.Rating;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Represents all related Rating console display
+ * @author Tran Anh Tai
+ */
 public class RatingInterface {
     static Scanner sc =  new Scanner(System.in);
-    public static void main(String[] args) {
+
+    public static void main(String[] args) { //local testing
+        view();
+    }
+
+    /**
+     * main interface for rating
+     */
+    public static void view() {
         MovieController.readDB();
         RatingController.readDB();
         boolean stop =  false;
@@ -25,13 +38,13 @@ public class RatingInterface {
                 char choice = sc.next().charAt(0);
                 switch (choice){
                     case '1':
-                        CreateRating();
+                        create();
                         break;
                     case '2':
-                        ViewRating();
+                        display();
                         break;
                     case '3':
-                        GetOverallRating();
+                        display_overall_rating();
                         break;
                     case '4':
                         stop = true;
@@ -49,8 +62,10 @@ public class RatingInterface {
         RatingController.saveDB();
     }
 
-
-    public static void CreateRating(){
+    /**
+     * create new rating
+     */
+    public static void create(){
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
         if (MovieController.checkExist(movieID)){
@@ -62,7 +77,8 @@ public class RatingInterface {
                 try{
                     float rating_value = Float.parseFloat(rating);
                     if (rating_value > 0 && rating_value <= 5){
-                        RatingController.CreateRating(movieID, rating_value, email);
+                        Rating rate = new Rating(movieID, email, rating_value);
+                        RatingController.create(rate);
                     }
                     else{
                         System.out.println("Rating should be between (0, 5)!");
@@ -81,21 +97,27 @@ public class RatingInterface {
         }
     }
 
-    private static void ViewRating() {
+    /**
+     * display all ratings for movieID
+     */
+    private static void display() {
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
         if (MovieController.checkExist(movieID)){
-            RatingController.DisplayRating(movieID);
+            RatingController.display(movieID);
         }
         else{
             System.out.println("The Movie is not existed in the database!");
         }
     }
 
-    private static void GetOverallRating() {
+    /**
+     * display overall rating for a movieID
+     */
+    private static void display_overall_rating() {
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
-        float average = RatingController.GetOverall(movieID);
+        float average = RatingController.get(movieID);
         if (average == -1){
             System.out.println("There is no rating for the Movie yet!");
         }
