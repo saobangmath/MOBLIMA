@@ -70,7 +70,7 @@ public class ReviewInterface {
     }
 
     /**
-     * add new review for a movieID
+     * create new review for a movieID
      */
     private static void addReview() {
         System.out.println("Enter Movie ID: ");

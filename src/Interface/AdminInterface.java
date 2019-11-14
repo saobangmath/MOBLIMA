@@ -1,5 +1,6 @@
 package Interface;
 
+import controller.ComboController;
 import controller.HistoryController;
 import controller.MovieController;
 import database.HistoryDB;
@@ -21,12 +22,13 @@ public class AdminInterface {
     }
 
     /**
-     *
+     * admin main interface
      */
     public static void view(){
         AdminController.readDB();
         MovieController.readDB();
         HistoryController.readDB();
+        ComboController.readDB();
 
         boolean stop = false;
         System.out.println("Enter your username: ");
@@ -42,7 +44,8 @@ public class AdminInterface {
                     System.out.println("3. DisPlay top 5 Movie rank by Ratings: ");
                     System.out.println("4. Display top 5 Movie rank by Viewers: ");
                     System.out.println("5. View history booking: ");
-                    System.out.println("6. Exit");
+                    System.out.println("6. View all food and drink transactions: ");
+                    System.out.println("7. Exit");
                     System.out.print("Your choice: ");
                     char choice = sc.next().charAt(0);
                     switch (choice){
@@ -62,6 +65,9 @@ public class AdminInterface {
                             viewHistory();
                             break;
                         case '6':
+                            viewFDOrder();
+                            break;
+                        case '7':
                             stop = true;
                             break;
                         default:
@@ -77,6 +83,7 @@ public class AdminInterface {
         MovieController.saveDB();
         AdminController.saveDB();
         HistoryController.saveDB();
+        ComboController.saveDB();
     }
 
     /**
@@ -178,5 +185,12 @@ public class AdminInterface {
 
         }
         System.out.println();
+    }
+
+    /**
+     * view all food and drink order of all users
+     */
+    private static void viewFDOrder() {
+        ComboController.displayAll();
     }
 }

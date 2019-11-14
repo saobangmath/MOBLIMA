@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import database.HistoryBookingDB;
 import database.HistoryDB;
 import database.MovieDB;
 import model.History;
