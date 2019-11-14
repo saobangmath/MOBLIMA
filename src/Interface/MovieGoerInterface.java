@@ -5,7 +5,10 @@ import javax.management.openmbean.InvalidKeyException;
 import model.MovieGoer;
 import controller.MovieGoerController;
 public class MovieGoerInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void main(String[] args) {
+        view();
+    }
+    public static void view() {
         MovieGoerController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -107,4 +110,5 @@ public class MovieGoerInterface extends BaseInterface{
         email = sc.next();
         return email;
     }
+
 }

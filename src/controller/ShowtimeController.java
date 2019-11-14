@@ -94,7 +94,7 @@ public class ShowtimeController{
     public static void output(Showtime showtime){
         System.out.println("ID: "+ showtime.getID());
         System.out.println("Movie : " + MovieController.read(showtime.getMovieId()).getName());
-        System.out.println("Cineplex : "+ CineplexController.read(showtime.getCineplexId()).getName() );
+        System.out.println("Cineplex : "+ CineplexController.read(showtime.getCineplexId()).getName());
         System.out.println("Cinema : "+ CinemaController.read(showtime.getCinemaId()).getName());
         System.out.println("Date : "+ showtime.getDate() );
         System.out.println("Start time: "+ showtime.getStartTime() );

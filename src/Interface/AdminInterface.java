@@ -1,11 +1,8 @@
 package Interface;
 
-import controller.ComboController;
-import controller.HistoryController;
-import controller.MovieController;
+import controller.*;
 import database.HistoryDB;
 import model.*;
-import controller.AdminController;
 
 import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
@@ -45,29 +42,41 @@ public class AdminInterface {
                     System.out.println("4. Display top 5 Movie rank by Viewers: ");
                     System.out.println("5. View history booking: ");
                     System.out.println("6. View all food and drink transactions: ");
-                    System.out.println("7. Exit");
+                    System.out.println("7. Moviegoer");
+                    System.out.println("8. Showtime");
+                    System.out.println("9. Holiday");
+                    System.out.println("10. Exit");
                     System.out.print("Your choice: ");
-                    char choice = sc.next().charAt(0);
+                    int choice = sc.nextInt();
                     switch (choice){
-                        case '1':
+                        case 1:
                             createMovie();
                             break;
-                        case '2':
+                        case 2:
                             deleteMovie();
                             break;
-                        case '3':
+                        case 3:
                             topFiveByRating();
                             break;
-                        case '4':
+                        case 4:
                             topFiveByTicket();
                             break;
-                        case '5':
+                        case 5:
                             viewHistory();
                             break;
-                        case '6':
+                        case 6:
                             viewFDOrder();
                             break;
-                        case '7':
+                        case 7:
+                            MovieGoerInterface.view();
+                            break;
+                        case 8:
+                            ShowtimeInterface.view();
+                            break;
+                        case 9:
+                            HolidayInterface.view();
+                            break;
+                        case 10:
                             stop = true;
                             break;
                         default:

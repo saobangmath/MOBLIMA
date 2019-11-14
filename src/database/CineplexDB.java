@@ -9,7 +9,7 @@ import model.Cineplex;
 
 public class CineplexDB extends DB{
     public static final String SEPARATOR = "|";
-    public static final String filename = "cineplex.txt";
+    public static final String filename = "D://NTU CS/Java/MOBLIMA/src/cineplex.txt";
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data

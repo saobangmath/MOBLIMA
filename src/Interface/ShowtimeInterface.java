@@ -6,7 +6,10 @@ import controller.*;
 import model.Showtime;
 
 public class ShowtimeInterface{
-    public static void main(String[] aArgs)  {
+    public static void main(String[] args) {
+        view();
+    }
+    public static void view(){
         ShowtimeController.readDB();
         CineplexController.readDB();
         CinemaController.readDB();

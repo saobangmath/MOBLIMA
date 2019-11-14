@@ -6,7 +6,11 @@ import controller.SeatController;
 public class SeatInterface extends BaseInterface{
     private static int col, showtimeId;
     private static char row;
-    public static void main(String[] aArgs)  {
+
+    public static void main(String[] args) {
+        view();
+    }
+    public static void view() {
         SeatController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;

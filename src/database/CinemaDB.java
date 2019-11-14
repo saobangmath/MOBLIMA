@@ -9,7 +9,7 @@ import model.Cinema;
 
 public class CinemaDB extends DB{
     public static final String SEPARATOR = "|";
-    public static final String filename = "cinema.txt";
+    public static final String filename = "D://NTU CS/Java/MOBLIMA/src/cinema.txt";
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
