@@ -14,7 +14,7 @@ public class HolidayInterface extends BaseInterface{
             System.out.println("1. Retrieve all Holiday ");
             System.out.println("2. Add new Holiday");
             System.out.println("3. Delete Holiday ");
-            System.out.println("4. Exit");
+            System.out.println("4. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");

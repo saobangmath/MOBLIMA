@@ -6,7 +6,6 @@ import model.MovieGoer;
 import controller.MovieGoerController;
 public class MovieGoerInterface extends BaseInterface{
     public static void view() {
-        MovieGoerController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;
         String email;
@@ -18,7 +17,7 @@ public class MovieGoerInterface extends BaseInterface{
             System.out.println("3. Add new MovieGoer");
             System.out.println("4. Update MovieGoer information");
             System.out.println("5. Delete MovieGoer ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -66,7 +65,6 @@ public class MovieGoerInterface extends BaseInterface{
                     break;
             }
         }
-        MovieGoerController.saveDB();
   }
 
   public static MovieGoer createMovieGoer(){
@@ -98,7 +96,7 @@ public class MovieGoerInterface extends BaseInterface{
             continue;
         }
     }
-    return new MovieGoer(email, age, name, mobile);
+    return new MovieGoer(email, age, name, mobile, 0);
   }
 
   public static String readEmail(){

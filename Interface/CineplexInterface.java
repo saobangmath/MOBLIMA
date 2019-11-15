@@ -7,8 +7,6 @@ import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
 public class CineplexInterface extends BaseInterface{
     public static void view() {
-        CineplexController.readDB();
-        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -19,7 +17,7 @@ public class CineplexInterface extends BaseInterface{
             System.out.println("3. Add new Cineplex");
             System.out.println("4. Update Cineplex information");
             System.out.println("5. Delete Cineplex ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -67,7 +65,6 @@ public class CineplexInterface extends BaseInterface{
                     break;
             }
         }
-        CineplexController.saveDB();
   }
 
   public static Cineplex createCineplex(){

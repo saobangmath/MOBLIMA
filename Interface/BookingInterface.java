@@ -4,10 +4,10 @@ import javax.management.openmbean.InvalidKeyException;
 import controller.*;
 import model.*;
 import java.util.ArrayList;
-import java.util.Random;
 public class BookingInterface {
     static Scanner sc = new Scanner(System.in);
-    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price;
+    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price, discountPoint, popcorn, drink;
+    static float earnedPoint;
     static long historyID;
     static ArrayList<Character> rows = new ArrayList<Character>();
     static ArrayList<Integer> cols = new ArrayList<Integer>();
@@ -16,13 +16,6 @@ public class BookingInterface {
     static boolean discount;
     static MovieGoer movieGoer;
     public static void view() {
-        MovieController.readDB();
-        MovieGoerController.readDB();
-        CineplexController.readDB();
-        CinemaController.readDB();
-        ShowtimeController.readDB();
-        SeatController.readDB();
-        HistoryController.readDB();
         while(process){
             MovieController.displayAll();
             movieIDInput();
@@ -40,6 +33,8 @@ public class BookingInterface {
             seatNumberInput();
             discountInput();
             emailInput();
+            comboInput();
+            discountByRewardPoint();
             confirm();
         }
         for(int i = 0; i < noTicket; i++){
@@ -47,22 +42,18 @@ public class BookingInterface {
         }
         transactionDate = DateTime.getCurrentDate();
         transactionTime = DateTime.getCurrentTime();
-        Random rand = new Random();
         String transactionID = "" + showtimeID + transactionDate.replace("/", "") + transactionTime.replace(":", "");
         historyID = Long.parseLong(transactionID.trim());
+        Combo combo = new Combo(historyID, showtimeID, email, popcorn, drink);
+        ComboController.create(combo);
         History history = new History(historyID, email, showtimeID, transactionDate, transactionTime, price, noTicket, rows, cols);
         HistoryController.create(history);
         if(!MovieGoerController.checkExist(email)){
             MovieGoerController.create(movieGoer);
         }
-
-        MovieController.saveDB();
-        MovieGoerController.saveDB();
-        CineplexController.saveDB();
-        CinemaController.saveDB();
-        ShowtimeController.saveDB();
-        SeatController.saveDB();
-        HistoryController.saveDB();
+        earnedPoint = earnedPoint - (float)discountPoint;
+        MovieGoerController.addRewardPoint(earnedPoint, email);
+        process = true;
     }
 
     public static void movieIDInput(){
@@ -228,7 +219,7 @@ public class BookingInterface {
                         System.out.println("Please input your mobile number");
                         mobile = sc.nextInt();
                         sc.nextLine();
-                        movieGoer = new MovieGoer(email, age, name, mobile);
+                        movieGoer = new MovieGoer(email, age, name, mobile, 0);
                     }
                     break;
                 }
@@ -238,6 +229,63 @@ public class BookingInterface {
             }
             catch(Exception e){
                 System.out.println("Error: "+ e.getMessage());
+                System.out.print("\n");
+            }
+        }
+    }
+
+    public static void comboInput(){
+        boolean process = true;
+        while (process){
+            popcorn = 0;
+            drink = 0;
+            try{
+                System.out.println("Do you want to add any food or drink?");
+                System.out.println("Popcorn price: " + Price.POPCORN);
+                System.out.println("Drink price: " + Price.DRINK);
+                System.out.println("Enter Yes or No (Y/N): ");
+                char choice = sc.next().charAt(0);
+                if(choice == 'Y'){
+                    System.out.println("Enter number of popcorn: ");
+                    popcorn = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Enter number of drink: ");
+                    drink = sc.nextInt();
+                    sc.nextLine();
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                System.out.print("\n");
+            }
+        }
+    }
+
+    public static void discountByRewardPoint(){
+        char yn;
+        discountPoint = 0;
+        while(true){
+            try{
+                System.out.println("Your reward point is: " + movieGoer.getRewardPoint());
+                System.out.println("Do you want to use reward point to get discount?(Y/N)");
+                yn = sc.next().charAt(0);
+                if(yn == 'Y'){
+                    System.out.println("Input your discount point(Integer only)");
+                    discountPoint = sc.nextInt();
+                    sc.nextLine();
+                    if(discountPoint > movieGoer.getRewardPoint()){
+                        throw new InvalidKeyException("Invalid discount point");
+                    }
+                }
+                else{
+                    sc.nextLine();
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                discountPoint = 0;
                 System.out.print("\n");
             }
         }
@@ -260,6 +308,9 @@ public class BookingInterface {
             }
             price += Price.getPrice(vip, special, discount, cinema.getCinemaClass());
         }
+        price += Price.DRINK*drink + Price.POPCORN*popcorn;
+        price -= discountPoint;
+        earnedPoint = (float)((float)price)/10;
         System.out.println("Please confirm your booking:");
         System.out.println("Movie: "+ movie.getName());
         System.out.println("Cineplex: " + cineplex.getName());
@@ -267,12 +318,15 @@ public class BookingInterface {
         System.out.println("Showtime: " + showtime.getDate() + "  " + showtime.getStartTime() + " to "+ showtime.getEndTime());
         System.out.println("Number of ticket: "+ noTicket);
         System.out.println("Seat number: " + seatString);
+        System.out.println("Popcorn: " + popcorn);
+        System.out.println("Drink: " + drink);
         System.out.println("Discount: "+ discount);
         System.out.println("Price: "+ price);
         System.out.println("Email: "+ movieGoer.getEmail());
         System.out.println("Name: "+ movieGoer.getName());
         System.out.println("Age: " + movieGoer.getAge());
         System.out.println("Mobile: " + movieGoer.getMobile());
+        System.out.println("Earned reward point: " + earnedPoint);
         char cf;
         while(true){
             try{

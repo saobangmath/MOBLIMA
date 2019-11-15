@@ -8,7 +8,6 @@ public class SeatInterface extends BaseInterface{
     private static char row;
     
     public static void view()  {
-        SeatController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice;
         boolean process = true;
@@ -19,7 +18,7 @@ public class SeatInterface extends BaseInterface{
             System.out.println("3. Add new Seat");
             System.out.println("4. Update Seat information");
             System.out.println("5. Delete Seat ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -68,7 +67,6 @@ public class SeatInterface extends BaseInterface{
                     break;
             }
         }
-        SeatController.saveDB();
   }
 
   public static Seat createSeat(){

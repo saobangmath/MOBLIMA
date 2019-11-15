@@ -5,7 +5,6 @@ import model.Movie;
 import controller.MovieController;
 public class MovieInterface extends BaseInterface{
     public static void view()  {
-        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -16,7 +15,7 @@ public class MovieInterface extends BaseInterface{
             System.out.println("3. Add new Movie");
             System.out.println("4. Update Movie information");
             System.out.println("5. Delete Movie ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -64,7 +63,6 @@ public class MovieInterface extends BaseInterface{
                     break;
             }
         }
-        MovieController.saveDB();
   }
 
   public static Movie createMovie(){

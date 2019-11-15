@@ -60,6 +60,19 @@ public class MovieGoerController{
         return false;           
     }
 
+    public static void addRewardPoint(float earnedPoint, String email){
+        float rewardPoint;
+        for(int i = 0; i < listMovieGoer.size(); i++){
+            if(listMovieGoer.get(i).getEmail().equals(email)){
+                MovieGoer movieGoer = listMovieGoer.get(i);
+                rewardPoint = movieGoer.getRewardPoint() + earnedPoint;
+                movieGoer.setRewardPoint(rewardPoint);
+                listMovieGoer.set(i, movieGoer);
+                return;
+            }
+        }   
+    }
+
     public static void displayAll(){
         for(int i = 0; i< listMovieGoer.size(); i++){
             output(listMovieGoer.get(i));
@@ -80,6 +93,7 @@ public class MovieGoerController{
         System.out.println("Name: " + movieGoer.getName());
         System.out.println("Age: "+ movieGoer.getAge());
         System.out.println("Mobile: "+ movieGoer.getMobile());
+        System.out.println("Reward point: "+ movieGoer.getRewardPoint());
         System.out.print("\n");
     }
 }

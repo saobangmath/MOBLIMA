@@ -6,11 +6,6 @@ import controller.*;
 import model.Movie;
 public class ShowtimeInterface extends BaseInterface{
     public static void view()  {
-        ShowtimeController.readDB();
-        CineplexController.readDB();
-        CinemaController.readDB();
-        SeatController.readDB();
-        MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -21,7 +16,7 @@ public class ShowtimeInterface extends BaseInterface{
             System.out.println("3. Add new Showtime");
             System.out.println("4. Update Showtime information");
             System.out.println("5. Delete Showtime ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -69,9 +64,6 @@ public class ShowtimeInterface extends BaseInterface{
                     break;
             }
         }
-        MovieController.saveDB();
-        ShowtimeController.saveDB();
-        SeatController.saveDB();
   }
 
   public static Showtime createShowtime(){

@@ -5,6 +5,8 @@ public class Price {
     private static final int NORMAL_SPECIAL = 8;
     private static final int VIP_SPECIAL = 10;
     private static final int VIP_NON_SPECIAL = 9;
+    public static final int POPCORN = 3;
+    public static final int DRINK = 2;
 
     public static int getPrice(boolean vipSeat, boolean specialTime, boolean discount, int cinemaClass){
         int price = NORMAL_NON_SPECIAL;

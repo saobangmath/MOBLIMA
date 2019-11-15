@@ -6,7 +6,6 @@ import controller.CinemaController;
 import controller.CineplexController;
 public class CinemaInterface extends BaseInterface{
     public static void view() {
-        CinemaController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -17,7 +16,7 @@ public class CinemaInterface extends BaseInterface{
             System.out.println("3. Add new Cinema");
             System.out.println("4. Update Cinema information");
             System.out.println("5. Delete Cinema ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -65,7 +64,6 @@ public class CinemaInterface extends BaseInterface{
                     break;
             }
         }
-        CinemaController.saveDB();
   }
 
   public static Cinema createCinema(){

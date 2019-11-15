@@ -5,13 +5,6 @@ import model.History;
 import controller.*;
 public class HistoryInterface extends BaseInterface{
     public static void view() {
-        HistoryController.readDB();
-        CineplexController.readDB();
-        CinemaController.readDB();
-        SeatController.readDB();
-        MovieController.readDB();
-        ShowtimeController.readDB();
-        MovieGoerController.readDB();
         boolean process = true;
         String email;
         Scanner sc = new Scanner(System.in);

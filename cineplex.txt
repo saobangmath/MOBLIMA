@@ -1,1 +1,2 @@
-123|golden village|jurong point|123
+1|Golden Village|Jurong Point|1,2
+2|Golden Village|Singapura|1

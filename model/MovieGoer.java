@@ -5,12 +5,14 @@ public class MovieGoer extends Email{
     private int age;
     private String name;
     private int mobileNumber;
+    private float rewardPoint;
 
-    public MovieGoer(String emailInput, int ageInput, String nameInput, int mobileInput){
+    public MovieGoer(String emailInput, int ageInput, String nameInput, int mobileInput, float rewardPointInput){
         email = emailInput;
         age = ageInput;
         name = nameInput;
         mobileNumber = mobileInput; 
+        rewardPoint = rewardPointInput;
     }
 
     public String getEmail(){ return this.email; };
@@ -21,5 +23,8 @@ public class MovieGoer extends Email{
 
     public int getMobile() {return this.mobileNumber;}
 
+    public float getRewardPoint(){return this.rewardPoint;}
+
+    public void setRewardPoint(float rewardPointInput){this.rewardPoint = rewardPointInput;}
 
 }

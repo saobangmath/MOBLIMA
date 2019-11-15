@@ -1,1 +1,2 @@
-123|avenger|horror, action, fight|cef|n j k|j k l|1|0.0|12/12/2019|22/12/2019|11/12/2019|120
+1|joker|funny|i dcdo , cmsd scsdc cds|cs  dcd cdcsd|cnhs csdadc, csd ,csdc|1|3.25|10/10/2019|12/12/2019|09/10/2019|120
+2|Terminator|action, robot|sdmcfmwece, cdcijsdcm|vjmdsf  , ckdmc|cds , csd|3|0.0|10/11/2019|10/01/2020|09/11/2019|110

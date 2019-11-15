@@ -22,7 +22,8 @@ public class MovieGoerDB extends DB{
 				int  age = Integer.parseInt(star.nextToken().trim());	// second token
 				String  name = star.nextToken().trim(); // third token
 				int mobile = Integer.parseInt(star.nextToken().trim());
-				MovieGoer goer = new MovieGoer(email, age, name, mobile);
+				float rewardPoint = Float.parseFloat(star.nextToken().trim());
+				MovieGoer goer = new MovieGoer(email, age, name, mobile, rewardPoint);
 				alr.add(goer);
 			}
 		}
@@ -46,6 +47,8 @@ public class MovieGoerDB extends DB{
 				st.append(goer.getName());
 				st.append(SEPARATOR);
 				st.append(goer.getMobile());
+				st.append(SEPARATOR);
+				st.append(String.valueOf(goer.getRewardPoint()));
 				alw.add(st.toString()) ;
 			}
 		try{

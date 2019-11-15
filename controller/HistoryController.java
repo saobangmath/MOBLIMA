@@ -85,6 +85,7 @@ public class HistoryController{
         Movie movie = MovieController.read(showtime.getMovieId());
         Cinema cinema = CinemaController.read(showtime.getCinemaId());
         Cineplex cineplex = CineplexController.read(showtime.getCineplexId());
+        Combo combo = ComboController.read(history.getID());
         String seatDisplay = "";
         for(int j = 0; j < history.getSeatCol().size(); j ++){
             seatDisplay = seatDisplay + String.valueOf(history.getSeatRow().get(j)) + String.valueOf(history.getSeatCol().get(j)) + " ";
@@ -97,10 +98,23 @@ public class HistoryController{
         System.out.println("Cineplex: " + cineplex.getName());
         System.out.println("Seat: "+ seatDisplay);
         System.out.println("No ticket: " + history.getNoTicket());
+        System.out.println("Popcorn: " + combo.getPopcorn());
+        System.out.println("Drink: " + combo.getDrink());
         System.out.println("Price: " + history.getPrice());
         System.out.println("Transaction time: " + history.getTransactionTime());
         System.out.println("Transaction date: " + history.getTransactionDate());
         System.out.println("Transaction ID: " + String.valueOf(history.getID()));
         System.out.print("\n");
+    }
+
+    public static int getTicket(int movieID){
+        int ticket = 0;
+        for (int i = 0; i < listHistory.size(); i++){
+            History history = listHistory.get(i);
+            if (history.getID() == movieID){
+                ticket = ticket + history.getNoTicket();
+            }
+        }
+        return ticket;
     }
 }

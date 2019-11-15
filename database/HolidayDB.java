@@ -39,7 +39,6 @@ public class HolidayDB extends DB{
 				Holiday Holiday = (Holiday)al.get(i);
                 StringBuilder st =  new StringBuilder() ;
 				st.append(Holiday.getDate());
-                st.append(SEPARATOR);
 				alw.add(st.toString()) ;
 			}
 		try{
