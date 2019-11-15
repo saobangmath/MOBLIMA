@@ -1,0 +1,9 @@
+1|khanh26688@gmail.com|3.0
+1|khanh003@gmail.com|5.0
+1|khanh123@gmail.com|2.0
+3|khanh26688@gmail.com|3.0
+3|khanh.phungntu@gmail.com|5.0
+3|khanh123@gmail.com|5.0
+3|khanh@gmail.com|2.0
+3|khanh111@gmail.com|3.0
+3|khanh01@gmail.com|1.0

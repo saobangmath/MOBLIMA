@@ -25,7 +25,7 @@ public class ReviewInterface {
                 System.out.println("1. Add your own review for a Movie: ");
                 System.out.println("2. View all reviews with a specific Movie: ");
                 System.out.println("3. Back");
-                char choice = sc.next().charAt(0);
+                char choice = sc.nextLine().charAt(0);
                 switch (choice){
                     case '1':
                         addReview();
@@ -73,10 +73,10 @@ public class ReviewInterface {
         sc.nextLine();
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
-            String email = sc.next();
+            String email = sc.nextLine();
             if (Email.validateEmail(email)){
                 System.out.println("Enter your comment: ");
-                String comment = sc.next();
+                String comment = sc.nextLine();
                 Review review = new Review(movieID, email, comment);
                 ReviewController.create(review);
             }

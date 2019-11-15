@@ -44,7 +44,7 @@ public class UserInterface {
                         RatingInterface.view();;
                         break;
                     case 6:
-                        MovieController.topFiveByTicket();
+                        MovieController.topFiveByRating();
                         break;
                     case 7:
                         HistoryInterface.view();;

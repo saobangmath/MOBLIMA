@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * @author Tran Anh Tai
  */
 public class RatingController {
-    private static ArrayList RatingList, MovieList;
+    private static ArrayList RatingList;
 
     /**
-     * read all ratings, movies databases to RatingList and MovieList respectively for internal operations
+     * read all ratings, movies databases to RatingList for internal operations
      */
     public static void readDB(){
         RatingList = RatingDB.readData();
@@ -58,8 +58,8 @@ public class RatingController {
     public static void updateOverallRating(int movieID, float new_rate){
         if (MovieController.checkExist(movieID)){
             Movie movie = MovieController.read(movieID);
-            int ratingSum = 0;
-            int rating_count = 0;
+            float ratingSum = 0;
+            float rating_count = 0;
             for (int j = 0; j < RatingList.size();j++){
                 Rating rating = (Rating)RatingList.get(j);
                 if (rating.getMovieID() == movieID){
@@ -67,7 +67,9 @@ public class RatingController {
                     rating_count ++;
                 }
             }
-            float updated_rating = (ratingSum + new_rate) / (rating_count+1);
+            float updated_rating = (ratingSum) / (rating_count);
+            updated_rating = Math.round(updated_rating * 10f) / 10f;
+            System.out.println(updated_rating);
             movie.setOverallRating(updated_rating);
         }
         else{

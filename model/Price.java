@@ -29,4 +29,12 @@ public class Price {
         }
         return price;
     }
+
+    public static void displayPrice(){
+        System.out.println("Normal seat, non special day: " + NORMAL_NON_SPECIAL + "S$");
+        System.out.println("Normal seat, special day(including holiday, weekend and sneak show): " + NORMAL_SPECIAL + "S$");
+        System.out.println("VIP seat(row E, F, G), non special day: " + VIP_NON_SPECIAL + "S$");
+        System.out.println("VIP seat(row E, F, G), special day(including holiday, weekend and sneak show): " + VIP_SPECIAL + "S$");
+        System.out.println("Students, seniors are discounted by 1 S$");
+    }
 }

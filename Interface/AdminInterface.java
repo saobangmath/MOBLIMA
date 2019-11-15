@@ -16,9 +16,9 @@ public class AdminInterface {
     public static void view(){
         boolean stop = false;
         System.out.println("Enter your username: ");
-        String username = sc.next();
+        String username = sc.nextLine();
         System.out.println("Enter your password: ");
-        String password = sc.next();
+        String password = sc.nextLine();
         if (AdminController.isAuthenticate(username, password)){
             while (!stop){
                 try{

@@ -16,7 +16,7 @@ public class MOBLIMA{
             System.out.println("2. Moviegoer");
             System.out.println("3. Exit");
             System.out.println("Enter your choice: ");
-            char choice = sc.next().charAt(0);
+            char choice = sc.nextLine().charAt(0);
             switch (choice){
                 case '1':
                     AdminInterface.view();

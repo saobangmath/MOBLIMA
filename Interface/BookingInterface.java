@@ -29,6 +29,7 @@ public class BookingInterface {
             noTicketInput();
             System.out.println("x denotes empty, o denotes occupied");
             cinemaID = ShowtimeController.read(showtimeID).getCinemaId();
+            Price.displayPrice();
             ShowtimeController.displaySeatMap(showtimeID);
             seatNumberInput();
             discountInput();
@@ -244,7 +245,7 @@ public class BookingInterface {
                 System.out.println("Popcorn price: " + Price.POPCORN);
                 System.out.println("Drink price: " + Price.DRINK);
                 System.out.println("Enter Yes or No (Y/N): ");
-                char choice = sc.next().charAt(0);
+                char choice = sc.nextLine().charAt(0);
                 if(choice == 'Y'){
                     System.out.println("Enter number of popcorn: ");
                     popcorn = sc.nextInt();
@@ -269,7 +270,7 @@ public class BookingInterface {
             try{
                 System.out.println("Your reward point is: " + movieGoer.getRewardPoint());
                 System.out.println("Do you want to use reward point to get discount?(Y/N)");
-                yn = sc.next().charAt(0);
+                yn = sc.nextLine().charAt(0);
                 if(yn == 'Y'){
                     System.out.println("Input your discount point(Integer only)");
                     discountPoint = sc.nextInt();

@@ -29,7 +29,7 @@ public class RatingInterface {
                 System.out.println("3. View average rating for a Movie: ");
                 System.out.println("4. Back");
                 System.out.println("Enter your choice: ");
-                char choice = sc.next().charAt(0);
+                char choice = sc.nextLine().charAt(0);
                 switch (choice){
                     case '1':
                         create();
@@ -65,10 +65,10 @@ public class RatingInterface {
         sc.nextLine();
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
-            String email = sc.next();
+            String email = sc.nextLine();
             if (Email.validateEmail(email)){
                 System.out.println("Enter your rating: ");
-                String rating = sc.next();
+                String rating = sc.nextLine();
                 try{
                     float rating_value = Float.parseFloat(rating);
                     if (rating_value > 0 && rating_value <= 5){
@@ -121,7 +121,7 @@ public class RatingInterface {
             System.out.println("There is no rating for the Movie yet!");
         }
         else{
-            System.out.println("Average rating for the Movie with movieID : " + movieID + " is: " + average);
+            System.out.println("Average rating for movie : " + MovieController.read(movieID).getName() + " is: " + average);
         }
     }
 }

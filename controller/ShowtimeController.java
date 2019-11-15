@@ -119,10 +119,10 @@ public class ShowtimeController{
             for(int j = 0; j < col; j++){
                 Seat seat;
                 if(rowChar == 'E' || rowChar == 'F' || rowChar == 'G'){
-                    seat = new Seat(rowChar, j+1, showtimeId, false, false, 0);
+                    seat = new Seat(rowChar, j+1, showtimeId, false, true, 0);
                 }
                 else{
-                    seat = new Seat(rowChar, j+1, showtimeId, false, true, 0);
+                    seat = new Seat(rowChar, j+1, showtimeId, false, false, 0);
                 }
                 SeatController.create(seat);
             }
