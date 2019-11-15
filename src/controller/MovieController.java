@@ -3,28 +3,38 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import database.HistoryDB;
 import database.MovieDB;
-import model.History;
 import model.Movie;
 
+/**
+ * movie controller
+ * @author Phung Minh Khanh
+ */
 public class MovieController{
 
     private static ArrayList<Movie> listMovies = new ArrayList<Movie>();
-    private static ArrayList<History> listHistory = new ArrayList<>();
 
+    /**
+     * retrieve all movies details in the database and put tn the listMovies
+     */
     public static void readDB(){
 
         listMovies = MovieDB.readData();
-        listHistory = HistoryDB.readData();
     }
 
+    /**
+     * save back the listMovies Array list to the database text file
+     */
     public static void saveDB(){
 
         MovieDB.saveData(listMovies);
-        HistoryDB.saveData(listHistory);
     }
 
+    /**
+     *
+     * @param movie
+     * @return if create a new movie is successful
+     */
     public static boolean create(Movie movie){
         if(checkExist(movie.getID())){
             return false;
@@ -34,6 +44,11 @@ public class MovieController{
         return true;
     }
 
+    /**
+     *
+     * @param ID
+     * @return a Movie with specific ID in the database
+     */
     public static Movie read(int ID){
         for(int i = 0; i < listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
@@ -43,6 +58,11 @@ public class MovieController{
         return null;
     }
 
+    /**
+     *
+     * @param ID
+     * @return if a movie Id is existed in the database
+     */
     public static boolean checkExist(int ID){
         for(int i = 0; i < listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
@@ -52,6 +72,11 @@ public class MovieController{
         return false;
     }
 
+    /**
+     *
+     * @param ID
+     * @return if we could delete a  movie with specific ID in the database
+     */
     public static boolean delete(int ID){
         for(int i = 0; i < listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
@@ -63,6 +88,11 @@ public class MovieController{
         return false;
     }
 
+    /**
+     * update a movie details
+     * @param movie
+     * @return
+     */
     public static boolean update(Movie movie){
         for(int i = 0; i < listMovies.size(); i++){
             if(listMovies.get(i).getID() == movie.getID()){
@@ -75,6 +105,9 @@ public class MovieController{
         return false;
     }
 
+    /**
+     * display all available movie
+     */
     public static void displayAll(){
         System.out.println("All available movies:");
         for(int i = 0; i< listMovies.size(); i++){
@@ -82,6 +115,10 @@ public class MovieController{
         }
     }
 
+    /**
+     * displau a movie details with specific ID
+     * @param ID
+     */
     public static void displayByID(int ID){
         for(int i = 0; i< listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){
@@ -91,6 +128,10 @@ public class MovieController{
         }
     }
 
+    /**
+     * display the detail of a Movie object
+     * @param movie
+     */
     public static void output(Movie movie){
         System.out.println("ID: "+ movie.getID());
         System.out.println("Name: " + movie.getName());
@@ -104,9 +145,24 @@ public class MovieController{
         System.out.println("Start Date: "+ movie.getStartDate());
         System.out.println("End Date: "+ movie.getEndDate());
         System.out.println("Preview Date: "+ movie.getPreviewDate());
+        if(movie.getStatusMovie() == 3){
+            System.out.println("Status: End of showing");
+        }
+        else if(movie.getStatusMovie() == 2){
+            System.out.println("Status: Now showing");
+        }
+        else if(movie.getStatusMovie() == 1){
+            System.out.println("Status: Preview");
+        }
+        else if(movie.getStatusMovie() == 0){
+            System.out.println("Status: Upcoming");
+        }
         System.out.print("\n");
     }
 
+    /**
+     * sorting by Rating class
+     */
     public static class SortByRating implements Comparator<Movie> {
         @Override
         public int compare(Movie x, Movie y) {
@@ -125,22 +181,14 @@ public class MovieController{
         }
     }
 
-    public static int getTicket(int movieID){
-        int ticket = 0;
-        for (int i = 0; i < listHistory.size(); i++){
-            History history = listHistory.get(i);
-            if (history.getID() == movieID){
-                ticket = ticket + history.getNoTicket();
-            }
-        }
-        return ticket;
-    }
-
+    /**
+     * sorting by Tickets class
+     */
     public static class SortByTicket implements Comparator<Movie>{
         @Override
         public int compare(Movie x, Movie y) {
-            int x_tickets = getTicket(x.getID());
-            int y_tickets = getTicket(y.getID());
+            int x_tickets = HistoryController.getTicket(x.getID());
+            int y_tickets = HistoryController.getTicket(y.getID());
             if (x_tickets > y_tickets){
                 return -1;
             }
@@ -151,10 +199,11 @@ public class MovieController{
                 return 0;
             }
         }
-
     }
 
-
+    /**
+     * display top 5 movies by rating
+     */
     public static void topFiveByRating(){
         ArrayList<Movie> all_movies = new ArrayList<>();
 
@@ -171,6 +220,9 @@ public class MovieController{
         }
     }
 
+    /**
+     * display top 5 movies by tickets sales
+     */
     public static void topFiveByTicket(){
         ArrayList<Movie> all_movie = new ArrayList<>();
 

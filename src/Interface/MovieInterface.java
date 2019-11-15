@@ -5,8 +5,19 @@ import javax.management.openmbean.InvalidKeyException;
 import model.Movie;
 import controller.MovieController;
 
+/**
+ * movie interface
+ * @author Phung Minh Khanh
+ */
 public class MovieInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void main(String[] args) {
+        view();
+    }
+
+    /**
+     * main interface
+     */
+    public static void view() {
         MovieController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
@@ -18,7 +29,7 @@ public class MovieInterface extends BaseInterface{
             System.out.println("3. Add new Movie");
             System.out.println("4. Update Movie information");
             System.out.println("5. Delete Movie ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.next().charAt(0);
             System.out.print("\n");
@@ -68,6 +79,10 @@ public class MovieInterface extends BaseInterface{
         }
     }
 
+    /**
+     *
+     * @return new created movie
+     */
     public static Movie createMovie(){
         String name, description, cast, director, category, startDate, endDate, previewDate;
         int ID, restriction, duration;

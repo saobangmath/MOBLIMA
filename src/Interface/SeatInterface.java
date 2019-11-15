@@ -3,6 +3,11 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Seat;
 import controller.SeatController;
+
+/**
+ * seat interface
+ * @author Phung Minh Khanh
+ */
 public class SeatInterface extends BaseInterface{
     private static int col, showtimeId;
     private static char row;
@@ -10,6 +15,10 @@ public class SeatInterface extends BaseInterface{
     public static void main(String[] args) {
         view();
     }
+
+    /**
+     * main interface for seat Interface
+     */
     public static void view() {
         SeatController.readDB();
         Scanner sc = new Scanner(System.in);
@@ -73,6 +82,10 @@ public class SeatInterface extends BaseInterface{
         }
     }
 
+    /**
+     *
+     * @return new created seat
+     */
     public static Seat createSeat(){
         char rowInput;
         int colInput, showtimeIdInput, vipInput;
@@ -107,6 +120,9 @@ public class SeatInterface extends BaseInterface{
         return new Seat(rowInput, colInput, showtimeIdInput, false, true, 0);
     }
 
+    /**
+     * read input
+     */
     public static void readInput(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Input row: ");

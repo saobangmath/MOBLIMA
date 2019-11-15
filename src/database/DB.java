@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Base database class
+ * @author Phung Minh Khanh
+ */
 public class DB {
     /** Write fixed content to the given file. */
     public static void write(String filename, List data) throws IOException {

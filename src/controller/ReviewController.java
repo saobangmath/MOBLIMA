@@ -32,7 +32,6 @@ public class ReviewController{
      */
     public static void create(Review review){
         ReviewList.add(review);
-        ReviewDB.saveData(ReviewList);
         System.out.println("Thanks for your kind review!");
     }
 
@@ -45,7 +44,7 @@ public class ReviewController{
         for (int i = 0; i < ReviewList.size(); i++){
             Review review = (Review) ReviewList.get(i);
             if (review.getMovieID() == movieID){
-                System.out.println("User: " + review.getEmail() + " has review: " + review.getComment() + " for the Movie with ID: "+ review.getMovieID());
+                System.out.println("User: " + review.getEmail() + " has review: " + review.getComment() + " for the Movie with ID: "+ MovieController.read(review.getMovieID()).getName());
                 existed = true;
             }
         }

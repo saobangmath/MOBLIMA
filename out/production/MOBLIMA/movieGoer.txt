@@ -1,7 +1,7 @@
-khanh26688@gmail.com|19|louis|90865103
-khanh.phungntu@gmail.com|19|k|908
-123|12|32|32
-tgt|45|TAI|7826
-khanh123|12|Khanh|47826473
-dat@gmail.com|15|Dat|4738438
-sw|12|swsw|234567
+khanh26688@gmail.com|19|louis|90865103|0
+khanh.phungntu@gmail.com|19|k|908|0
+123|12|32|32|0
+tgt|45|TAI|7826|0
+khanh123|12|Khanh|47826473|0
+dat@gmail.com|15|Dat|4738438|0
+sw|12|swsw|234567|0

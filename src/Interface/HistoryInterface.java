@@ -3,15 +3,16 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.History;
 import controller.*;
+
+/**
+ * history interface
+ * @author Phung Minh Khanh
+ */
 public class HistoryInterface extends BaseInterface{
+    /**
+     * main interface
+     */
     public static void view() {
-        HistoryController.readDB();
-        CineplexController.readDB();
-        CinemaController.readDB();
-        SeatController.readDB();
-        MovieController.readDB();
-        ShowtimeController.readDB();
-        MovieGoerController.readDB();
         boolean process = true;
         String email;
         Scanner sc = new Scanner(System.in);

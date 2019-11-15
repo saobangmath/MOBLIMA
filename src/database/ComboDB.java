@@ -24,11 +24,12 @@ public class ComboDB extends DB{
             for (int i = 0; i < StringArray.size(); i++){
                 String st = (String)StringArray.get(i);
                 StringTokenizer star = new StringTokenizer(st, SEPARATOR);
+                long transactionId = Long.parseLong(star.nextToken().trim());
                 int movieID = Integer.parseInt(star.nextToken().trim());
                 String email = star.nextToken().trim();
                 int popcorn = Integer.parseInt(star.nextToken().trim());
                 int drink = Integer.parseInt(star.nextToken().trim());
-                Combo combo = new Combo(movieID, email, popcorn, drink);
+                Combo combo = new Combo(transactionId, movieID, email, popcorn, drink);
                 alr.add(combo);
             }
         }
@@ -47,7 +48,9 @@ public class ComboDB extends DB{
         for (int i = 0; i < alr.size(); i++){
             Combo combo = (Combo) alr.get(i);
             StringBuilder stb = new StringBuilder();
-            stb.append(combo.getMovieID());
+            stb.append(combo.getTransactionId());
+            stb.append(SEPARATOR);
+            stb.append(combo.getShowtimeID());
             stb.append(SEPARATOR);
             stb.append(combo.getEmail());
             stb.append(SEPARATOR);

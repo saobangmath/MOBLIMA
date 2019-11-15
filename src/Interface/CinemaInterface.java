@@ -3,8 +3,20 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Cinema;
 import controller.CinemaController;
+
+/**
+ * cinema interface
+ * @author Phung Minh Khanh
+ */
 public class CinemaInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void main(String[] args) {
+        view();
+    }
+
+    /**
+     * main interface
+     */
+    public static void view() {
         CinemaController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
@@ -67,6 +79,10 @@ public class CinemaInterface extends BaseInterface{
         CinemaController.saveDB();
     }
 
+    /**
+     *
+     * @return created cinema
+     */
     public static Cinema createCinema(){
         String name;
         int row, col, ID, cineplexId, cinemaClass;
@@ -111,5 +127,4 @@ public class CinemaInterface extends BaseInterface{
         }
         return new Cinema(name, ID, cineplexId, row, col, cinemaClass);
     }
-
 }

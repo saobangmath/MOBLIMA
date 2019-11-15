@@ -1,8 +1,7 @@
 package Interface;
 
 import controller.*;
-import database.HistoryDB;
-import model.*;
+import Interface.*;
 
 import javax.management.openmbean.InvalidKeyException;
 import java.util.ArrayList;
@@ -14,19 +13,11 @@ import java.util.Scanner;
  */
 public class AdminInterface {
     private static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args){
-        view();
-    }
 
     /**
-     * admin main interface
+     * main interface
      */
     public static void view(){
-        AdminController.readDB();
-        MovieController.readDB();
-        HistoryController.readDB();
-        ComboController.readDB();
-
         boolean stop = false;
         System.out.println("Enter your username: ");
         String username = sc.next();
@@ -36,47 +27,40 @@ public class AdminInterface {
             while (!stop){
                 try{
                     System.out.println("Please input your choice to continue: ");
-                    System.out.println("1. Add new Movie");
-                    System.out.println("2. Delete existing Movie");
-                    System.out.println("3. DisPlay top 5 Movie rank by Ratings: ");
-                    System.out.println("4. Display top 5 Movie rank by Viewers: ");
-                    System.out.println("5. View history booking: ");
-                    System.out.println("6. View all food and drink transactions: ");
-                    System.out.println("7. Moviegoer");
-                    System.out.println("8. Showtime");
-                    System.out.println("9. Holiday");
-                    System.out.println("10. Exit");
+                    System.out.println("1. Movie configuration");
+                    System.out.println("2. Cineplex configuration");
+                    System.out.println("3. Cinema configuration");
+                    System.out.println("4. Showtime configuration");
+                    System.out.println("5. Holiday configuration");
+                    System.out.println("6. Display top 5 movies by rating ");
+                    System.out.println("7. Display top 5 movies by ticket");
+                    System.out.println("8. Back");
                     System.out.print("Your choice: ");
                     int choice = sc.nextInt();
+                    sc.nextLine();
                     switch (choice){
                         case 1:
-                            createMovie();
+                            MovieInterface.view();;
                             break;
                         case 2:
-                            deleteMovie();
+                            CineplexInterface.view();
                             break;
                         case 3:
-                            topFiveByRating();
+                            CinemaInterface.view();
                             break;
                         case 4:
-                            topFiveByTicket();
+                            ShowtimeInterface.view();;
                             break;
                         case 5:
-                            viewHistory();
+                            HolidayInterface.view();;
                             break;
                         case 6:
-                            viewFDOrder();
+                            MovieController.topFiveByRating();;
                             break;
                         case 7:
-                            MovieGoerInterface.view();
+                            MovieController.topFiveByTicket();;
                             break;
                         case 8:
-                            ShowtimeInterface.view();
-                            break;
-                        case 9:
-                            HolidayInterface.view();
-                            break;
-                        case 10:
                             stop = true;
                             break;
                         default:
@@ -85,121 +69,9 @@ public class AdminInterface {
                 }
                 catch(Exception e){
                     System.out.println("Exception > " + e.getMessage());
-                    sc.nextLine(); // flush the nextline character!
                 }
             }
         }
-        MovieController.saveDB();
-        AdminController.saveDB();
-        HistoryController.saveDB();
-        ComboController.saveDB();
     }
 
-    /**
-     * creating new movie
-     */
-    public static void createMovie(){
-        System.out.println("Please enter movie ID: ");
-        int movieID = sc.nextInt();
-        if (!MovieController.checkExist(movieID)){
-            System.out.println("Name: ");
-            String nameInput = sc.next();
-
-            System.out.println("Category: ");
-            String category = sc.next();
-
-            System.out.println("Description: ");
-            String description = sc.next();
-
-            System.out.println("Director: ");
-            String director = sc.next();
-
-            System.out.println("Cast: ");
-            String cast = sc.next();
-
-            System.out.println("Restriction: ");
-            int restriction = sc.nextInt();
-
-            System.out.println("Start date (dd/MM/yyyy): ");
-            String startDate = sc.next();
-            if(!Movie.validateDate(startDate)){
-                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
-            }
-            System.out.print("\n");
-
-            System.out.print("End date (dd/MM/yyyy): ");
-            String endDate = sc.next();
-            if(!Movie.validateDate(endDate)){
-                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
-            }
-            System.out.print("\n");
-
-            System.out.print("Preview date (dd/MM/yyyy): ");
-            String previewDate = sc.next();
-            if(!Movie.validateDate(previewDate)){
-                throw new InvalidKeyException("Invalid date input (dd/MM/yyyy)");
-            }
-            System.out.print("\n");
-
-            System.out.println("Duration: ");
-            int duration = sc.nextInt();
-            System.out.println("\n");
-
-            Movie movie = new Movie(nameInput, movieID, category,
-                    description, director, cast, restriction,0,
-                    startDate, endDate, previewDate, duration);
-
-            AdminController.addMovie(movie);
-        }
-        else{
-            System.out.println("The movie is existed in the database!");
-        }
-    }
-
-    /**
-     * deleting movie
-     */
-    public static void deleteMovie(){
-        System.out.println("Enter movie ID to delete: ");
-        int movieID = sc.nextInt();
-        AdminController.deleteMovie(movieID);
-    }
-
-    /**
-     * display top 5 movie by rating
-     */
-    public static void topFiveByRating(){
-        AdminController.topFiveByRating();
-    }
-
-    /**
-     * display top 5 movies by tickets sales
-     */
-    public static void topFiveByTicket(){
-
-        AdminController.topFiveByTicket();
-    }
-
-    /**
-     * view all history booking transactions details
-     */
-    public static void viewHistory(){
-        ArrayList<History> histories = HistoryDB.readData();
-        for (History history : histories){
-            System.out.println("User: " + history.getEmail() +
-                               " has booked: " + history.getNoTicket() +
-                               " tickets for the Movie with ID: " + history.getID() +
-                               " on: " + history.getTransactionDate() +
-                               " at: " + history.getTransactionTime() );
-
-        }
-        System.out.println();
-    }
-
-    /**
-     * view all food and drink order of all users
-     */
-    private static void viewFDOrder() {
-        ComboController.displayAll();
-    }
 }

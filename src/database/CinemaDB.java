@@ -7,9 +7,18 @@ import java.util.StringTokenizer;
 
 import model.Cinema;
 
+/**
+ * cinema database
+ * @author Phung Minh Khanh
+ */
 public class CinemaDB extends DB{
     public static final String SEPARATOR = "|";
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/cinema.txt";
+
+    /**
+     *
+     * @return a ArrayList of all Cinemas in the database
+     */
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
@@ -36,6 +45,10 @@ public class CinemaDB extends DB{
         return alr ;
     }
 
+    /**
+     * save back the ArrayList of Cinemas to the database
+     * @param al
+     */
     // an example of saving
     public static void saveData(List al) {
         List alw = new ArrayList() ;// to store Professors data

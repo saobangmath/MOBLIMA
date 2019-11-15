@@ -3,8 +3,15 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Holiday;
 import controller.HolidayController;
-public class HolidayInterface extends BaseInterface{
 
+/**
+ * holiday interface
+ * @author Phung Minh Khanh
+ */
+public class HolidayInterface extends BaseInterface{
+    /**
+     * main interface
+     */
     public static void view()  {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -14,7 +21,7 @@ public class HolidayInterface extends BaseInterface{
             System.out.println("1. Retrieve all Holiday ");
             System.out.println("2. Add new Holiday");
             System.out.println("3. Delete Holiday ");
-            System.out.println("4. Exit");
+            System.out.println("4. Back");
             System.out.print("Your choice: ");
             choice = sc.nextLine().charAt(0);
             System.out.print("\n");
@@ -48,6 +55,10 @@ public class HolidayInterface extends BaseInterface{
         HolidayController.saveDB();
     }
 
+    /**
+     *
+     * @return new created holiday
+     */
     public static Holiday createHoliday(){
         String date;
         Scanner sc = new Scanner(System.in);
@@ -67,6 +78,10 @@ public class HolidayInterface extends BaseInterface{
         }
     }
 
+    /**
+     *
+     * @return date input
+     */
     public static String readInput(){
         String date;
         Scanner sc = new Scanner(System.in);

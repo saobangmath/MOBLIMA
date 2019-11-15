@@ -4,10 +4,15 @@ import javax.management.openmbean.InvalidKeyException;
 import controller.*;
 import model.*;
 import java.util.ArrayList;
-import java.util.Random;
+
+/**
+ * booking interface
+ * @author Phung Minh Khanh
+ */
 public class BookingInterface {
     static Scanner sc = new Scanner(System.in);
-    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price;
+    static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price, discountPoint, popcorn, drink;
+    static float earnedPoint;
     static long historyID;
     static ArrayList<Character> rows = new ArrayList<Character>();
     static ArrayList<Integer> cols = new ArrayList<Integer>();
@@ -15,14 +20,11 @@ public class BookingInterface {
     static boolean process = true;
     static boolean discount;
     static MovieGoer movieGoer;
+
+    /**
+     * main interface
+     */
     public static void view() {
-        MovieController.readDB();
-        MovieGoerController.readDB();
-        CineplexController.readDB();
-        CinemaController.readDB();
-        ShowtimeController.readDB();
-        SeatController.readDB();
-        HistoryController.readDB();
         while(process){
             MovieController.displayAll();
             movieIDInput();
@@ -31,16 +33,18 @@ public class BookingInterface {
             cineplexIDInput();
 
             ShowtimeController.displayByCineplex(cineplexID);
-            dateInput();
             showtimeIDInput();
 
             noTicketInput();
             System.out.println("x denotes empty, o denotes occupied");
             cinemaID = ShowtimeController.read(showtimeID).getCinemaId();
+            Price.displayPrice();
             ShowtimeController.displaySeatMap(showtimeID);
             seatNumberInput();
             discountInput();
             emailInput();
+            comboInput();
+            discountByRewardPoint();
             confirm();
         }
         for(int i = 0; i < noTicket; i++){
@@ -48,23 +52,23 @@ public class BookingInterface {
         }
         transactionDate = DateTime.getCurrentDate();
         transactionTime = DateTime.getCurrentTime();
-        Random rand = new Random();
-        historyID = rand.nextInt(1000000000);
+        String transactionID = "" + showtimeID + transactionDate.replace("/", "") + transactionTime.replace(":", "");
+        historyID = Long.parseLong(transactionID.trim());
+        Combo combo = new Combo(historyID, showtimeID, email, popcorn, drink);
+        ComboController.create(combo);
         History history = new History(historyID, email, showtimeID, transactionDate, transactionTime, price, noTicket, rows, cols);
         HistoryController.create(history);
         if(!MovieGoerController.checkExist(email)){
             MovieGoerController.create(movieGoer);
         }
-
-        MovieController.saveDB();
-        MovieGoerController.saveDB();
-        CineplexController.saveDB();
-        CinemaController.saveDB();
-        ShowtimeController.saveDB();
-        SeatController.saveDB();
-        HistoryController.saveDB();
+        earnedPoint = earnedPoint - (float)discountPoint;
+        MovieGoerController.addRewardPoint(earnedPoint, email);
+        process = true;
     }
 
+    /**
+     * input a movie ID
+     */
     public static void movieIDInput(){
         while(true){
             try{
@@ -85,6 +89,9 @@ public class BookingInterface {
         }
     }
 
+    /**
+     * input a cineplexID
+     */
     public static void cineplexIDInput(){
         while(true){
             try{
@@ -108,27 +115,9 @@ public class BookingInterface {
         }
     }
 
-    public static void dateInput(){
-        while(true){
-            try{
-                System.out.println("Please input date to continue (dd/MM/yyyy)");
-                date = sc.nextLine();
-                if(Showtime.validateDate(date)){
-                    if(!ShowtimeController.validateShowtime(cineplexID, date)){
-                        throw new InvalidKeyException("There is no showtime for this movie in this cineplex on this date");
-                    };
-                    break;
-                }
-                else{
-                    throw new InvalidKeyException("Invalid date format does not exist");
-                }
-            }
-            catch(Exception e){
-                System.out.println("Error: "+ e.getMessage());
-            }
-        }
-    }
-
+    /**
+     * input showtimeID
+     */
     public static void showtimeIDInput(){
         while(true){
             try{
@@ -149,6 +138,9 @@ public class BookingInterface {
         }
     }
 
+    /**
+     * input number of tickets
+     */
     public static void noTicketInput(){
         while(true){
             try{
@@ -169,6 +161,9 @@ public class BookingInterface {
         }
     }
 
+    /**
+     * input seat number
+     */
     public static void seatNumberInput(){
         String seatInput;
         char row;
@@ -206,6 +201,10 @@ public class BookingInterface {
             }
         }
     }
+
+    /**
+     * input discount input
+     */
     public static void discountInput(){
         int dc;
         while(true){
@@ -228,6 +227,9 @@ public class BookingInterface {
         }
     }
 
+    /**
+     * input moviegoer email
+     */
     public static void emailInput(){
         String name;
         int age, mobile;
@@ -249,7 +251,7 @@ public class BookingInterface {
                         System.out.println("Please input your mobile number");
                         mobile = sc.nextInt();
                         sc.nextLine();
-                        movieGoer = new MovieGoer(email, age, name, mobile);
+                        movieGoer = new MovieGoer(email, age, name, mobile, 0);
                     }
                     break;
                 }
@@ -264,6 +266,72 @@ public class BookingInterface {
         }
     }
 
+    /**
+     * input combo
+     */
+    public static void comboInput(){
+        boolean process = true;
+        while (process){
+            popcorn = 0;
+            drink = 0;
+            try{
+                System.out.println("Do you want to add any food or drink?");
+                System.out.println("Popcorn price: " + Price.POPCORN);
+                System.out.println("Drink price: " + Price.DRINK);
+                System.out.println("Enter Yes or No (Y/N): ");
+                char choice = sc.nextLine().charAt(0);
+                if(choice == 'Y'){
+                    System.out.println("Enter number of popcorn: ");
+                    popcorn = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Enter number of drink: ");
+                    drink = sc.nextInt();
+                    sc.nextLine();
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                System.out.print("\n");
+            }
+        }
+    }
+
+    /**
+     * discount by rewardPoint functions
+     */
+    public static void discountByRewardPoint(){
+        char yn;
+        discountPoint = 0;
+        while(true){
+            try{
+                System.out.println("Your reward point is: " + movieGoer.getRewardPoint());
+                System.out.println("Do you want to use reward point to get discount?(Y/N)");
+                yn = sc.nextLine().charAt(0);
+                if(yn == 'Y'){
+                    System.out.println("Input your discount point(Integer only)");
+                    discountPoint = sc.nextInt();
+                    sc.nextLine();
+                    if(discountPoint > movieGoer.getRewardPoint()){
+                        throw new InvalidKeyException("Invalid discount point");
+                    }
+                }
+                else{
+                    sc.nextLine();
+                }
+                break;
+            }
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                discountPoint = 0;
+                System.out.print("\n");
+            }
+        }
+    }
+
+    /**
+     * confirm display
+     */
     public static void confirm(){
         Movie movie = MovieController.read(movieID);
         Cineplex cineplex = CineplexController.read(cineplexID);
@@ -273,8 +341,7 @@ public class BookingInterface {
         for(int i = 0; i < noTicket; i++){
             Seat seat = SeatController.read(rows.get(i), cols.get(i), showtimeID);
             boolean vip = false, special = false;
-            if(Showtime.validateWeekend(showtime.getDate())||
-                    HolidayController.checkExist(showtime.getDate())){
+            if(Showtime.validateWeekend(showtime.getDate()) || HolidayController.checkExist(showtime.getDate())){
                 special = true;
             }
             if(seat.getVip()){
@@ -282,6 +349,9 @@ public class BookingInterface {
             }
             price += Price.getPrice(vip, special, discount, cinema.getCinemaClass());
         }
+        price += Price.DRINK*drink + Price.POPCORN*popcorn;
+        price -= discountPoint;
+        earnedPoint = (float)((float)price)/10;
         System.out.println("Please confirm your booking:");
         System.out.println("Movie: "+ movie.getName());
         System.out.println("Cineplex: " + cineplex.getName());
@@ -289,12 +359,15 @@ public class BookingInterface {
         System.out.println("Showtime: " + showtime.getDate() + "  " + showtime.getStartTime() + " to "+ showtime.getEndTime());
         System.out.println("Number of ticket: "+ noTicket);
         System.out.println("Seat number: " + seatString);
+        System.out.println("Popcorn: " + popcorn);
+        System.out.println("Drink: " + drink);
         System.out.println("Discount: "+ discount);
         System.out.println("Price: "+ price);
         System.out.println("Email: "+ movieGoer.getEmail());
         System.out.println("Name: "+ movieGoer.getName());
         System.out.println("Age: " + movieGoer.getAge());
         System.out.println("Mobile: " + movieGoer.getMobile());
+        System.out.println("Earned reward point: " + earnedPoint);
         char cf;
         while(true){
             try{

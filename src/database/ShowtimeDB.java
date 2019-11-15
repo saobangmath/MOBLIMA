@@ -7,6 +7,10 @@ import java.util.StringTokenizer;
 
 import model.Showtime;
 
+/**
+ * Showtime database
+ * @author Phung Minh Khanh
+ */
 public class ShowtimeDB extends DB{
     public static final String SEPARATOR = "|";
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/showtime.txt";

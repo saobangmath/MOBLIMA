@@ -1,7 +1,7 @@
 package model;
 
 /**
- * Represents Review object
+ * Represents Review class
  * @author Tran Anh Tai
  */
 public class Review {

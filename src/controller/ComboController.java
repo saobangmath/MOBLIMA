@@ -49,6 +49,19 @@ public class ComboController {
     }
 
     /**
+     *
+     * @param transactionId
+     * @return Combo object with specific transaction ID
+     */
+    public static Combo read(long transactionId){
+        for(int i = 0; i < listCombo.size(); i++){
+            if(listCombo.get(i).getTransactionId() == transactionId){
+                return listCombo.get(i);
+            }
+        }
+        return null;
+    }
+    /**
      * display a Combo details
      * @param combo
      */
@@ -56,7 +69,7 @@ public class ComboController {
         System.out.println("User: " + combo.getEmail() +
                            " has order: " + combo.getPopcorn() +
                            " popcorn and " + combo.getDrink() +
-                           " when booking the movie with ID: " + combo.getMovieID());
+                           " when booking the showtime with ID: " + combo.getShowtimeID());
     }
 
     /**

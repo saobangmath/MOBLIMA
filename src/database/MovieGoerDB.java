@@ -5,9 +5,18 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 import java.io.IOException;
 
+/**
+ * moviegoer database
+ * @author Phung Minh Khanh
+ */
 public class MovieGoerDB extends DB{
     public static final String SEPARATOR = "|";
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/movieGoer.txt";
+
+    /**
+     *
+     * @return the ArrayList of all available moviegoer
+     */
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
@@ -22,7 +31,8 @@ public class MovieGoerDB extends DB{
                 int  age = Integer.parseInt(star.nextToken().trim());	// second token
                 String  name = star.nextToken().trim(); // third token
                 int mobile = Integer.parseInt(star.nextToken().trim());
-                MovieGoer goer = new MovieGoer(email, age, name, mobile);
+                float rewardPoint = Float.parseFloat(star.nextToken().trim());
+                MovieGoer goer = new MovieGoer(email, age, name, mobile, rewardPoint);
                 alr.add(goer);
             }
         }
@@ -32,6 +42,10 @@ public class MovieGoerDB extends DB{
         return alr ;
     }
 
+    /**
+     * save the movie arraylist back to the database
+     * @param al
+     */
     // an example of saving
     public static void saveData(List al) {
         List alw = new ArrayList() ;// to store Professors data
@@ -46,6 +60,8 @@ public class MovieGoerDB extends DB{
             st.append(goer.getName());
             st.append(SEPARATOR);
             st.append(goer.getMobile());
+            st.append(SEPARATOR);
+            st.append(String.valueOf(goer.getRewardPoint()));
             alw.add(st.toString()) ;
         }
         try{

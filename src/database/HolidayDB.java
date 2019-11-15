@@ -7,9 +7,18 @@ import java.util.StringTokenizer;
 
 import model.Holiday;
 
+/**
+ * holiday database
+ * @author Phung Minh Khanh
+ */
 public class HolidayDB extends DB{
     public static final String SEPARATOR = "|";
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/holiday.txt";
+
+    /**
+     *
+     * @return all available holiday date
+     */
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
@@ -31,6 +40,10 @@ public class HolidayDB extends DB{
         return alr ;
     }
 
+    /**
+     * save back the holidaylist to the database
+     * @param al
+     */
     // an example of saving
     public static void saveData(List al) {
         List alw = new ArrayList() ;// to store Professors data

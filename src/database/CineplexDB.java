@@ -7,9 +7,18 @@ import java.util.StringTokenizer;
 
 import model.Cineplex;
 
+/**
+ * cineplex database
+ * @author Phung Minh Khanh
+ */
 public class CineplexDB extends DB{
     public static final String SEPARATOR = "|";
     public static final String filename = "D://NTU CS/Java/MOBLIMA/src/cineplex.txt";
+
+    /**
+     *
+     * @returna list of available cineplexes
+     */
     // an example of reading
     public static ArrayList readData() {
         ArrayList alr = new ArrayList() ;// to store Professors data
@@ -40,6 +49,10 @@ public class CineplexDB extends DB{
         return alr ;
     }
 
+    /**
+     * save back the ArrayList to the cineplex database
+     * @param al
+     */
     // an example of saving
     public static void saveData(List al) {
         List alw = new ArrayList() ;// to store Professors data

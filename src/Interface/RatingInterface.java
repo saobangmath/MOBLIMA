@@ -23,8 +23,6 @@ public class RatingInterface {
      * main interface for rating
      */
     public static void view() {
-        MovieController.readDB();
-        RatingController.readDB();
         boolean stop =  false;
         while (!stop){
             try{
@@ -33,7 +31,7 @@ public class RatingInterface {
                 System.out.println("1. Add your own rating (0 - 5):");
                 System.out.println("2. View all ratings with a specific Movie: ");
                 System.out.println("3. View average rating for a Movie: ");
-                System.out.println("4. Exit");
+                System.out.println("4. Back");
                 System.out.println("Enter your choice: ");
                 char choice = sc.next().charAt(0);
                 switch (choice){
@@ -55,25 +53,26 @@ public class RatingInterface {
                 }
             }
             catch (Exception e){
+                System.out.println(e.getMessage());
                 System.out.println("Please enter a valid rating!");
             }
         }
-        MovieController.saveDB();
-        RatingController.saveDB();
     }
 
     /**
      * create new rating
      */
     public static void create(){
+        MovieController.displayAll();
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
+        sc.nextLine();
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
-            String email = sc.next();
+            String email = sc.nextLine();
             if (Email.validateEmail(email)){
                 System.out.println("Enter your rating: ");
-                String rating = sc.next();
+                String rating = sc.nextLine();
                 try{
                     float rating_value = Float.parseFloat(rating);
                     if (rating_value > 0 && rating_value <= 5){
@@ -101,6 +100,7 @@ public class RatingInterface {
      * display all ratings for movieID
      */
     private static void display() {
+        MovieController.displayAll();
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
         if (MovieController.checkExist(movieID)){
@@ -115,14 +115,16 @@ public class RatingInterface {
      * display overall rating for a movieID
      */
     private static void display_overall_rating() {
+        MovieController.displayAll();
         System.out.println("Enter the Movie ID: ");
         int movieID = sc.nextInt();
+        sc.nextLine();
         float average = RatingController.get(movieID);
         if (average == -1){
             System.out.println("There is no rating for the Movie yet!");
         }
         else{
-            System.out.println("Average rating for the Movie with movieID : " + movieID + " is: " + average);
+            System.out.println("Average rating for movie : " + MovieController.read(movieID).getName() + " is: " + average);
         }
     }
 }

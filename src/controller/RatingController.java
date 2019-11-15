@@ -12,14 +12,13 @@ import java.util.ArrayList;
  * @author Tran Anh Tai
  */
 public class RatingController {
-    private static ArrayList RatingList, MovieList;
+    private static ArrayList RatingList;
 
     /**
      * read all ratings, movies databases to RatingList and MovieList respectively for internal operations
      */
     public static void readDB(){
         RatingList = RatingDB.readData();
-        MovieList = MovieDB.readData();
     }
 
     /**
@@ -27,7 +26,6 @@ public class RatingController {
      */
     public static void saveDB(){
         RatingDB.saveData(RatingList);
-        MovieDB.saveData(MovieList);
     }
 
     /**
@@ -36,11 +34,8 @@ public class RatingController {
      * @return this movieID overall rating
      */
     public static float get(int movieID){
-        for (int i = 0; i < MovieList.size(); i++){
-            Movie movie = (Movie) MovieList.get(i);
-            if (movie.getID() == movieID){
-                return movie.getOverallRating();
-            }
+        if(MovieController.checkExist(movieID)){
+            return MovieController.read(movieID).getOverallRating();
         }
         return -1;
     }
@@ -51,13 +46,7 @@ public class RatingController {
      */
     public static void create(Rating rate){
         RatingList.add(rate); // TODO the real email is taken in the UserInterface
-        update(rate.getMovieID(), rate.getRating());
-        try{
-            saveDB();
-        }
-        catch (Exception e){
-            System.out.println("Exception > " + e.getMessage());
-        }
+        updateOverallRating(rate.getMovieID(), rate.getRating());
         System.out.println("Your rating for the film is successfully added!");
     }
 
@@ -66,25 +55,22 @@ public class RatingController {
      * @param movieID
      * @param new_rate
      */
-    public static void update(int movieID, float new_rate){
+    public static void updateOverallRating(int movieID, float new_rate){
         if (MovieController.checkExist(movieID)){
-            ArrayList alw = new ArrayList();
-            for (int i = 0; i < MovieList.size(); i++){
-                Movie movie = (Movie)MovieList.get(i);
-                if (movie.getID() == movieID){
-                    int rating_count = 0;
-                    for (int j = 0; j < RatingList.size();j++){
-                        Rating rating = (Rating)RatingList.get(j);
-                        if (rating.getMovieID() == movieID){
-                            ++rating_count;
-                        }
-                    }
-                    System.out.println(rating_count);
-                    float updated_rating = ((rating_count - 1) * movie.getOverallRating() + new_rate) / (rating_count);
-                    movie.setOverallRating(updated_rating);
+            Movie movie = MovieController.read(movieID);
+            float ratingSum = 0;
+            float rating_count = 0;
+            for (int j = 0; j < RatingList.size();j++){
+                Rating rating = (Rating)RatingList.get(j);
+                if (rating.getMovieID() == movieID){
+                    ratingSum += rating.getRating();
+                    rating_count ++;
                 }
-                alw.add(movie);
             }
+            float updated_rating = (ratingSum) / (rating_count);
+            updated_rating = Math.round(updated_rating * 10f) / 10f;
+            System.out.println(updated_rating);
+            movie.setOverallRating(updated_rating);
         }
         else{
             System.out.println("The Movie is not existed in the database!");
@@ -101,11 +87,12 @@ public class RatingController {
             Rating rating = (Rating)RatingList.get(i);
             if (rating.getMovieID() == movieID){
                 existed = true;
-                System.out.println("User: " + rating.getEmail() + " has rate the Movie with ID " + movieID + " with rating: " + rating.getRating());
+                System.out.println("User " + rating.getEmail() + " has rate the Movie " + MovieController.read(movieID).getName()
+                        + " with rating: " + rating.getRating());
             }
         }
         if (!existed){
-            System.out.println("There is no Movie with such ID in the database!");
+            System.out.println("There is no rating for this movie!");
         }
     }
 }

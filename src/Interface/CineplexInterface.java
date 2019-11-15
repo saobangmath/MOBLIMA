@@ -6,8 +6,19 @@ import controller.MovieController;
 import model.Cineplex;
 import java.util.ArrayList;
 
+/**
+ * cineplex interface
+ * @author Phung Minh Khanh
+ */
 public class CineplexInterface extends BaseInterface{
-    public static void main(String[] aArgs)  {
+    public static void main(String[] args) {
+        view();
+    }
+
+    /**
+     * main interface
+     */
+    public static void view()  {
         CineplexController.readDB();
         MovieController.readDB();
         Scanner sc = new Scanner(System.in);
@@ -20,7 +31,7 @@ public class CineplexInterface extends BaseInterface{
             System.out.println("3. Add new Cineplex");
             System.out.println("4. Update Cineplex information");
             System.out.println("5. Delete Cineplex ");
-            System.out.println("6. Exit");
+            System.out.println("6. Back");
             System.out.print("Your choice: ");
             choice = sc.next().charAt(0);
             System.out.print("\n");
@@ -71,6 +82,10 @@ public class CineplexInterface extends BaseInterface{
         CineplexController.saveDB();
     }
 
+    /**
+     *
+     * @return new created cineplex
+     */
     public static Cineplex createCineplex(){
         String name, location, inputAVMovie;
         int ID;
@@ -121,4 +136,5 @@ public class CineplexInterface extends BaseInterface{
         }
         return new Cineplex(name, ID, location, availableMovie);
     }
+
 }

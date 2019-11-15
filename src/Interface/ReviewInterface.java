@@ -21,8 +21,6 @@ public class ReviewInterface {
      * main interface for review
      */
     public static void view() {
-        MovieController.readDB();
-        ReviewController.readDB();
         boolean stop = false;
         while(!stop){
             try{
@@ -30,7 +28,7 @@ public class ReviewInterface {
                 System.out.println("Please input your choice to continue: ");
                 System.out.println("1. Add your own review for a Movie: ");
                 System.out.println("2. View all reviews with a specific Movie: ");
-                System.out.println("3. Exit");
+                System.out.println("3. Back");
                 char choice = sc.next().charAt(0);
                 switch (choice){
                     case '1':
@@ -50,8 +48,6 @@ public class ReviewInterface {
             catch (Exception e){
                 System.out.println("Please enter a valid choice!");
             }
-            MovieController.saveDB();
-            ReviewController.saveDB();
         }
     }
 
@@ -59,8 +55,10 @@ public class ReviewInterface {
      * display all reviews for a movie ID
      */
     private static void displayReview() {
+        MovieController.displayAll();
         System.out.println("Enter Movie ID: ");
         int movieID = sc.nextInt();
+        sc.nextLine();
         if (MovieController.checkExist(movieID)){
             ReviewController.display(movieID);
         }
@@ -73,11 +71,13 @@ public class ReviewInterface {
      * create new review for a movieID
      */
     private static void addReview() {
+        MovieController.displayAll();
         System.out.println("Enter Movie ID: ");
         int movieID = sc.nextInt();
+        sc.nextLine();
         if (MovieController.checkExist(movieID)){
             System.out.println("Enter your email: ");
-            String email = sc.next();
+            String email = sc.nextLine();
             if (Email.validateEmail(email)){
                 System.out.println("Enter your comment: ");
                 String comment = sc.next();
@@ -85,7 +85,7 @@ public class ReviewInterface {
                 ReviewController.create(review);
             }
             else{
-                System.out.println("Your email is not legal!");
+                System.out.println("Your email is in invalid format!");
             }
         }
         else{

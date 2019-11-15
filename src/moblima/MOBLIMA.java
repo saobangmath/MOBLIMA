@@ -4,8 +4,16 @@ import Interface.*;
 
 import java.util.Scanner;
 
+/**
+ * @author Phung Minh Khanh
+ */
 public class MOBLIMA{
     static Scanner sc = new Scanner(System.in);
+
+    /**
+     * main interface to run the program
+     * @param args
+     */
     public static void main(String[] args) {
         readData();
         //AvailabilityInterface.view();
@@ -21,7 +29,7 @@ public class MOBLIMA{
                     AdminInterface.view();
                     break;
                 case '2':
-                   UserInterface();
+                   UserInterface.view();
                     break;
                 default:
                     System.out.println("Please enter valid choice!");
@@ -31,7 +39,14 @@ public class MOBLIMA{
         saveData();
     }
 
+    /**
+     * read all database
+     */
     public static void readData(){
+        AdminController.readDB();
+        RatingController.readDB();
+        ComboController.readDB();
+        ReviewController.readDB();
         MovieController.readDB();
         MovieGoerController.readDB();
         CinemaController.readDB();
@@ -42,7 +57,14 @@ public class MOBLIMA{
         HolidayController.readDB();
     }
 
+    /**
+     * save back to all database
+     */
     public static void saveData(){
+        AdminController.saveDB();
+        ReviewController.saveDB();
+        ComboController.saveDB();
+        RatingController.saveDB();
         MovieController.saveDB();
         MovieGoerController.saveDB();
         CinemaController.saveDB();
@@ -50,35 +72,6 @@ public class MOBLIMA{
         SeatController.saveDB();
         ShowtimeController.saveDB();
         HistoryController.saveDB();
-        HolidayController.readDB();
-    }
-    public static void UserInterface(){
-        boolean process = true;
-        while (process){
-            System.out.println("Welcome you to user regime!");
-            System.out.println("1.For Rating");
-            System.out.println("2.For Review");
-            System.out.println("3.For Booking");
-            System.out.println("4.For Food and Drink order");
-            System.out.println("Enter your choice: ");
-            char op = sc.next().charAt(0);
-            switch (op){
-                case '1':
-                    RatingInterface.view();
-                    break;
-                case '2':
-                    ReviewInterface.view();
-                    break;
-                case '3':
-                    BookingInterface.view();
-                    break;
-                case '4':
-                    ComboInterface.view();
-                    break;
-                default:
-                    System.out.println("Please enter valid choice!");
-                    break;
-            }
-        }
+        HolidayController.saveDB();
     }
 }
