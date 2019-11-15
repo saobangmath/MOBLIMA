@@ -1,2 +1,4 @@
-1|Golden Village|Jurong Point|1,2
-2|Golden Village|Singapura|1
+10|Golden Village|Jurong East|1,2,3
+11|Golden Village|Orchard|1,2,3,4
+12|Cathay|Orchard|1,2,3,4
+13|Cathay|Jurong Point|1,3,4
