@@ -45,7 +45,7 @@ public class RatingController {
      * @param rate
      */
     public static void create(Rating rate){
-        RatingList.add(rate); // TODO the real email is taken in the UserInterface
+        RatingList.add(rate); // TODO the real email is taken in the UserView
         updateOverallRating(rate.getMovieID(), rate.getRating());
         System.out.println("Your rating for the film is successfully added!");
     }

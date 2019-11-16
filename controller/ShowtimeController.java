@@ -82,13 +82,28 @@ public class ShowtimeController{
         }
     }
 
-    public static void displayByCineplex(int cineplexId){
+    public static boolean displayByCineplex(int cineplexId){
         System.out.println("All showtimes in this cineplex");
+        boolean exist = false;
         for(int i = 0; i < listShowtimes.size(); i++){
             if(listShowtimes.get(i).getCineplexId() == cineplexId){
                 output(listShowtimes.get(i));
+                exist = true;
             }
         }
+        return exist;
+    }
+
+    public static boolean displayByCineplexAndMovie(int cineplexId, int movieId){
+        System.out.println("All showtimes in this cineplex");
+        boolean exist = false;
+        for(int i = 0; i < listShowtimes.size(); i++){
+            if(listShowtimes.get(i).getCineplexId() == cineplexId && listShowtimes.get(i).getMovieId() == movieId){
+                output(listShowtimes.get(i));
+                exist = true;
+            }
+        }
+        return exist;
     }
 
     public static void output(Showtime showtime){
