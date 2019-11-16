@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  */
 public class AdminDB extends DB {
     public static final String SEPARATOR = "|";
-    public  static final String filename = "Admin.txt";
+    public  static final String filename = "D://NTU CS/Java/MOBLIMA/src/Admin.txt";
 
     /**
      * get all admins from admin database
@@ -68,3 +68,4 @@ public class AdminDB extends DB {
         }
     }
 }
+

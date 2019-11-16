@@ -44,7 +44,7 @@ public class ReviewController{
         for (int i = 0; i < ReviewList.size(); i++){
             Review review = (Review) ReviewList.get(i);
             if (review.getMovieID() == movieID){
-                System.out.println(review.getEmail() + " has review:" + review.getComment() + " for the Movie "+ MovieController.read(review.getMovieID()).getName());
+                System.out.println("User: " + review.getEmail() + " has review: " + review.getComment() + " for the Movie with ID: "+ MovieController.read(review.getMovieID()).getName());
                 existed = true;
             }
         }
@@ -53,3 +53,4 @@ public class ReviewController{
         }
     }
 }
+

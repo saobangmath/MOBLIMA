@@ -1,9 +1,16 @@
 package View;
 import java.util.Scanner;
-import javax.management.openmbean.InvalidKeyException;
-import model.History;
+
 import controller.*;
-public class HistoryView extends BaseView{
+
+/**
+ * history interface
+ * @author Phung Minh Khanh
+ */
+public class HistoryView extends BaseView {
+    /**
+     * main interface for display all history view operations
+     */
     public static void view() {
         boolean process = true;
         String email;
@@ -14,6 +21,6 @@ public class HistoryView extends BaseView{
             HistoryController.displayByEmail(email);
             break;
         }
-  }
+    }
 
 }

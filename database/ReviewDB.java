@@ -14,7 +14,10 @@ import java.util.StringTokenizer;
 public class ReviewDB extends DB {
     public static String SEPARATOR = "|";
     public static String filename = "review.txt";
-    public static ArrayList readData(){
+    /**
+	* retrieve the Review ArrayList from the database
+	*/
+	public static ArrayList readData(){
         ArrayList alr = new ArrayList();
         try{
             ArrayList stringArray = (ArrayList)read(filename);
@@ -33,7 +36,10 @@ public class ReviewDB extends DB {
         }
         return alr;
     }
-
+	/**
+	* Store the Review List back to the database
+	*@param alr ArrayList needed stored back to the database
+	*/
     public static void saveData(ArrayList alr){
         List alw = new ArrayList();
         for (int i = 0; i < alr.size(); i++){

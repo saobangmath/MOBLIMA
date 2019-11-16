@@ -16,7 +16,7 @@ public class RatingView {
     static Scanner sc =  new Scanner(System.in);
 
     /**
-     * main View for rating
+     * main View for displaying all Rating related operations
      */
     public static void view() {
         boolean stop =  false;
@@ -56,7 +56,7 @@ public class RatingView {
     }
 
     /**
-     * create new rating
+     * create a new rating
      */
     public static void create(){
         MovieController.displayAll();

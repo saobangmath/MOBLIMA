@@ -7,21 +7,30 @@ import java.util.StringTokenizer;
 
 import model.History;
 
+/**
+ * history booking database
+ * @author Phung Minh Khanh
+ */
 public class HistoryDB extends DB{
-	public static final String SEPARATOR = "|";
-	public static final String filename = "history.txt";
+    public static final String SEPARATOR = "|";
+    public static final String filename = "D://NTU CS/Java/MOBLIMA/src/history.txt";
+
+    /**
+     *
+     * @return all available histories booking
+     */
     // an example of reading
-	public static ArrayList readData() {
-		ArrayList alr = new ArrayList() ;// to store Professors data
-		try{
-			// read String from text file
-			ArrayList stringArray = (ArrayList)read(filename);
-			for (int i = 0 ; i < stringArray.size() ; i++) {
-				String st = (String)stringArray.get(i);
-				// get individual 'fields' of the string separated by SEPARATOR
-				StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
+    public static ArrayList readData() {
+        ArrayList alr = new ArrayList() ;// to store Professors data
+        try{
+            // read String from text file
+            ArrayList stringArray = (ArrayList)read(filename);
+            for (int i = 0 ; i < stringArray.size() ; i++) {
+                String st = (String)stringArray.get(i);
+                // get individual 'fields' of the string separated by SEPARATOR
+                StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
                 long ID = Long.parseLong(star.nextToken().trim());
-                String  email = star.nextToken().trim();	
+                String  email = star.nextToken().trim();
                 int showtimeId = Integer.parseInt(star.nextToken().trim());
                 String transactionDate = star.nextToken().trim();
                 String transactionTime = star.nextToken().trim();
@@ -41,49 +50,53 @@ public class HistoryDB extends DB{
                         seatCol.add(Integer.parseInt(seatColRaw[j]));
                     }
                 }
-                History history = new History(ID, email, showtimeId, 
-                transactionDate, transactionTime, price, noTicket, seatRow, seatCol);
-				alr.add(history);
-			}
-		}
-		catch (IOException e) {
-			System.out.println("IOException > " + e.getMessage());
-		}
-		return alr ;
-	}
+                History history = new History(ID, email, showtimeId,
+                        transactionDate, transactionTime, price, noTicket, seatRow, seatCol);
+                alr.add(history);
+            }
+        }
+        catch (IOException e) {
+            System.out.println("IOException > " + e.getMessage());
+        }
+        return alr ;
+    }
 
-	// an example of saving
-	public static void saveData(List al) {
-		List alw = new ArrayList() ;// to store Professors data
+    /**
+     * save back the history list to the database
+     * @param al
+     */
+    // an example of saving
+    public static void saveData(List al) {
+        List alw = new ArrayList() ;// to store Professors data
 
-		for (int i = 0 ; i < al.size() ; i++) {
-				History history = (History)al.get(i);
-                StringBuilder st =  new StringBuilder() ;
-				st.append(history.getID());
-                st.append(SEPARATOR);
-				st.append(history.getEmail().trim());
-                st.append(SEPARATOR);
-				st.append(history.getShowtimeId());
-                st.append(SEPARATOR);
-				st.append(history.getTransactionDate().trim());
-                st.append(SEPARATOR);
-				st.append(history.getTransactionTime().trim());
-                st.append(SEPARATOR);
-				st.append(history.getPrice());
-                st.append(SEPARATOR);
-				st.append(history.getNoTicket());
-                st.append(SEPARATOR);
-				st.append(history.stringifySeatRow());
-                st.append(SEPARATOR);
-				st.append(history.stringifySeatCol());
-                st.append(SEPARATOR);
-				alw.add(st.toString()) ;
-			}
-		try{
-			write(filename,alw);
-		}
-		catch (IOException e) {
-			System.out.println("IOException > " + e.getMessage());
-		}
-	}
+        for (int i = 0 ; i < al.size() ; i++) {
+            History history = (History)al.get(i);
+            StringBuilder st =  new StringBuilder() ;
+            st.append(history.getID());
+            st.append(SEPARATOR);
+            st.append(history.getEmail().trim());
+            st.append(SEPARATOR);
+            st.append(history.getShowtimeId());
+            st.append(SEPARATOR);
+            st.append(history.getTransactionDate().trim());
+            st.append(SEPARATOR);
+            st.append(history.getTransactionTime().trim());
+            st.append(SEPARATOR);
+            st.append(history.getPrice());
+            st.append(SEPARATOR);
+            st.append(history.getNoTicket());
+            st.append(SEPARATOR);
+            st.append(history.stringifySeatRow());
+            st.append(SEPARATOR);
+            st.append(history.stringifySeatCol());
+            st.append(SEPARATOR);
+            alw.add(st.toString()) ;
+        }
+        try{
+            write(filename,alw);
+        }
+        catch (IOException e) {
+            System.out.println("IOException > " + e.getMessage());
+        }
+    }
 }

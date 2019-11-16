@@ -3,8 +3,15 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Holiday;
 import controller.HolidayController;
-public class HolidayView extends BaseView{
-    
+
+/**
+ * holiday interface
+ * @author Phung Minh Khanh
+ */
+public class HolidayView extends BaseView {
+    /**
+     * main interface display all holiday operations
+     */
     public static void view()  {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -33,10 +40,10 @@ public class HolidayView extends BaseView{
                 case '3':
                     if(!HolidayController.delete(readInput())){
                         System.out.println("Holiday does not exist to delete");
-                    }                 
+                    }
                     else{
                         System.out.println("Delete Holiday successfully!");
-                    }   
+                    }
                     break;
                 case '4':
                     process = false;
@@ -46,43 +53,51 @@ public class HolidayView extends BaseView{
             }
         }
         HolidayController.saveDB();
-  }
+    }
 
-  public static Holiday createHoliday(){
-    String date;
-    Scanner sc = new Scanner(System.in);   
-    while(true){
-        try{
-            System.out.print("Date (dd/MM/yyyy): ");
-            date = sc.nextLine();
-            if(!Holiday.validateDate(date)){
-                throw new InvalidKeyException("Invalid date type please input as dd/MM/yyyy");
+    /**
+     * get a new created holiday
+     * @return new created holiday
+     */
+    public static Holiday createHoliday(){
+        String date;
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            try{
+                System.out.print("Date (dd/MM/yyyy): ");
+                date = sc.nextLine();
+                if(!Holiday.validateDate(date)){
+                    throw new InvalidKeyException("Invalid date type please input as dd/MM/yyyy");
+                }
+                return new Holiday(date);
             }
-            return new Holiday(date);
-        }
-        catch(Exception e){
-            System.out.println("Error: "+ e.getMessage());
-            System.out.print("\n");
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                System.out.print("\n");
+            }
         }
     }
-  }
 
-  public static String readInput(){
-    String date;
-    Scanner sc = new Scanner(System.in);   
-    while(true){
-        try{
-            System.out.print("Date (dd/MM/yyyy): ");
-            date = sc.nextLine();
-            if(!Holiday.validateDate(date)){
-                throw new InvalidKeyException("Invalid date type please input as dd/MM/yyyy");
+    /**
+     * get a holiday input in String
+     * @return date input
+     */
+    public static String readInput(){
+        String date;
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            try{
+                System.out.print("Date (dd/MM/yyyy): ");
+                date = sc.nextLine();
+                if(!Holiday.validateDate(date)){
+                    throw new InvalidKeyException("Invalid date type please input as dd/MM/yyyy");
+                }
+                return date;
             }
-            return date;
-        }
-        catch(Exception e){
-            System.out.println("Error: "+ e.getMessage());
-            System.out.print("\n");
+            catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                System.out.print("\n");
+            }
         }
     }
-  }
 }

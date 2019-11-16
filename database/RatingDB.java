@@ -15,7 +15,10 @@ import java.util.StringTokenizer;
 public class RatingDB extends DB{
     public static String filename = "rating.txt";
     public static String SEPARATOR = "|";
-
+	 /**
+     * 
+     * @return an arrayList of the Rating objects in the database
+     */
     public static ArrayList readData(){
         ArrayList alr = new ArrayList();
         try{
@@ -35,6 +38,10 @@ public class RatingDB extends DB{
         }
         return alr;
     }
+	/**
+     * save back the Rating List to the database
+     * @param alr List of Rating stored back to the database
+     */
     public static void saveData(List alr){
         ArrayList alw = new ArrayList();
         for (int i = 0; i < alr.size(); i++){

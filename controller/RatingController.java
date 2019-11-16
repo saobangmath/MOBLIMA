@@ -1,7 +1,7 @@
 package controller;
 
+import database.MovieDB;
 import database.RatingDB;
-import controller.MovieController;
 import model.Movie;
 import model.Rating;
 
@@ -15,7 +15,7 @@ public class RatingController {
     private static ArrayList RatingList;
 
     /**
-     * read all ratings, movies databases to RatingList for internal operations
+     * read all ratings, movies databases to RatingList and MovieList respectively for internal operations
      */
     public static void readDB(){
         RatingList = RatingDB.readData();
@@ -86,8 +86,8 @@ public class RatingController {
             Rating rating = (Rating)RatingList.get(i);
             if (rating.getMovieID() == movieID){
                 existed = true;
-                System.out.println("User " + rating.getEmail() + " has rate the Movie " + MovieController.read(movieID).getName() 
-                                    + " with rating: " + rating.getRating());
+                System.out.println("User " + rating.getEmail() + " has rate the Movie " + MovieController.read(movieID).getName()
+                        + " with rating: " + rating.getRating());
             }
         }
         if (!existed){
@@ -95,3 +95,4 @@ public class RatingController {
         }
     }
 }
+

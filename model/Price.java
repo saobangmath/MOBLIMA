@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * contains all required price operations
+ * @author Phung Minh Khanh
+ */
 public class Price {
     private static final int NORMAL_NON_SPECIAL = 7;
     private static final int NORMAL_SPECIAL = 8;
@@ -8,6 +12,13 @@ public class Price {
     public static final int POPCORN = 3;
     public static final int DRINK = 2;
 
+    /**
+     * @param vipSeat
+     * @param specialTime
+     * @param discount
+     * @param cinemaClass
+     * @return price with specific boolean information: isVIP seat, isspecialTime and isdiscount 
+     */
     public static int getPrice(boolean vipSeat, boolean specialTime, boolean discount, int cinemaClass){
         int price = NORMAL_NON_SPECIAL;
         if(vipSeat && specialTime){
@@ -30,6 +41,9 @@ public class Price {
         return price;
     }
 
+    /**
+     * display seats price details
+     */
     public static void displayPrice(){
         System.out.println("Normal seat, non special day: " + NORMAL_NON_SPECIAL + "S$");
         System.out.println("Normal seat, special day(including holiday, weekend and sneak show): " + NORMAL_SPECIAL + "S$");

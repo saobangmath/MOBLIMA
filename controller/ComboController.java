@@ -1,6 +1,3 @@
-package controller;
-
-import database.ComboDB;
 import model.Combo;
 
 import java.util.ArrayList;
@@ -10,7 +7,7 @@ import java.util.ArrayList;
  * @author Tran Anh Tai
  */
 public class ComboController {
-    static ArrayList<Combo> listCombo ;
+    static ArrayList<Combo> listCombo;
 
     /**
      * store all available Combo into a ComboList  for internal operations
@@ -35,14 +32,6 @@ public class ComboController {
         saveDB();
     }
 
-    public static Combo read(long transactionId){
-        for(int i = 0; i < listCombo.size(); i++){
-            if(listCombo.get(i).getTransactionId() == transactionId){
-                return listCombo.get(i);
-            }
-        }
-        return null;
-    }
     /**
      * display all Combo order of a user with specific email
      * @param email
@@ -57,6 +46,19 @@ public class ComboController {
     }
 
     /**
+     *
+     * @param transactionId
+     * @return Combo object with specific transaction ID
+     */
+    public static Combo read(long transactionId){
+        for(int i = 0; i < listCombo.size(); i++){
+            if(listCombo.get(i).getTransactionId() == transactionId){
+                return listCombo.get(i);
+            }
+        }
+        return null;
+    }
+    /**
      * display a Combo details
      * @param combo
      */
@@ -64,7 +66,7 @@ public class ComboController {
         System.out.println("User: " + combo.getEmail() +
                            " has order: " + combo.getPopcorn() +
                            " popcorn and " + combo.getDrink() +
-                           " when booking the showtime with ID " + combo.getShowtimeID());
+                           " when booking the showtime with ID: " + combo.getShowtimeID());
     }
 
     /**

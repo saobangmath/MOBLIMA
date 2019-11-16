@@ -6,11 +6,17 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import model.Showtime;
-
+/**
+ * Showtime database
+ * @author Phung Minh Khanh
+ */
 public class ShowtimeDB extends DB{
 	public static final String SEPARATOR = "|";
 	public static final String filename = "showtime.txt";
-    // an example of reading
+   /**
+   * retrieve all Showtime in the Showtime database
+   */
+   // an example of reading
 	public static ArrayList readData() {
 		ArrayList alr = new ArrayList() ;// to store Professors data
 		try{
@@ -36,7 +42,9 @@ public class ShowtimeDB extends DB{
 		}
 		return alr ;
 	}
-
+	/**
+	save the Showtime List to the Seat database
+	*/
 	// an example of saving
 	public static void saveData(List al) {
 		List alw = new ArrayList() ;// to store Professors data

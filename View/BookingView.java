@@ -4,6 +4,11 @@ import javax.management.openmbean.InvalidKeyException;
 import controller.*;
 import model.*;
 import java.util.ArrayList;
+
+/**
+ * booking interface
+ * @author Phung Minh Khanh
+ */
 public class BookingView {
     static Scanner sc = new Scanner(System.in);
     static int movieID, cineplexID, showtimeID, noTicket, cinemaID, price, discountPoint, popcorn, drink;
@@ -15,20 +20,19 @@ public class BookingView {
     static boolean process = true;
     static boolean discount;
     static MovieGoer movieGoer;
+
+    /**
+     * main interface display all bookings related operations 
+     */
     public static void view() {
         while(process){
-            MovieController.displayNowShowingMovies();
+            MovieController.displayAll();
             movieIDInput();
-            if(MovieController.read(movieID).getStatusMovie() == 3 || MovieController.read(movieID).getStatusMovie() == 0){
-                System.out.println("This movie is not showing. Please choose another one");
-                continue;
-            }
+
             CineplexController.displayAll();
             cineplexIDInput();
-            if(!ShowtimeController.displayByCineplexAndMovie(cineplexID, movieID)){
-                System.out.println("There is no showtimes for this movie in this cineplex");
-                continue;
-            }
+
+            ShowtimeController.displayByCineplex(cineplexID);
             showtimeIDInput();
 
             noTicketInput();
@@ -62,6 +66,9 @@ public class BookingView {
         process = true;
     }
 
+    /**
+     * input a movie ID for a booking
+     */
     public static void movieIDInput(){
         while(true){
             try{
@@ -82,6 +89,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input a cineplexID for a booking
+     */
     public static void cineplexIDInput(){
         while(true){
             try{
@@ -105,6 +115,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input showtimeID for a booking
+     */
     public static void showtimeIDInput(){
         while(true){
             try{
@@ -125,6 +138,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input number of tickets for a booking
+     */
     public static void noTicketInput(){
         while(true){
             try{
@@ -145,6 +161,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input seat number for corresponding Ticket number
+     */
     public static void seatNumberInput(){
         String seatInput;
         char row;
@@ -178,10 +197,14 @@ public class BookingView {
             }
             catch(Exception e){
                 System.out.println("Error: "+ e.getMessage());
-                System.out.print("\n"); 
+                System.out.print("\n");
             }
         }
     }
+
+    /**
+     * input discount input option
+     */
     public static void discountInput(){
         int dc;
         while(true){
@@ -204,6 +227,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input moviegoer email
+     */
     public static void emailInput(){
         String name;
         int age, mobile;
@@ -240,6 +266,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * input combo attached to the movie booking
+     */
     public static void comboInput(){
         boolean process = true;
         while (process){
@@ -268,6 +297,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * discount by rewardPoint functions to the booking price
+     */
     public static void discountByRewardPoint(){
         char yn;
         discountPoint = 0;
@@ -297,6 +329,9 @@ public class BookingView {
         }
     }
 
+    /**
+     * confirm booking details display
+     */
     public static void confirm(){
         Movie movie = MovieController.read(movieID);
         Cineplex cineplex = CineplexController.read(cineplexID);
@@ -339,7 +374,7 @@ public class BookingView {
                 System.out.println("Confirm booking Y/N");
                 cf = sc.nextLine().charAt(0);
                 if(cf == 'Y'){
-                    process = false; //terminate the main while loop 
+                    process = false; //terminate the main while loop
                     break;
                 }
                 else if(cf == 'N'){

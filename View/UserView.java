@@ -7,10 +7,13 @@ import java.util.Scanner;
 
 /**
  * Represents all related User console display
- * @author 
+ * @author Phung Minh Khanh
  */
 public class UserView {
     private static Scanner sc = new Scanner(System.in);
+	/**
+	 * main interface display all moviegoer operations
+	 */
     public static void view(){
         boolean stop = false;
         while (!stop){

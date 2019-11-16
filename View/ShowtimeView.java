@@ -4,8 +4,15 @@ import javax.management.openmbean.InvalidKeyException;
 import model.Showtime;
 import controller.*;
 import model.Movie;
+/**
+ * showtime interface
+ *@author Phung Minh Khanh
+ */
 public class ShowtimeView extends BaseView{
-    public static void view()  {
+    /**
+	 * main interface display all Showtime related operations
+	 */
+	public static void view()  {
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;

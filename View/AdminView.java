@@ -13,7 +13,10 @@ import java.util.Scanner;
  */
 public class AdminView {
     private static Scanner sc = new Scanner(System.in);
-    public static void view(){
+    /**
+	 * main interface for Admin to display all Admin related operations
+	 */
+	public static void view(){
         boolean stop = false;
         System.out.println("Enter your username: ");
         String username = sc.nextLine();

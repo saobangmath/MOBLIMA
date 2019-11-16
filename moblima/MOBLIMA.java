@@ -4,28 +4,32 @@ import View.*;
 
 import java.util.Scanner;
 
+/**
+ * @author Phung Minh Khanh
+ */
 public class MOBLIMA{
     static Scanner sc = new Scanner(System.in);
+
+    /**
+     * main interface to run the program
+     * @param args
+     */
     public static void main(String[] args) {
         readData();
         //AvailabilityView.view();
         boolean process = true;
         while(process){
             System.out.println("Welcome to MOBLIMA!");
-            System.out.println("1. Admin");
-            System.out.println("2. Moviegoer");
-            System.out.println("3. Exit");
+            System.out.println("1.Admin");
+            System.out.println("2.Moviegoer");
             System.out.println("Enter your choice: ");
-            char choice = sc.nextLine().charAt(0);
+            char choice = sc.next().charAt(0);
             switch (choice){
                 case '1':
                     AdminView.view();
                     break;
                 case '2':
-                    UserView.view();
-                    break;
-                case '3':
-                    process = false;
+                   UserView.view();
                     break;
                 default:
                     System.out.println("Please enter valid choice!");
@@ -35,6 +39,9 @@ public class MOBLIMA{
         saveData();
     }
 
+    /**
+     * read all database
+     */
     public static void readData(){
         AdminController.readDB();
         RatingController.readDB();
@@ -50,6 +57,9 @@ public class MOBLIMA{
         HolidayController.readDB();
     }
 
+    /**
+     * save back to all database
+     */
     public static void saveData(){
         AdminController.saveDB();
         ReviewController.saveDB();

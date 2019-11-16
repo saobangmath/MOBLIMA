@@ -1,7 +1,16 @@
 package View;
 import java.util.Scanner;
+
 import controller.ShowtimeController;
-public class AvailabilityView extends BaseView{
+
+/**
+ * availability interface
+ * @author Phung Minh Khanh
+ */
+public class AvailabilityView extends BaseView {
+    /**
+     * main interface for availability interface display showtimeId seat map
+     */
     public static void view() {
         Scanner sc = new Scanner(System.in);
         int showtimeId;
@@ -17,6 +26,6 @@ public class AvailabilityView extends BaseView{
                 System.out.println("Showtime ID not exists");
             }
         }
-  }
+    }
 
 }

@@ -14,7 +14,7 @@ public class ReviewView {
     private static Scanner sc = new Scanner(System.in);
 
     /**
-     * main View for review
+     * main View for display all review related operations 
      */
     public static void view() {
         boolean stop = false;
@@ -48,7 +48,7 @@ public class ReviewView {
     }
 
     /**
-     * display all reviews for a movie ID
+     * display all review details for a movie ID
      */
     private static void displayReview() {
         MovieController.displayAll();

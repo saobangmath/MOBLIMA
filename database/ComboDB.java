@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * @author Tran Anh Tai
  */
 public class ComboDB extends DB{
-    private static String filename = "combo.txt";
+    private static String filename = "D://NTU CS/Java/MOBLIMA/src/combo.txt";
     private  static String SEPARATOR = "|";
 
     /**

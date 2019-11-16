@@ -3,9 +3,21 @@ import java.util.Scanner;
 import javax.management.openmbean.InvalidKeyException;
 import model.Cinema;
 import controller.CinemaController;
-import controller.CineplexController;
-public class CinemaView extends BaseView{
+
+/**
+ * cinema interface
+ * @author Phung Minh Khanh
+ */
+public class CinemaView extends BaseView {
+    public static void main(String[] args) {
+        view();
+    }
+
+    /**
+     * main interface display all Cinema related operations
+     */
     public static void view() {
+        CinemaController.readDB();
         Scanner sc = new Scanner(System.in);
         int choice, id;
         boolean process = true;
@@ -16,9 +28,9 @@ public class CinemaView extends BaseView{
             System.out.println("3. Add new Cinema");
             System.out.println("4. Update Cinema information");
             System.out.println("5. Delete Cinema ");
-            System.out.println("6. Back");
+            System.out.println("6. Exit");
             System.out.print("Your choice: ");
-            choice = sc.nextLine().charAt(0);
+            choice = sc.next().charAt(0);
             System.out.print("\n");
             switch(choice){
                 case '1':
@@ -52,10 +64,10 @@ public class CinemaView extends BaseView{
                 case '5':
                     if(!CinemaController.delete(readID())){
                         System.out.println("Cinema does not exist to delete");
-                    }                 
+                    }
                     else{
                         System.out.println("Delete Cinema successfully!");
-                    }   
+                    }
                     break;
                 case '6':
                     process = false;
@@ -64,59 +76,55 @@ public class CinemaView extends BaseView{
                     break;
             }
         }
-  }
-
-  public static Cinema createCinema(){
-    String name;
-    int row, col, ID, cineplexId, cinemaClass;
-    Scanner sc = new Scanner(System.in);
-    while(true){
-        try{
-            System.out.print("ID: ");
-            ID = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\n");
-
-            System.out.print("Name: ");
-            name = sc.nextLine();
-            System.out.print("\n");    
-
-            CineplexController.displayAll();
-            System.out.print("CineplexID: ");
-            cineplexId = sc.nextInt();
-            sc.nextLine();
-            System.out.print("\n");    
-
-            System.out.print("Number of row: ");
-            row = sc.nextInt();
-            sc.nextLine();
-            if(row < 0 || row > 15){
-                throw new InvalidKeyException("Row must be from 1 to 15");
-            }
-            System.out.print("\n");
-
-            System.out.print("Number of column: ");
-            col= sc.nextInt();
-            sc.nextLine();
-            if(col < 0 || col > 15){
-                throw new InvalidKeyException("Column must be from 1 to 15");
-            }
-            System.out.print("\n");
-
-            System.out.print("Cinema class (1: normal, 2:platinum suite 3: elite): ");
-            cinemaClass = sc.nextInt();
-            sc.nextLine();
-            if(cinemaClass < 1 || cinemaClass > 3){
-                throw new InvalidKeyException("Invalid range of cinema class");
-            }
-            System.out.print("\n");    
-            break;
-        } catch(Exception e){
-            System.out.println("Error: "+ e.getMessage());
-            continue;
-        }
+        CinemaController.saveDB();
     }
-    return new Cinema(name, ID, cineplexId, row, col, cinemaClass);
-  }
 
+    /**
+     *
+     * @return created cinema
+     */
+    public static Cinema createCinema(){
+        String name;
+        int row, col, ID, cineplexId, cinemaClass;
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            try{
+                System.out.print("ID: ");
+                ID = sc.nextInt();
+                System.out.print("\n");
+                System.out.print("Name: ");
+                name = sc.next();
+                System.out.print("\n");
+                System.out.print("CineplexID: ");
+                cineplexId = sc.nextInt();
+                System.out.print("\n");
+                System.out.print("Row: ");
+                row = sc.nextInt();
+                if(row < 0 || row > 15){
+                    throw new InvalidKeyException("Row must be from 1 to 15");
+                }
+                System.out.print("\n");
+                System.out.print("Column: ");
+                col= sc.nextInt();
+                if(col < 0 || col > 15){
+                    throw new InvalidKeyException("Column must be from 1 to 15");
+                }
+                System.out.print("\n");
+
+                System.out.print("Cinema class (1: normal, 2:platinum suite 3: elite): ");
+                cinemaClass = sc.nextInt();
+                sc.nextLine();
+                if(cinemaClass < 1 || cinemaClass > 3){
+                    throw new InvalidKeyException("Invalid range of cinema class");
+                }
+
+                break;
+            } catch(Exception e){
+                System.out.println("Error: "+ e.getMessage());
+                sc.nextLine();
+                continue;
+            }
+        }
+        return new Cinema(name, ID, cineplexId, row, col, cinemaClass);
+    }
 }
