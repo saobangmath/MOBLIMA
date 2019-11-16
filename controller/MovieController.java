@@ -70,6 +70,15 @@ public class MovieController{
         }
     }
 
+    public static void displayNowShowingMovies(){
+        System.out.println("All now showing movies:");
+        for(int i = 0; i< listMovies.size(); i++){
+            if(listMovies.get(i).getStatusMovie() == 2 || listMovies.get(i).getStatusMovie() ==1){
+                output(listMovies.get(i));
+            }
+        }
+    }
+
     public static void displayByID(int ID){
         for(int i = 0; i< listMovies.size(); i++){
             if(listMovies.get(i).getID() == ID){

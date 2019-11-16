@@ -17,9 +17,12 @@ public class BookingInterface {
     static MovieGoer movieGoer;
     public static void view() {
         while(process){
-            MovieController.displayAll();
+            MovieController.displayNowShowingMovies();
             movieIDInput();
-
+            if(MovieController.read(movieID).getStatusMovie() == 3 || MovieController.read(movieID).getStatusMovie() == 0){
+                System.out.println("This movie is not showing. Please choose another one");
+                continue;
+            }
             CineplexController.displayAll();
             cineplexIDInput();
 

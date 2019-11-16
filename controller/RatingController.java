@@ -69,7 +69,6 @@ public class RatingController {
             }
             float updated_rating = (ratingSum) / (rating_count);
             updated_rating = Math.round(updated_rating * 10f) / 10f;
-            System.out.println(updated_rating);
             movie.setOverallRating(updated_rating);
         }
         else{
