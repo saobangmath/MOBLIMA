@@ -1,6 +1,6 @@
 package moblima;
 import controller.*;
-import Interface.*;
+import View.*;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class MOBLIMA{
      */
     public static void main(String[] args) {
         readData();
-        //AvailabilityInterface.view();
+        //AvailabilityView.view();
         boolean process = true;
         while(process){
             System.out.println("Welcome to MOBLIMA!");
@@ -26,10 +26,10 @@ public class MOBLIMA{
             char choice = sc.next().charAt(0);
             switch (choice){
                 case '1':
-                    AdminInterface.view();
+                    AdminView.view();
                     break;
                 case '2':
-                   UserInterface.view();
+                   UserView.view();
                     break;
                 default:
                     System.out.println("Please enter valid choice!");

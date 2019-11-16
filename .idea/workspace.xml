@@ -2,100 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7cdbe9e-2a5b-461b-a92e-a0ecc4137142" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Interface/UserInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AdminInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AdminInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AvailabilityInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/AvailabilityInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/BookingInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/BookingInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/CinemaInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/CinemaInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/CineplexInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/CineplexInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/ComboInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/HistoryInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/HistoryInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/HolidayInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/HolidayInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MOBLIMAInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MOBLIMAInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MovieGoerInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MovieGoerInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MovieInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/MovieInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/RatingInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/RatingInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/ReviewInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/ReviewInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/ShowtimeInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/Interface/ShowtimeInterface.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/combo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/combo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/ComboController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/ComboController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/HistoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/HistoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController$SortByRating.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController$SortByRating.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController$SortByTicket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController$SortByTicket.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieGoerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/MovieGoerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/RatingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/RatingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/controller/SeatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/controller/SeatController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/database/ComboDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/database/ComboDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/database/MovieGoerDB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/database/MovieGoerDB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/moblima/MOBLIMA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/moblima/MOBLIMA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/Admin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/Combo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/Combo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/MovieGoer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/MovieGoer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/model/Price.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/model/Price.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/movie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/movie.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MOBLIMA/rating.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MOBLIMA/rating.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AdminInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/AvailabilityInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/AvailabilityInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/BaseInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/BaseInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/BookingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/BookingInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/CineplexInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/CineplexInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/ComboInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/HistoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/HistoryInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/HolidayInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/HolidayInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MOBLIMAInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MovieGoerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MovieGoerInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MovieInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MovieInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/RatingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/RatingInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/ReviewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ReviewInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/SeatInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/SeatInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/ShowtimeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ShowtimeInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/combo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/combo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CinemaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CinemaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CineplexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CineplexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ComboController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ComboController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HistoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HistoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/HolidayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HolidayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/MovieGoerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MovieGoerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AdminView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/AvailabilityInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/AvailabilityInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/AvailabilityView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/BaseInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/BaseInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BaseView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/BookingInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/BookingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BookingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CinemaInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CinemaView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CineplexInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/CineplexInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/CineplexView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/HistoryInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/HistoryInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HistoryView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/HolidayInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/HolidayInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/HolidayView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MovieGoerInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MovieGoerInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MovieGoerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MovieInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MovieInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MovieView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/RatingInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/RatingInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/RatingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ReviewInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ReviewInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ReviewView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/SeatInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/SeatInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/SeatView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ShowtimeInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ShowtimeInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/ShowtimeView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/UserInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/UserView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cinema.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/cinema.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/RatingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SeatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SeatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/ShowtimeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ShowtimeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/CinemaDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/CinemaDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/CineplexDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/CineplexDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ComboDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ComboDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/DB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/HistoryDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/HistoryDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/HolidayDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/HolidayDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/MovieDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/MovieDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/MovieGoerDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/MovieGoerDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/SeatDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/SeatDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/ShowtimeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/ShowtimeDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/moblima/MOBLIMA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/moblima/MOBLIMA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cinema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cinema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Cineplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cineplex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Combo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Combo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/History.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/History.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Holiday.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Holiday.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Movie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/MovieGoer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/MovieGoer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Price.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Price.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Showtime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Showtime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/movie.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/movie.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/movieGoer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/movieGoer.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rating.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rating.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,16 +52,7 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/BookingInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6596">
-              <caret line="392" column="1" lean-forward="true" selection-start-line="392" selection-start-column="1" selection-end-line="392" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/CinemaInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/View/CinemaView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="273">
               <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
@@ -128,56 +60,38 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/MovieView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="128" column="39" selection-start-line="128" selection-start-column="39" selection-end-line="128" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Rating.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/RatingController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="70" column="68" selection-start-line="70" selection-start-column="68" selection-end-line="70" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Interface/CineplexInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/moblima/MOBLIMA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1904">
-              <caret line="119" column="26" lean-forward="true" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/RatingDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/ReviewDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/SeatDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/ShowtimeDB.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/AdminInterface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1235">
-              <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+            <state relative-caret-position="142">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -186,16 +100,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/AvailabilityInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+            <state relative-caret-position="348">
+              <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Interface/BaseInterface.java">
+        <entry file="file://$PROJECT_DIR$/src/View/CineplexView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1904">
+              <caret line="119" column="26" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/AdminView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1207">
+              <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/AvailabilityView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/View/BaseView.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
@@ -218,7 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/Admin.java" />
         <option value="$PROJECT_DIR$/src/controller/ComboController.java" />
         <option value="$PROJECT_DIR$/src/database/ComboDB.java" />
         <option value="$PROJECT_DIR$/src/combo.txt" />
@@ -241,11 +184,9 @@
         <option value="$PROJECT_DIR$/src/controller/HistoryController.java" />
         <option value="$PROJECT_DIR$/src/controller/CinemaController.java" />
         <option value="$PROJECT_DIR$/src/controller/CineplexController.java" />
-        <option value="$PROJECT_DIR$/src/moblima/MOBLIMA.java" />
         <option value="$PROJECT_DIR$/src/Interface/UserInterface.java" />
         <option value="$PROJECT_DIR$/src/Interface/SeatInterface.java" />
         <option value="$PROJECT_DIR$/src/Interface/ShowtimeInterface.java" />
-        <option value="$PROJECT_DIR$/src/Interface/MovieInterface.java" />
         <option value="$PROJECT_DIR$/src/Interface/MovieGoerInterface.java" />
         <option value="$PROJECT_DIR$/src/Interface/HolidayInterface.java" />
         <option value="$PROJECT_DIR$/src/Interface/HistoryInterface.java" />
@@ -269,6 +210,9 @@
         <option value="$PROJECT_DIR$/src/database/SeatDB.java" />
         <option value="$PROJECT_DIR$/src/database/ShowtimeDB.java" />
         <option value="$PROJECT_DIR$/src/Interface/AdminInterface.java" />
+        <option value="$PROJECT_DIR$/src/Interface/MovieInterface.java" />
+        <option value="$PROJECT_DIR$/src/controller/RatingController.java" />
+        <option value="$PROJECT_DIR$/src/moblima/MOBLIMA.java" />
       </list>
     </option>
   </component>
@@ -279,9 +223,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1905" />
-    <option name="width" value="1948" />
-    <option name="height" value="2075" />
+    <option name="x" value="-15" />
+    <option name="y" value="-15" />
+    <option name="width" value="3873" />
+    <option name="height" value="2093" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -289,6 +234,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -318,12 +264,6 @@
               <item name="MOBLIMA" type="b2602c69:ProjectViewProjectNode" />
               <item name="MOBLIMA" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Interface" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="MOBLIMA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MOBLIMA" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="moblima" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -332,15 +272,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MOBLIMA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MOBLIMA" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="View" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573841660300" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573893990677" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -396,10 +341,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7702407" visible="true" weight="0.17773306" />
-      <window_info id="Structure" order="1" sideWeight="0.2297593" side_tool="true" visible="true" weight="0.17773306" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7694484" visible="true" weight="0.18041582" />
+      <window_info id="Structure" order="1" sideWeight="0.23055163" side_tool="true" visible="true" weight="0.18041582" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -407,7 +351,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3536068" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3536068" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39886847" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -431,13 +375,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="129" column="1" lean-forward="true" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Combo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -476,23 +413,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/moblima/MOBLIMA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Rating.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Review.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -514,14 +434,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/UserInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/UserView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/ShowtimeInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/ShowtimeView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="110">
           <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
@@ -531,39 +451,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/SeatInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/SeatView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/ReviewInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/ReviewView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/RatingInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/MovieInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding>
-            <element signature="e#263#264#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/HolidayInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/HolidayView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
@@ -573,21 +475,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/HistoryInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/HistoryView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
           <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/MOBLIMAInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/MovieGoerInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/Interface/MOBLIMAInterface.java" />
+    <entry file="file://$PROJECT_DIR$/src/View/MovieGoerView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
@@ -656,13 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/RatingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -756,9 +645,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/BookingView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6596">
+          <caret line="392" column="1" selection-start-line="392" selection-start-column="1" selection-end-line="392" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/RatingDB.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="153">
           <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
@@ -784,48 +680,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/AdminInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/AdminView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
+        <state relative-caret-position="1207">
+          <caret line="73" column="1" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/AvailabilityInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/AvailabilityView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="30" column="1" lean-forward="true" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/BaseInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/BaseView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/BookingInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/CineplexView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6596">
-          <caret line="392" column="1" lean-forward="true" selection-start-line="392" selection-start-column="1" selection-end-line="392" selection-end-column="1" />
+        <state relative-caret-position="1904">
+          <caret line="119" column="26" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/CinemaInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/View/CinemaView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="83" column="29" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Interface/CineplexInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/model/DateTime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="119" column="26" lean-forward="true" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
+        <state relative-caret-position="348">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/MovieView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="128" column="39" selection-start-line="128" selection-start-column="39" selection-end-line="128" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/View/RatingView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="130" lean-forward="true" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Rating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/RatingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="70" column="68" selection-start-line="70" selection-start-column="68" selection-end-line="70" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/moblima/MOBLIMA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
